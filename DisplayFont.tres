@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://c8rsqwb7ogg3c"]
+
+[ext_resource type="FontFile" uid="uid://6jx3qmn4w56b" path="res://posy-3x5-matrix.otf" id="1_jlkhq"]
+
+[resource]
+base_font = ExtResource("1_jlkhq")
+variation_embolden = 0.15
+spacing_glyph = -9

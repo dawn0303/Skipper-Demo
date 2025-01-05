@@ -1,11 +1,11 @@
-[gd_scene load_steps=118 format=4 uid="uid://i8ugohko6lde"]
+[gd_scene load_steps=116 format=4 uid="uid://i8ugohko6lde"]
 
 [ext_resource type="Script" uid="uid://6v1f8carnqir" path="res://SimpleSkipper.gd" id="1_1th52"]
 [ext_resource type="Texture2D" uid="uid://hmnhg7xt6nr8" path="res://Vehicles/skipper/SkipperNew_BELL.png" id="2_bfq7v"]
 [ext_resource type="Texture2D" uid="uid://bf6ei54wywvwv" path="res://Vehicles/skipper/SkipperNew_p9XPM.jpg" id="3_yfxf7"]
-[ext_resource type="FontFile" uid="uid://6jx3qmn4w56b" path="res://posy-3x5-matrix.otf" id="4_6wcwj"]
 [ext_resource type="Texture2D" uid="uid://m6pvfj0o4hvu" path="res://textures/static/frame_01_delay-0.07s.png" id="4_f2ucr"]
 [ext_resource type="Texture2D" uid="uid://dap78kepixfr" path="res://PlumeTex.tres" id="4_xnp4b"]
+[ext_resource type="FontVariation" uid="uid://c8rsqwb7ogg3c" path="res://DisplayFont.tres" id="5_bfq7v"]
 [ext_resource type="Texture2D" uid="uid://c0ofmujedr8g1" path="res://textures/static/frame_02_delay-0.07s.png" id="5_qvve2"]
 [ext_resource type="Texture2D" uid="uid://c4hegcakmtvhw" path="res://textures/static/frame_03_delay-0.07s.png" id="6_0xp3e"]
 [ext_resource type="Texture2D" uid="uid://ycey4c2k26hu" path="res://textures/static/frame_04_delay-0.07s.png" id="7_sqjpq"]
@@ -618,7 +618,7 @@ albedo_color = Color(0.198336, 0.333332, 0.198458, 1)
 roughness = 0.5
 emission_enabled = true
 emission = Color(0, 0.690196, 0, 1)
-emission_energy_multiplier = 3.0
+emission_energy_multiplier = 5.0
 metadata/extras = {
 "pmc_matprops": {}
 }
@@ -1388,12 +1388,6 @@ animations = [{
 font = ExtResource("24_i7qdr")
 font_size = 40
 
-[sub_resource type="Gradient" id="Gradient_bfq7v"]
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_yfxf7"]
-gradient = SubResource("Gradient_bfq7v")
-
 [sub_resource type="Animation" id="Animation_ovl1b"]
 resource_name = "DIE"
 tracks/0/type = "value"
@@ -1774,11 +1768,11 @@ parameters/TimeSeek/seek_request = -1.0
 shape = SubResource("ConvexPolygonShape3D_lg1ow")
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-4.36794e-08, -1.29537, 1.2754, -5.58985e-08, 1.2754, 1.29537, -1.81786, -8.09318e-09, -7.04773e-08, -0.738734, 0.540482, 0.16566)
+transform = Transform3D(-7.3848e-08, -2.19006, 2.1563, -9.45066e-08, 2.1563, 2.19006, -3.07342, -1.3683e-08, -1.19155e-07, -0.745202, 0.546351, 0.138213)
 pixel_size = 0.0001
 modulate = Color(0, 0, 0, 0.780392)
 text = "THRUST:"
-font = ExtResource("4_6wcwj")
+font = ExtResource("5_bfq7v")
 font_size = 122
 outline_size = 0
 
@@ -1786,7 +1780,7 @@ outline_size = 0
 pixel_size = 0.0001
 modulate = Color(0, 0, 0, 0.592157)
 text = "8888888"
-font = ExtResource("4_6wcwj")
+font = ExtResource("5_bfq7v")
 font_size = 122
 outline_size = 0
 
@@ -1794,16 +1788,16 @@ outline_size = 0
 pixel_size = 0.0001
 modulate = Color(0, 0, 0, 0.592157)
 text = ":::::::"
-font = ExtResource("4_6wcwj")
+font = ExtResource("5_bfq7v")
 font_size = 122
 outline_size = 0
 
 [node name="Label3D2" type="Label3D" parent="."]
-transform = Transform3D(-4.36795e-08, -1.29537, 1.2754, -5.58984e-08, 1.2754, 1.29537, -1.81786, -8.09305e-09, -7.04773e-08, -0.720927, 0.524283, 0.122)
+transform = Transform3D(-8.40967e-08, -2.49399, 2.45554, -1.07622e-07, 2.45554, 2.49399, -3.49995, -1.55817e-08, -1.35691e-07, -0.71047, 0.514153, 0.19932)
 pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.780392)
 text = "100%"
-font = ExtResource("4_6wcwj")
+font = ExtResource("5_bfq7v")
 font_size = 72
 outline_size = 0
 horizontal_alignment = 0
@@ -1812,7 +1806,7 @@ horizontal_alignment = 0
 pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.592157)
 text = "8888"
-font = ExtResource("4_6wcwj")
+font = ExtResource("5_bfq7v")
 font_size = 72
 outline_size = 0
 horizontal_alignment = 0
@@ -1821,42 +1815,42 @@ horizontal_alignment = 0
 pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.592157)
 text = "::::"
-font = ExtResource("4_6wcwj")
+font = ExtResource("5_bfq7v")
 font_size = 72
 outline_size = 0
 horizontal_alignment = 0
 
 [node name="Label3D3" type="Label3D" parent="."]
-transform = Transform3D(-4.36794e-08, -1.29537, 1.2754, -5.58985e-08, 1.2754, 1.29537, -1.81786, -8.09318e-09, -7.04773e-08, -0.688863, 0.492772, 0.18794)
-pixel_size = 0.0001
+transform = Transform3D(-3.4922e-08, -1.99392, 1.96318, -8.60426e-08, 1.96318, 1.99392, -2.79817, -3.54823e-08, -8.58132e-08, -0.673118, 0.477468, 0.180598)
+pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.780392)
 text = "TWR:"
-font = ExtResource("4_6wcwj")
-font_size = 122
+font = ExtResource("5_bfq7v")
+font_size = 72
 outline_size = 0
 
 [node name="Label3D5" type="Label3D" parent="Label3D3"]
-pixel_size = 0.0001
+pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.592157)
 text = "8888"
-font = ExtResource("4_6wcwj")
-font_size = 122
+font = ExtResource("5_bfq7v")
+font_size = 72
 outline_size = 0
 
 [node name="Label3D6" type="Label3D" parent="Label3D3"]
-pixel_size = 0.0001
+pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.592157)
-text = "::::	"
-font = ExtResource("4_6wcwj")
-font_size = 122
+text = "::::"
+font = ExtResource("5_bfq7v")
+font_size = 72
 outline_size = 0
 
 [node name="Label3D4" type="Label3D" parent="."]
-transform = Transform3D(-4.36795e-08, -1.29537, 1.2754, -5.58984e-08, 1.2754, 1.29537, -1.81786, -8.09305e-09, -7.04773e-08, -0.688516, 0.49236, 0.154548)
+transform = Transform3D(-6.72343e-08, -1.99392, 1.96318, -8.60424e-08, 1.96318, 1.99392, -2.79817, -1.24573e-08, -1.08483e-07, -0.673034, 0.477173, 0.13859)
 pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.780392)
 text = "0"
-font = ExtResource("4_6wcwj")
+font = ExtResource("5_bfq7v")
 font_size = 72
 outline_size = 0
 horizontal_alignment = 0
@@ -1864,8 +1858,8 @@ horizontal_alignment = 0
 [node name="Label3D5" type="Label3D" parent="Label3D4"]
 pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.592157)
-text = "::::	"
-font = ExtResource("4_6wcwj")
+text = "::::"
+font = ExtResource("5_bfq7v")
 font_size = 72
 outline_size = 0
 horizontal_alignment = 0
@@ -1874,7 +1868,7 @@ horizontal_alignment = 0
 pixel_size = 0.0002
 modulate = Color(0, 0, 0, 0.592157)
 text = "8888"
-font = ExtResource("4_6wcwj")
+font = ExtResource("5_bfq7v")
 font_size = 72
 outline_size = 0
 horizontal_alignment = 0
@@ -1903,14 +1897,15 @@ mesh = SubResource("SphereMesh_ivs26")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="cameraRoot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227186, 0)
-visible = false
 light_energy = 50.0
 light_volumetric_fog_energy = 0.0
 spot_range = 100.0
 spot_angle = 35.0
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.188184, 1.0761, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.188184, 1.04935, 0)
+collision_layer = 4
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_fkp3v")
@@ -1956,6 +1951,7 @@ animation = &"Static"
 frame_progress = 0.931323
 
 [node name="Label" type="Label" parent="CanvasLayer/CenterContainer/Static"]
+visible = false
 anchors_preset = -1
 anchor_right = 1.002
 anchor_bottom = 1.004
@@ -1976,12 +1972,6 @@ label_settings = SubResource("LabelSettings_mdvkl")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/CenterContainer/Static"]
-z_index = -10
-position = Vector2(875.501, 643.957)
-scale = Vector2(8.84766, 1666.09)
-texture = SubResource("GradientTexture1D_yfxf7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
 libraries = {

@@ -11,7 +11,6 @@ var moneySaved = 0
 @onready var headCollide = $Area3D
 @onready var animPlayer = $CanvasLayer/AnimationPlayer
 @onready var Static = $CanvasLayer/CenterContainer/Static
-@onready var Static2 = $CanvasLayer/CenterContainer/Static/Static2
 @onready var groundSensor = $GroundSensor
 @onready var padSensor = $PadSensor
 @onready var sellButton = "res://buttonRow1.tscn"
@@ -182,19 +181,18 @@ func _physics_process(_delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	throttle = clampf(throttle, 0.0, 1.0)
 	TWR = (throttle*(ActualThrust/9.81))/(mass/6) 
-	twrLabel.text = str(int(round(TWR*100)), "%")
+	#twrLabel.text = str(int(round(TWR*100)), "%")
+	twrLabel.text = str("%.2f" % TWR)
 	thrustLabel.text = str(int(round(throttle*100)), "%")
 	
 	if (global_position*Vector3(1, 0, 1)).length() > maxDist:
 		Static.modulate.a = ((global_position*Vector3(1, 0, 1)).length()-maxDist)/staticMargin
 		if enableStatic and !Static.is_playing():
 			Static.play()
-			Static2.play()
 	elif global_position.y > maxHeight:
 		Static.modulate.a = (global_position.y-maxHeight)/staticMargin
 		if enableStatic and !Static.is_playing():
 			Static.play()
-			
 	else:
 		Static.modulate.a /=2
 	
@@ -326,7 +324,6 @@ func reset():
 	desiredAlt = 0
 	if enableStatic:
 		Static.stop()
-		Static2.stop()
 		
 	for item in cargo:
 		item.value = item.savedValue
@@ -345,7 +342,6 @@ func die():
 	alive = false
 	if enableStatic:
 		Static.play()
-		Static2.play()
 	animPlayer.play("DIE")
 	deathMsg.visible = true
 	camera.current = false
