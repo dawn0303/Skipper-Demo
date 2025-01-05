@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwc4lckoghmpl"]
+
+[ext_resource type="Shader" path="res://terrain.gdshader" id="1_f2asa"]
+[ext_resource type="Texture2D" uid="uid://byoan3hund75k" path="res://textures/Colormap_0.png" id="1_rykmw"]
+[ext_resource type="Texture2D" uid="uid://c7gs4gvwgvtl7" path="res://textures/Normal Map_0.png" id="2_3s16e"]
+[ext_resource type="Script" path="res://heightMapping.gd" id="4_lr823"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1ukb"]
+render_priority = 0
+shader = ExtResource("1_f2asa")
+shader_parameter/height_ratio = 1.0
+shader_parameter/albedo = ExtResource("1_rykmw")
+shader_parameter/detailnormal = ExtResource("2_3s16e")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_uuxs3"]
+lightmap_size_hint = Vector2i(10002, 10002)
+material = SubResource("ShaderMaterial_s1ukb")
+add_uv2 = true
+size = Vector2(2000, 2000)
+subdivide_width = 703
+subdivide_depth = 703
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_uuxs3")
+script = ExtResource("4_lr823")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]

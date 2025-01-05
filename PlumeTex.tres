@@ -1,0 +1,28 @@
+[gd_resource type="AnimatedTexture" load_steps=6 format=3 uid="uid://dap78kepixfr"]
+
+[ext_resource type="Texture2D" uid="uid://b52nxxdydt1t0" path="res://Vehicles/skipper/Flame1.png" id="1_841c4"]
+[ext_resource type="Texture2D" uid="uid://ddg8j44cr1ilo" path="res://Vehicles/skipper/flame2.png" id="2_64p4q"]
+[ext_resource type="Texture2D" uid="uid://dsfmncixvq8rx" path="res://Vehicles/skipper/flame3.png" id="3_skb7i"]
+[ext_resource type="Texture2D" uid="uid://bwaq0hyesj257" path="res://Vehicles/skipper/flame4.png" id="4_woqpx"]
+[ext_resource type="Texture2D" uid="uid://dn5jneql6xwf3" path="res://Vehicles/skipper/flame5.png" id="5_qajsn"]
+
+[resource]
+frames = 9
+frame_0/texture = ExtResource("1_841c4")
+frame_0/duration = 0.03
+frame_1/texture = ExtResource("2_64p4q")
+frame_1/duration = 0.03
+frame_2/texture = ExtResource("3_skb7i")
+frame_2/duration = 0.03
+frame_3/texture = ExtResource("4_woqpx")
+frame_3/duration = 0.03
+frame_4/texture = ExtResource("5_qajsn")
+frame_4/duration = 0.03
+frame_5/texture = ExtResource("4_woqpx")
+frame_5/duration = 0.03
+frame_6/texture = ExtResource("3_skb7i")
+frame_6/duration = 0.03
+frame_7/texture = ExtResource("2_64p4q")
+frame_7/duration = 0.03
+frame_8/texture = ExtResource("1_841c4")
+frame_8/duration = 0.03

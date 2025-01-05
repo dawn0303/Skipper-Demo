@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7wpjddnut8gt"]
+
+[ext_resource type="Material" uid="uid://dr0dlyu5em15y" path="res://lunar_surface1.tres" id="1_1hfup"]
+[ext_resource type="Script" uid="uid://cbp81k4dymujh" path="res://heightMapping3.gd" id="2_0d4hm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_841g8"]
+lightmap_size_hint = Vector2i(10002, 10002)
+material = ExtResource("1_1hfup")
+add_uv2 = true
+size = Vector2(2000, 2000)
+subdivide_width = 703
+subdivide_depth = 703
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -250, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 108.146, 0)
+cast_shadow = 2
+ignore_occlusion_culling = true
+mesh = SubResource("PlaneMesh_841g8")
+script = ExtResource("2_0d4hm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 5

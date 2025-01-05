@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://ds41b7wt10v2d"]
+
+[ext_resource type="PackedScene" uid="uid://c7wpjddnut8gt" path="res://Surface1.tscn" id="1_mwfjw"]
+[ext_resource type="PackedScene" uid="uid://i8ugohko6lde" path="res://Skipper.glb" id="2_ynj1n"]
+[ext_resource type="PackedScene" uid="uid://cc6vnignsnuel" path="res://LandingPad.tscn" id="3_pyp5m"]
+[ext_resource type="PackedScene" uid="uid://dm0jqbbfl6klw" path="res://environment/landing pads/Large_Pad.tscn" id="4_qkf5i"]
+[ext_resource type="PackedScene" uid="uid://b1xxojwh4t1cf" path="res://props/laptop.tscn" id="5_t2cc6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7wxth"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.55, 0.54225, 0.53325, 1)
+sky_energy_multiplier = 0.0
+ground_horizon_color = Color(0.55, 0.54225, 0.53325, 1)
+
+[sub_resource type="Sky" id="Sky_gisse"]
+sky_material = SubResource("ProceduralSkyMaterial_7wxth")
+
+[sub_resource type="Environment" id="Environment_j54p3"]
+background_mode = 2
+sky = SubResource("Sky_gisse")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="World" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.25, -0.175227, 0.731127, 0.659355, -0.468293, 0.52721, -0.70905, 0, 0, 0)
+light_energy = 10.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+directional_shadow_max_distance = 200.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j54p3")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.699, 66.989, -64.164)
+
+[node name="Node3D" parent="Node3D" instance=ExtResource("1_mwfjw")]
+
+[node name="Skipper" parent="." instance=ExtResource("2_ynj1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28293, 0)
+
+[node name="laptop" parent="Skipper" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.533223, 0.181903, 0.0333753)
+sleeping = true
+freeze = true
+value = 100
+Name = "Laptop"
+Destination = NodePath("../../Large Pad 1")
+Resistance = 3
+
+[node name="laptop2" parent="Skipper" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165544, 0.18022, 0.0333753)
+sleeping = true
+freeze = true
+value = 105
+Name = "Laptop"
+Destination = NodePath("../../pad1")
+Resistance = 2
+
+[node name="pad1" parent="." instance=ExtResource("3_pyp5m")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.7031, 0)
+Name = "Depot"
+
+[node name="Large Pad 1" parent="." instance=ExtResource("4_qkf5i")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -324.245, -17.1931, 41.9342)
+Name = "Test Pad 1"
+
+[node name="laptop" parent="Large Pad 1" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.47663, 0)
+value = 250
+Name = "Laptop"
+Destination = NodePath("../../pad1")
+Resistance = 1

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://plmabnlgesu7"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.322
+anchor_bottom = 0.093
+offset_left = 876.0
+offset_top = 113.0
+offset_right = 432.76
+offset_bottom = 100.56
+text = "SELL"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.318
+anchor_bottom = 0.096
+offset_left = 438.0
+offset_top = 105.0
+offset_right = 265.44
+offset_bottom = 106.32
+text = "UNDEF"
