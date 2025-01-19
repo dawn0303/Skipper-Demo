@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://liiasikre3t0"]
+
+[ext_resource type="Texture2D" uid="uid://bk00xepgxxal7" path="res://environment/Bases/small ground hatch/ConcreteBare0433_11_350.jpg" id="1_pcaom"]
+
+[resource]
+resource_name = "conk krete"
+cull_mode = 2
+albedo_texture = ExtResource("1_pcaom")

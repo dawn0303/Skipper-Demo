@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dxflf30ofj0o7" path="res://textures/static/frame_19_delay-0.07s.png" id="22_1423s"]
 [ext_resource type="PackedScene" uid="uid://c26enbtugqvks" path="res://Pager.tscn" id="24_dh12q"]
 [ext_resource type="FontFile" uid="uid://eok1x4ui2b5a" path="res://VCR_OSD_MONO.ttf" id="24_i7qdr"]
-[ext_resource type="Shader" path="res://vhs.gdshader" id="24_qxgg2"]
+[ext_resource type="Shader" uid="uid://bm4t43spvc7kj" path="res://vhs.gdshader" id="24_qxgg2"]
 [ext_resource type="Shader" path="res://VHS_Distortion.gdshader" id="25_cm13s"]
 [ext_resource type="Shader" path="res://Glitch.gdshader" id="25_mn3oi"]
 [ext_resource type="Texture2D" uid="uid://o8nkp6ugiuw8" path="res://ui img.JPG" id="28_f1du6"]
@@ -1873,11 +1873,118 @@ font_size = 72
 outline_size = 0
 horizontal_alignment = 0
 
+[node name="VEL" type="Label3D" parent="."]
+transform = Transform3D(-2.62835e-08, -1.50069, 1.47755, -6.47586e-08, 1.47755, 1.50069, -2.106, -2.67051e-08, -6.45859e-08, -0.696266, 0.500375, -0.0893628)
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.780392)
+text = "VEL:"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+
+[node name="Label3D5" type="Label3D" parent="VEL"]
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.592157)
+text = "8888"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+
+[node name="Label3D6" type="Label3D" parent="VEL"]
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.592157)
+text = "::::"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+
+[node name="VELlabel" type="Label3D" parent="."]
+transform = Transform3D(-6.72343e-08, -1.99392, 1.96318, -8.60424e-08, 1.96318, 1.99392, -2.79817, -1.24573e-08, -1.08483e-07, -0.672976, 0.477232, -0.23305)
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.780392)
+text = "0"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+horizontal_alignment = 2
+
+[node name="Label3D5" type="Label3D" parent="VELlabel"]
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.592157)
+text = "::::::::"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+horizontal_alignment = 2
+
+[node name="Label3D6" type="Label3D" parent="VELlabel"]
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.592157)
+text = "88888888"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+horizontal_alignment = 2
+
+[node name="ALT" type="Label3D" parent="."]
+transform = Transform3D(-2.62896e-08, -1.50104, 1.4779, -6.47736e-08, 1.4779, 1.50104, -2.10649, -2.67114e-08, -6.46009e-08, -0.748029, 0.551341, -0.0896987)
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.780392)
+text = "ALT:"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+
+[node name="Label3D5" type="Label3D" parent="ALT"]
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.592157)
+text = "8888"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+
+[node name="Label3D6" type="Label3D" parent="ALT"]
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.592157)
+text = "::::"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+
+[node name="AltLabel" type="Label3D" parent="."]
+transform = Transform3D(-3.49222e-08, -1.99392, 1.96318, -8.60424e-08, 1.96318, 1.99392, -2.79817, -3.5482e-08, -8.58133e-08, -0.722513, 0.525844, -0.232729)
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.780392)
+text = "0"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+horizontal_alignment = 2
+
+[node name="Label3D5" type="Label3D" parent="AltLabel"]
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.592157)
+text = "::::::::"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+horizontal_alignment = 2
+
+[node name="Label3D6" type="Label3D" parent="AltLabel"]
+pixel_size = 0.0002
+modulate = Color(0, 0, 0, 0.592157)
+text = "88888888"
+font = ExtResource("5_bfq7v")
+font_size = 72
+outline_size = 0
+horizontal_alignment = 2
+
 [node name="cameraRoot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192, 1.042, 0)
 
 [node name="Camera3D" type="Camera3D" parent="cameraRoot"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+cull_mask = 1048559
 current = true
 fov = 100.0
 near = 0.01
@@ -2074,6 +2181,12 @@ light_energy = 5.0
 script = ExtResource("31_bfq7v")
 noise = SubResource("NoiseTexture2D_bfq7v")
 speedMult = 2.0
+
+[node name="Altimiter" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.560651, 0)
+target_position = Vector3(0, -10000, 0)
+collision_mask = 3
+debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="GroundSensor" to="." method="_on_ground_sensor_area_entered"]

@@ -16,6 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -250, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 108.146, 0)
+layers = 17
 cast_shadow = 2
 ignore_occlusion_culling = true
 mesh = SubResource("PlaneMesh_841g8")

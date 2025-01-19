@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cc6vnignsnuel"]
+[gd_scene load_steps=17 format=4 uid="uid://cc6vnignsnuel"]
 
 [ext_resource type="Script" uid="uid://bb3lqxgvvrlus" path="res://Pad.gd" id="1_1xurs"]
 [ext_resource type="Texture2D" uid="uid://qiotduid424n" path="res://Moon_Diffuse.jpg" id="1_y0hn0"]
@@ -33,6 +33,16 @@ data = PackedVector3Array(-1.9319, 0, -0.5178, -1.4143, 0, -1.4143, -1.9319, 0, 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wtopj"]
 height = 0.215901
 radius = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoowq"]
+albedo_color = Color(0, 1, 0, 1)
+metallic = 0.5
+metallic_specular = 0.0
+emission = Color(0, 1, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vm3fr"]
+material = SubResource("StandardMaterial3D_hoowq")
+size = Vector2(100, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1yo7"]
 resource_name = "Material.001"
@@ -120,7 +130,7 @@ outgoing_lights = NodePath("OutgoingLights")
 neutral_lights = NodePath("Neutral lights")
 
 [node name="LandingZone" type="MeshInstance3D" parent="."]
-layers = 2
+layers = 19
 mesh = SubResource("ArrayMesh_nee7d")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -171,6 +181,11 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
 omni_range = 3471.35
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AwaitingLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7036, -3.8147e-06, 0.0134773)
+layers = 16
+mesh = SubResource("PlaneMesh_vm3fr")
 
 [node name="OutgoingLights" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.1135, 0)
@@ -235,26 +250,31 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 27.459, -1.10049, 0)
 
 [node name="Cube_002" type="MeshInstance3D" parent="Radio Tower"]
 transform = Transform3D(0.0700775, 0, 0, 0, 1, 0, 0, 0, 0.0700775, 0, 0, 0)
+layers = 17
 ignore_occlusion_culling = true
 mesh = SubResource("ArrayMesh_nekhr")
 skeleton = NodePath("")
 
 [node name="Cylinder_002" type="MeshInstance3D" parent="Radio Tower/Cube_002"]
 transform = Transform3D(10.0903, 10.0904, 1.28548e-06, -1.06319e-05, -1.531e-05, 1, 10.0904, -10.0903, -2.31807e-07, 22.0074, 48.311, -22.0074)
+layers = 17
 mesh = SubResource("ArrayMesh_ngn56")
 skeleton = NodePath("")
 
 [node name="Cylinder_003" type="MeshInstance3D" parent="Radio Tower/Cube_002"]
 transform = Transform3D(10.0904, -10.0904, -4.84688e-07, 8.08026e-06, -1.70111e-06, 1, -10.0904, -10.0904, 3.16102e-07, -23.376, 44.4749, -23.3759)
+layers = 17
 mesh = SubResource("ArrayMesh_ngn56")
 skeleton = NodePath("")
 
 [node name="Cylinder_004" type="MeshInstance3D" parent="Radio Tower/Cube_002"]
 transform = Transform3D(-10.0904, -10.0904, -4.63615e-07, -5.95387e-06, -3.40221e-06, 1, -10.0904, 10.0904, -1.26441e-07, -20.6022, 52.25, 20.6022)
+layers = 17
 mesh = SubResource("ArrayMesh_ngn56")
 skeleton = NodePath("")
 
 [node name="Cylinder_005" type="MeshInstance3D" parent="Radio Tower/Cube_002"]
 transform = Transform3D(-10.0904, 10.0904, 3.16101e-07, 2.97694e-06, -3.40221e-06, 1, 10.0904, 10.0904, 2.10732e-08, 24.988, 39.956, 24.988)
+layers = 17
 mesh = SubResource("ArrayMesh_ngn56")
 skeleton = NodePath("")

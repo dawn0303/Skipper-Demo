@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://2x6u72srk6n5"]
+
+[ext_resource type="Texture2D" uid="uid://l7oiyudor0k" path="res://textures/structures/concrete1-bl/concrete1_Base_Color.png" id="1_3pp3d"]
+
+[resource]
+resource_name = "just dirt"
+cull_mode = 2
+albedo_texture = ExtResource("1_3pp3d")

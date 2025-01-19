@@ -193,6 +193,7 @@ LeftButton={
 
 [layer_names]
 
+3d_render/layer_5="Map View"
 3d_physics/layer_1="SolidStatics"
 3d_physics/layer_2="LandingPad"
 

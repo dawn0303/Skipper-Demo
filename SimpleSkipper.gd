@@ -6,6 +6,8 @@ var money = 10
 var moneySaved = 0
 @onready var thrustLabel = $Label3D2
 @onready var twrLabel = $Label3D4
+@onready var altLabel = $AltLabel
+@onready var velLabel = $VELlabel
 @onready var camera = $cameraRoot/Camera3D
 @onready var camParent = $cameraRoot
 @onready var headCollide = $Area3D
@@ -22,6 +24,7 @@ var moneySaved = 0
 @onready var VHS = $CanvasLayer/vhs
 @onready var deathMsg = $CanvasLayer/CenterContainer/Static/Label
 @onready var animTree = $SkipperNew/AnimationTree
+@onready var altimeter = $Altimiter
 
 var padOn = false
 var padMode = "manifest"
@@ -50,7 +53,7 @@ var cargo = []
 var cargoSaved = []
 var lastVel = Vector3.ZERO
 var impactThreshold = 1.0
-var VHSBaseWiggle = 0.03
+var VHSBaseWiggle = 0.01
 var VHSBaseSmear
 #Called when the node enters the scene tree for the first time.
 func _ready():
@@ -144,7 +147,6 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("Reset"):
 		reset()
 	
-	
 	if  VHS.get_material().get_shader_parameter("wiggle") > VHSBaseWiggle:
 		VHS.get_material().set_shader_parameter("wiggle", lerpf(VHS.get_material().get_shader_parameter("wiggle"), VHSBaseWiggle, 0.01))
 	
@@ -184,6 +186,13 @@ func _physics_process(_delta):
 	#twrLabel.text = str(int(round(TWR*100)), "%")
 	twrLabel.text = str("%.2f" % TWR)
 	thrustLabel.text = str(int(round(throttle*100)), "%")
+	velLabel.text = str(int(round(linear_velocity.length())))
+	if altimeter.is_colliding():
+		altLabel.text = str(int(global_position.distance_to(altimeter.get_collision_point())), "M")
+	else:
+		altLabel.text = "NaN"
+	
+	altimeter.global_rotation = Vector3.ZERO
 	
 	if (global_position*Vector3(1, 0, 1)).length() > maxDist:
 		Static.modulate.a = ((global_position*Vector3(1, 0, 1)).length()-maxDist)/staticMargin
@@ -332,13 +341,16 @@ func reset():
 	deathMsg.visible = false
 	alive = true
 	
-	VHS.get_material().set_shader_parameter("wiggle",VHSBaseWiggle)
+	VHS.get_material().set_shader_parameter("wiggle", VHSBaseWiggle)
 	VHS.get_material().set_shader_parameter("smear",VHSBaseSmear)
 	
 	glitch.get_material().set_shader_parameter("shake_power", 0.0)
 	glitch.get_material().set_shader_parameter("shake_color_rate", 0.0)
 
 func die():
+	linear_velocity = Vector3.ZERO
+	global_position = resetPos 
+	global_rotation = resetRot
 	alive = false
 	if enableStatic:
 		Static.play()

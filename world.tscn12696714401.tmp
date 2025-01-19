@@ -56,10 +56,6 @@ size = 2000.0
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Node3D/Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.699, 433.035, 64.164)
 layers = 16
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-light_bake_mode = 1
 
 [node name="Skipper" parent="." instance=ExtResource("2_ynj1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28293, 0)
