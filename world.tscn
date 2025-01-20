@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://ds41b7wt10v2d"]
+[gd_scene load_steps=13 format=3 uid="uid://ds41b7wt10v2d"]
 
+[ext_resource type="Script" uid="uid://bqkr3shsv642x" path="res://World.gd" id="1_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://c7wpjddnut8gt" path="res://Surface1.tscn" id="1_mwfjw"]
 [ext_resource type="PackedScene" uid="uid://i8ugohko6lde" path="res://Skipper.glb" id="2_ynj1n"]
 [ext_resource type="PackedScene" uid="uid://cc6vnignsnuel" path="res://LandingPad.tscn" id="3_pyp5m"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b1xxojwh4t1cf" path="res://props/laptop.tscn" id="5_t2cc6"]
 [ext_resource type="PackedScene" uid="uid://dy004c473ecdr" path="res://environment/Bases/Player Home Base/Home Base.tscn" id="6_dwbse"]
 [ext_resource type="PackedScene" uid="uid://c1o66q46x53mi" path="res://environment/Bases/___/what is that.tscn" id="7_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://cg8uctvdpqx0h" path="res://UI/options_menu.tscn" id="10_wse8f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7wxth"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -29,6 +31,7 @@ glow_strength = 1.2
 glow_map_strength = 0.85
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_gbfbk")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.25, -0.175227, 0.731127, 0.659355, -0.468293, 0.52721, -0.70905, 0, 0, 0)
@@ -46,12 +49,6 @@ environment = SubResource("Environment_j54p3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.699, 66.989, -64.164)
 
 [node name="Node3D" parent="Node3D" instance=ExtResource("1_mwfjw")]
-
-[node name="Camera3D" type="Camera3D" parent="Node3D/Node3D"]
-transform = Transform3D(-4.37114e-08, -1, -1.91069e-15, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 0, 521.061, 0)
-cull_mask = 16
-projection = 1
-size = 2000.0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Node3D/Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.699, 433.035, 64.164)
@@ -102,3 +99,35 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.5618
 
 [node name="Wtf is that?" parent="." instance=ExtResource("7_pkg7o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 688.164, 175.166, -759.295)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Options Menu" parent="CanvasLayer" instance=ExtResource("10_wse8f")]
+z_index = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_right = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(512, 512)
+size_flags_horizontal = 4
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1080, 1080)
+render_target_update_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.37114e-08, -1, -1.91069e-15, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, -4.699, 338.05, -64.164)
+cull_mask = 16
+projection = 1
+current = true
+size = 2000.0

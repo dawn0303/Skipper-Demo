@@ -1986,7 +1986,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.192, 1.042, 0)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 cull_mask = 1048559
 current = true
-fov = 100.0
+fov = 90.0
 near = 0.01
 far = 40000.0
 
@@ -2018,7 +2018,7 @@ collision_mask = 3
 shape = SubResource("SphereShape3D_fkp3v")
 
 [node name="pager2" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-10, -0.005, 0.00866025, 0, 0.00866025, 0.005, -0.01, 2.18557e-10, -3.78552e-10, -0.267617, 0.971911, 5.44576e-09)
+transform = Transform3D(-4.37114e-10, -0.005, 0.00866025, 0, 0.00866025, 0.005, -0.01, 2.18557e-10, -3.78552e-10, -0.3105, 0.947152, 7.32024e-09)
 
 [node name="Cube_001" type="MeshInstance3D" parent="pager2"]
 transform = Transform3D(1.78814e-07, -1.77636e-15, -1, -2.98023e-08, 1, -1.59872e-14, 1, -8.27351e-16, 1.78814e-07, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dm0jqbbfl6klw"]
+[gd_scene load_steps=21 format=4 uid="uid://dm0jqbbfl6klw"]
 
 [ext_resource type="Script" uid="uid://bb3lqxgvvrlus" path="res://Pad.gd" id="1_1o125"]
 [ext_resource type="Texture2D" uid="uid://caokuplgru45u" path="res://textures/structures/concrete2-bl/concrete2_albedo.png" id="1_yibha"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://l7oiyudor0k" path="res://textures/structures/concrete1-bl/concrete1_Base_Color.png" id="4_1xttl"]
 [ext_resource type="Texture2D" uid="uid://6yvui6aosoo0" path="res://textures/helipad.png" id="6_7caid"]
 [ext_resource type="Texture2D" uid="uid://bhawgnwcgacgl" path="res://environment/landing pads/Radio Tower_radio tower truss.png" id="7_14qyn"]
+[ext_resource type="Texture2D" uid="uid://b71ajg8g1uubl" path="res://UI/dawncircl.png" id="7_q42jn"]
 [ext_resource type="PackedScene" uid="uid://dagxn6o4vw2qo" path="res://environment/Bases/small ground hatch/Small Hatch.tscn" id="8_bu6nd"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_n5v87"]
@@ -59,15 +60,6 @@ _surfaces = [{
 "vertex_count": 12,
 "vertex_data": PackedByteArray("RiIAAEwiSsqlXQAAAABKygAAAACzXUrKAAAAAEuiSspHIgAAst1KyqVdAAD//0rKM6IAAP//SsqS3QAAgN5Kyv//AADXokrK//8AAPRdSsqS3QAATCJKyjOiAAAAAErKZrtLoma7S6Jmu0uiZrtLoma7S6Jmu0uiZrtLoma7S6Jmu0uiZrtLoma7S6Jmu0ui")
 }]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bu6nd"]
-albedo_color = Color(0, 1, 0, 1)
-metallic = 0.5
-metallic_specular = 0.0
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_q42jn"]
-material = SubResource("StandardMaterial3D_bu6nd")
-size = Vector2(200, 200)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1yo7"]
 resource_name = "Material.001"
@@ -191,11 +183,11 @@ light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
 omni_range = 3471.35
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AwaitingLights"]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 62.9178, 14.9044, 62.9616)
+[node name="Sprite3D" type="Sprite3D" parent="AwaitingLights"]
+transform = Transform3D(0.707107, 0.707107, 3.09086e-08, 0, -4.37114e-08, 1, 0.707107, -0.707107, -3.09086e-08, 62.9821, 14.9044, 63.045)
 layers = 16
-mesh = SubResource("PlaneMesh_q42jn")
-skeleton = NodePath("../..")
+pixel_size = 1.0
+texture = ExtResource("7_q42jn")
 
 [node name="OutgoingLights" type="Node3D" parent="."]
 

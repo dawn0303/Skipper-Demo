@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://cc6vnignsnuel"]
+[gd_scene load_steps=16 format=4 uid="uid://cc6vnignsnuel"]
 
 [ext_resource type="Script" uid="uid://bb3lqxgvvrlus" path="res://Pad.gd" id="1_1xurs"]
 [ext_resource type="Texture2D" uid="uid://qiotduid424n" path="res://Moon_Diffuse.jpg" id="1_y0hn0"]
 [ext_resource type="Texture2D" uid="uid://co2ndvbap5670" path="res://Moon_Normal.jpg" id="2_bvdvy"]
+[ext_resource type="Texture2D" uid="uid://b71ajg8g1uubl" path="res://UI/dawncircl.png" id="4_vm3fr"]
 [ext_resource type="Texture2D" uid="uid://bhawgnwcgacgl" path="res://environment/landing pads/Radio Tower_radio tower truss.png" id="4_yf6mh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esipj"]
@@ -33,16 +34,6 @@ data = PackedVector3Array(-1.9319, 0, -0.5178, -1.4143, 0, -1.4143, -1.9319, 0, 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wtopj"]
 height = 0.215901
 radius = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoowq"]
-albedo_color = Color(0, 1, 0, 1)
-metallic = 0.5
-metallic_specular = 0.0
-emission = Color(0, 1, 0, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_vm3fr"]
-material = SubResource("StandardMaterial3D_hoowq")
-size = Vector2(100, 100)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1yo7"]
 resource_name = "Material.001"
@@ -182,10 +173,11 @@ light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
 omni_range = 3471.35
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AwaitingLights"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7036, -3.8147e-06, 0.0134773)
+[node name="Sprite3D" type="Sprite3D" parent="AwaitingLights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -27.4184, -3.8147e-06, 0.0134773)
 layers = 16
-mesh = SubResource("PlaneMesh_vm3fr")
+pixel_size = 0.5
+texture = ExtResource("4_vm3fr")
 
 [node name="OutgoingLights" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.1135, 0)

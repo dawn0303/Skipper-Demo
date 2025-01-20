@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://dy004c473ecdr"]
+[gd_scene load_steps=15 format=4 uid="uid://dy004c473ecdr"]
 
 [ext_resource type="Texture2D" uid="uid://dtirjps340oe5" path="res://environment/Bases/Player Home Base/entrance concrete.png" id="1_ofuha"]
 [ext_resource type="Material" uid="uid://2x6u72srk6n5" path="res://environment/Bases/___/just dirt.tres" id="2_o1lc7"]
+[ext_resource type="Texture2D" uid="uid://baw2lpebn2ed7" path="res://UI/dawnarrow.png" id="4_4m8vc"]
 [ext_resource type="Texture2D" uid="uid://g2bq26umn1iw" path="res://environment/Bases/Player Home Base/exterior door.png" id="5_odot6"]
+[ext_resource type="FontFile" uid="uid://eok1x4ui2b5a" path="res://VCR_OSD_MONO.ttf" id="5_ofuha"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b66b3"]
 resource_name = "Material"
@@ -199,3 +201,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.8832, 0.331918, 0)
 layers = 17
 mesh = SubResource("ArrayMesh_6sjvr")
 skeleton = NodePath("")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, -62.8874, 144, 85.7303)
+layers = 16
+pixel_size = 0.5
+texture = ExtResource("4_4m8vc")
+
+[node name="Label3D" type="Label3D" parent="Sprite3D"]
+transform = Transform3D(-4.37114e-06, -100, -4.37114e-06, 100, -4.37114e-06, -4.37114e-06, 4.37114e-06, -4.37114e-06, 100, 38.7453, 36.2274, 0)
+layers = 16
+modulate = Color(1, 0, 0, 1)
+text = "HOME"
+font = ExtResource("5_ofuha")
+font_size = 100
+outline_size = 0
+width = 1000.0

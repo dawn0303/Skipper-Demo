@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkol2lhyog5n0"]
+
+[ext_resource type="Theme" uid="uid://b82xritf011af" path="res://UI/Remap Menu.tres" id="1_1sqsk"]
+[ext_resource type="Script" uid="uid://cevx4msatvl6w" path="res://action_button.gd" id="1_6yno4"]
+
+[node name="ActionButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_1sqsk")
+toggle_mode = true
+script = ExtResource("1_6yno4")
+
+[connection signal="toggled" from="." to="." method="_on_ActionButton_toggled"]

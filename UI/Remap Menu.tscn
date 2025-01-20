@@ -1,0 +1,384 @@
+[gd_scene load_steps=5 format=3 uid="uid://yrdwr5lguyy7"]
+
+[ext_resource type="Theme" uid="uid://b82xritf011af" path="res://UI/Remap Menu.tres" id="1_wcyef"]
+[ext_resource type="Script" uid="uid://ch5p6ophmtsw2" path="res://UI/remap_menu.gd" id="2_2tk48"]
+[ext_resource type="PackedScene" uid="uid://dkol2lhyog5n0" path="res://environment/TERRAIN/action_button.tscn" id="2_vjfro"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x05nb"]
+font_size = 50
+
+[node name="Control" type="Control"]
+z_index = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 3
+theme = ExtResource("1_wcyef")
+script = ExtResource("2_2tk48")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -315.0
+offset_top = -390.0
+offset_right = 315.0
+offset_bottom = 390.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "THROTTLE UP"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "THROTTLE DOWN"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "MAX THROTTLE"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "CUT THROTTLE"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "PITCH UP"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "PITCH DOWN"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "YAW LEFT"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "YAW RIGHT"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "ROLL LEFT"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label10" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "ROLL RIGHT"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label11" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "PAGER"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "PAGER SELECT"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label13" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "FREELOOK(HOLD)"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="Label14" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "RESET"
+label_settings = SubResource("LabelSettings_x05nb")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label12" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label13" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="Label14" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "  "
+label_settings = SubResource("LabelSettings_x05nb")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ActionButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "SHIFT"
+alignment = 0
+
+[node name="ActionButton2" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "CTRL"
+alignment = 0
+action = "throttle down"
+
+[node name="ActionButton3" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "Z"
+alignment = 0
+action = "max throttle"
+
+[node name="ActionButton4" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "X"
+alignment = 0
+action = "cut engines"
+
+[node name="ActionButton5" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "S"
+alignment = 0
+action = "backwards"
+
+[node name="ActionButton6" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "W"
+alignment = 0
+action = "forwards"
+
+[node name="ActionButton7" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "A"
+alignment = 0
+action = "yaw left"
+
+[node name="ActionButton8" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "D"
+alignment = 0
+action = "yaw right"
+
+[node name="ActionButton9" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "Q"
+alignment = 0
+action = "left"
+
+[node name="ActionButton10" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "E"
+alignment = 0
+action = "right"
+
+[node name="ActionButton11" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "I"
+alignment = 0
+action = "open_manifest"
+
+[node name="ActionButton12" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "SPACE"
+alignment = 0
+action = "LeftButton"
+
+[node name="ActionButton13" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "ALT"
+alignment = 0
+action = "freelook"
+
+[node name="ActionButton14" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "R"
+alignment = 0
+action = "Reset"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = " "
+
+[node name="Save" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SAVE"
+
+[node name="Return" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "RETURN"
+
+[connection signal="pressed" from="VBoxContainer/Save" to="." method="_Save_Button_Pressed"]
+[connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]

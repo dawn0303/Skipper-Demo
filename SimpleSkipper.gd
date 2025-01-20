@@ -26,6 +26,7 @@ var moneySaved = 0
 @onready var animTree = $SkipperNew/AnimationTree
 @onready var altimeter = $Altimiter
 
+var world
 var padOn = false
 var padMode = "manifest"
 var enableStatic = true
@@ -53,10 +54,11 @@ var cargo = []
 var cargoSaved = []
 var lastVel = Vector3.ZERO
 var impactThreshold = 1.0
-var VHSBaseWiggle = 0.01
+var VHSBaseWiggle = 0.03
 var VHSBaseSmear
 #Called when the node enters the scene tree for the first time.
 func _ready():
+	world = get_parent()
 	#VHSBaseWiggle = VHS.get_material().get_shader_parameter("wiggle")
 	VHSBaseSmear = VHS.get_material().get_shader_parameter("smear")
 	glitch.get_material().set_shader_parameter("shake_power", 0.0)
@@ -70,6 +72,8 @@ func _ready():
 	
 
 func _unhandled_input(event):
+	if world.menuOpen:
+		return
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED: 
 		if event is InputEventMouseMotion:
 			mouse_input = event.relative
@@ -85,6 +89,8 @@ func _init():
 
 
 func _input(event):
+	if world.menuOpen:
+		return
 	if debug and event is InputEventKey and Input.is_key_pressed(KEY_P):
 		var vp = get_viewport()
 		vp.debug_draw = (vp.debug_draw + 1 ) % 5
@@ -177,9 +183,13 @@ func _physics_process(_delta):
 	
 	manualRotation()
 	
-	if Input.is_action_pressed("Rclick"):
+	if Input.is_action_pressed("Rclick") or Input.is_action_pressed("freelook") :
+		if world.menuOpen:
+			return
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	else:
+		if world.menuOpen:
+			return
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	throttle = clampf(throttle, 0.0, 1.0)
 	TWR = (throttle*(ActualThrust/9.81))/(mass/6) 
@@ -219,6 +229,8 @@ func apply_thrust():
 	apply_force(throttle*ActualThrust * transform.basis.y)
 
 func manualThrottle():
+	if world.menuOpen:
+		return
 	throttleaxis = Input.get_axis("throttleAxisDown", "throttleAxisUp")
 	if throttleaxis>0:
 		throttle = (throttleaxis)/8
@@ -446,7 +458,7 @@ func getCargo(index):
 
 func impact(speedChange):
 	print("impact at: "+str(speedChange))
-	if speedChange > 10:
+	if speedChange > 20:
 		die()
 	
 	VHS.get_material().set_shader_parameter("wiggle",clampf((VHSBaseWiggle+round(speedChange/5)/10), VHSBaseWiggle, 1.5))
