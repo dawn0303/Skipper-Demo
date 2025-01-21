@@ -205,7 +205,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1135, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Neutral lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21183, -0.381022, -2.28219)
-light_energy = 10.0
+light_energy = 2.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
@@ -213,7 +213,7 @@ omni_range = 3471.35
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Neutral lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.212, -0.381216, 2.282)
-light_energy = 10.0
+light_energy = 2.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
@@ -221,7 +221,7 @@ omni_range = 3471.35
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Neutral lights"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -1.37048, -0.381022, -2.19069)
-light_energy = 10.0
+light_energy = 2.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
@@ -229,7 +229,7 @@ omni_range = 3471.35
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Neutral lights"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 1.37031, -0.381216, 2.1905)
-light_energy = 10.0
+light_energy = 2.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1

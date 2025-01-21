@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://c1o66q46x53mi"]
+[gd_scene load_steps=9 format=4 uid="uid://c1o66q46x53mi"]
 
 [ext_resource type="Texture2D" uid="uid://begrnd7ayqvsc" path="res://environment/Bases/___/what is that_pyramid2.png" id="1_cliwr"]
 [ext_resource type="Material" uid="uid://2x6u72srk6n5" path="res://environment/Bases/___/just dirt.tres" id="2_cliwr"]
@@ -78,6 +78,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8a1rd")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_4mfvn"]
+radius = 500.0
+
 [node name="Wtf is that?" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 119.149, 0)
 mesh = SubResource("ArrayMesh_ro86p")
@@ -86,3 +89,10 @@ skeleton = NodePath("")
 [node name="Cube_003" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_8gja1")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_003"]
+collision_layer = 32
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Cube_003/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -122.811, 0)
+shape = SubResource("SphereShape3D_4mfvn")

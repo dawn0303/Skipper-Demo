@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=4 uid="uid://i8ugohko6lde"]
+[gd_scene load_steps=118 format=4 uid="uid://i8ugohko6lde"]
 
 [ext_resource type="Script" uid="uid://6v1f8carnqir" path="res://SimpleSkipper.gd" id="1_1th52"]
 [ext_resource type="Texture2D" uid="uid://hmnhg7xt6nr8" path="res://Vehicles/skipper/SkipperNew_BELL.png" id="2_bfq7v"]
@@ -31,6 +31,8 @@
 [ext_resource type="Shader" path="res://Glitch.gdshader" id="25_mn3oi"]
 [ext_resource type="Texture2D" uid="uid://o8nkp6ugiuw8" path="res://ui img.JPG" id="28_f1du6"]
 [ext_resource type="Script" uid="uid://b51meolm0x57i" path="res://flickerLight.gd" id="31_bfq7v"]
+[ext_resource type="AudioStream" uid="uid://rvdr7awci51e" path="res://Audio/ambiance.mp3" id="32_yfxf7"]
+[ext_resource type="AudioStream" uid="uid://d0m4a58m87gdr" path="res://Audio/EngineSound.mp3" id="33_ohcqp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l2pjk"]
 resource_name = "orange"
@@ -1097,7 +1099,6 @@ blend_point_3/pos = Vector2(1, 0)
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_0ceri"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jcu6j"]
-graph_offset = Vector2(-120.092, -72.6768)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_xnp4b")
 nodes/Add2/position = Vector2(-60, 240)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_tr7mi")
@@ -1483,7 +1484,9 @@ noise = SubResource("FastNoiseLite_bfq7v")
 
 [node name="Skipper" type="RigidBody3D" groups=["Skipper"]]
 collision_layer = 4
+collision_mask = 3
 mass = 200.0
+continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_1th52")
@@ -1987,8 +1990,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 cull_mask = 1048559
 current = true
 fov = 90.0
-near = 0.01
-far = 40000.0
+far = 2000.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="cameraRoot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -2012,7 +2014,7 @@ spot_angle = 35.0
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.188184, 1.04935, 0)
 collision_layer = 4
-collision_mask = 3
+collision_mask = 35
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_fkp3v")
@@ -2035,9 +2037,11 @@ transform = Transform3D(0.380571, -8.88178e-16, 2.75335e-14, 3.55271e-15, 0.3805
 texture = SubResource("ViewportTexture_aesns")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 0
 follow_viewport_enabled = true
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -2046,6 +2050,7 @@ grow_vertical = 2
 pivot_offset = Vector2(960, 540)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
 [node name="Static" type="AnimatedSprite2D" parent="CanvasLayer/CenterContainer"]
 modulate = Color(1, 1, 1, 0)
@@ -2086,6 +2091,7 @@ libraries = {
 }
 
 [node name="vhs" type="ColorRect" parent="CanvasLayer"]
+z_as_relative = false
 material = SubResource("ShaderMaterial_pragu")
 anchors_preset = 15
 anchor_right = 1.0
@@ -2187,6 +2193,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.560651, 0)
 target_position = Vector3(0, -10000, 0)
 collision_mask = 3
 debug_shape_custom_color = Color(1, 0, 0, 1)
+
+[node name="Ambiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_yfxf7")
+max_polyphony = 3
+parameters/looping = true
+
+[node name="Engines" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_ohcqp")
+max_polyphony = 3
+parameters/looping = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="GroundSensor" to="." method="_on_ground_sensor_area_entered"]

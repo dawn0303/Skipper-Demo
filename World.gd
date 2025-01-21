@@ -1,8 +1,8 @@
 extends Node3D
 
 @onready var Options = $CanvasLayer
-
 @onready var map = $SubViewportContainer
+@onready var Skipper = $Skipper
 
 var config_ 
 var menuOpen = false
@@ -19,6 +19,7 @@ func save_ ():
 	for action in InputMap.get_actions():
 		config_.input_map[action] = InputMap.action_get_events(action)
 	ResourceSaver.save(config_, "user://config.tres")
+	Skipper.updateSettings()
 	
 
 func load_():
@@ -32,12 +33,16 @@ func load_():
 
 
 func _input(event):
-	if event is InputEventKey and Input.is_action_just_pressed("options menu"):
-		Options.visible = !Options.visible
-		menuOpen = !menuOpen
+	#if event is InputEventKey and Input.is_action_just_pressed("options menu"):
+	#	MenuToggle()
 		
 	if event is InputEventKey and Input.is_action_just_pressed("map"):
 		map.visible = !map.visible
+
+func MenuToggle():
+	Options.visible = !Options.visible
+	menuOpen = !menuOpen
+	get_tree().paused = !get_tree().paused
 
 func test_():
 	config_.volume = 0.5

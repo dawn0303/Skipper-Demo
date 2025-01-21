@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://e38tmd3m041h"]
+
+[ext_resource type="Theme" uid="uid://b82xritf011af" path="res://UI/Remap Menu.tres" id="1_3fx03"]
+[ext_resource type="Script" uid="uid://cfeplvndovxyt" path="res://toggle_switch.gd" id="2_w426c"]
+
+[node name="ItemList" type="ItemList"]
+offset_right = 224.0
+offset_bottom = 52.0
+mouse_default_cursor_shape = 3
+theme = ExtResource("1_3fx03")
+allow_search = false
+auto_width = true
+auto_height = true
+text_overrun_behavior = 4
+item_count = 2
+max_columns = 2
+same_column_width = true
+fixed_column_width = 100
+item_0/text = "ON"
+item_1/text = "OFF"
+script = ExtResource("2_w426c")
+
+[connection signal="item_selected" from="." to="." method="_on_item_selected"]

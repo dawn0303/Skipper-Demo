@@ -29,3 +29,7 @@ func remap_key(event):
  
 	text = "%s" % event.as_text()
  
+
+
+func _on_visibility_changed() -> void:
+	display_key()

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b82xritf011af"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://b82xritf011af"]
 
 [ext_resource type="FontFile" uid="uid://eok1x4ui2b5a" path="res://VCR_OSD_MONO.ttf" id="1_w8lus"]
 
@@ -14,22 +14,7 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjfro"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 0.156863, 0.223529, 0.6)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_detail = 1
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8lus"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tk48"]
 content_margin_left = 4.0
@@ -55,16 +40,80 @@ content_margin_bottom = 4.0
 bg_color = Color(0, 0, 0, 0.6)
 corner_detail = 1
 
+[sub_resource type="Gradient" id="Gradient_kg8co"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ucj8v"]
+gradient = SubResource("Gradient_kg8co")
+width = 10
+height = 34
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 0.941176)
+metadata/_snap_enabled = true
+metadata/_snap_count = 2
+
+[sub_resource type="ImageTexture" id="ImageTexture_kg8co"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ucj8v"]
+
+[sub_resource type="Gradient" id="Gradient_w8lus"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kg8co"]
+gradient = SubResource("Gradient_w8lus")
+width = 3
+height = 28
+fill_from = Vector2(-6.24, 1)
+fill_to = Vector2(0.21, 0.081)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6jsm0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.94902, 0.94902, 0.94902, 1)
+corner_detail = 6
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7nxf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.94902, 0.94902, 0.94902, 1)
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i84km"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0)
+corner_detail = 1
+expand_margin_bottom = 20.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjfro"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_left = 7
+corner_detail = 1
+expand_margin_left = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kg8co"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w8lus"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(1, 0.156863, 0.223529, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kg8co"]
@@ -73,10 +122,6 @@ content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(1, 0.156863, 0.223529, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ucj8v"]
@@ -85,10 +130,6 @@ content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(1, 0.156863, 0.223529, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkhdg"]
@@ -98,10 +139,6 @@ content_margin_right = 4.0
 content_margin_bottom = 4.0
 bg_color = Color(1, 0.156863, 0.223529, 0)
 border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
 corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vs8aa"]
@@ -109,23 +146,15 @@ content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(1, 0.156863, 0.223529, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+bg_color = Color(0.94902, 0.94902, 0.94902, 1)
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd4us"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(1, 0.156863, 0.223529, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+bg_color = Color(0.94902, 0.94902, 0.94902, 1)
 corner_detail = 5
 
 [resource]
@@ -149,27 +178,39 @@ Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/styles/disabled = SubResource("StyleBoxFlat_wcyef")
-Button/styles/focus = SubResource("StyleBoxFlat_vjfro")
+Button/styles/focus = SubResource("StyleBoxEmpty_w8lus")
 Button/styles/hover = SubResource("StyleBoxFlat_2tk48")
 Button/styles/normal = SubResource("StyleBoxFlat_x05nb")
 Button/styles/pressed = SubResource("StyleBoxFlat_3ynu7")
+CheckButton/icons/checked = null
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 10
+HSlider/icons/grabber = SubResource("GradientTexture2D_ucj8v")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_kg8co")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_ucj8v")
+HSlider/icons/tick = SubResource("GradientTexture2D_kg8co")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_6jsm0")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_a7nxf")
+HSlider/styles/slider = SubResource("StyleBoxFlat_i84km")
 ItemList/colors/font_color = Color(1, 1, 1, 1)
 ItemList/colors/font_hovered_color = Color(0.95, 0.95, 0.95, 1)
 ItemList/colors/font_hovered_selected_color = Color(0.121569, 0.32549, 0.678431, 1)
 ItemList/colors/font_outline_color = Color(0, 0, 0, 1)
-ItemList/colors/font_selected_color = Color(0.94902, 0.94902, 0.94902, 1)
+ItemList/colors/font_selected_color = Color(0.121569, 0.32549, 0.678431, 1)
 ItemList/colors/guide_color = Color(0.701961, 0.701961, 0.701961, 0)
 ItemList/constants/h_separation = 4
 ItemList/constants/icon_margin = 4
-ItemList/constants/line_separation = 2
+ItemList/constants/line_separation = 0
 ItemList/constants/outline_size = 0
-ItemList/constants/v_separation = 4
+ItemList/constants/v_separation = 0
 ItemList/styles/cursor = SubResource("StyleBoxFlat_vjfro")
 ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_vjfro")
-ItemList/styles/focus = SubResource("StyleBoxFlat_vjfro")
+ItemList/styles/focus = SubResource("StyleBoxEmpty_kg8co")
 ItemList/styles/hovered = SubResource("StyleBoxFlat_w8lus")
 ItemList/styles/hovered_selected = SubResource("StyleBoxFlat_kg8co")
 ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_ucj8v")
 ItemList/styles/panel = SubResource("StyleBoxFlat_mkhdg")
 ItemList/styles/selected = SubResource("StyleBoxFlat_vs8aa")
 ItemList/styles/selected_focus = SubResource("StyleBoxFlat_bd4us")
+Label/constants/line_spacing = 5
+VBoxContainer/constants/separation = 7

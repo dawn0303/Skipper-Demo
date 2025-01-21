@@ -16,6 +16,10 @@ config/use_custom_user_dir=true
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/channel_disable_threshold_db=-50.0
+
 [display]
 
 window/size/viewport_width=1920
@@ -151,6 +155,7 @@ map={
 3d_render/layer_5="Map View"
 3d_physics/layer_1="SolidStatics"
 3d_physics/layer_2="LandingPad"
+3d_physics/layer_6="KillTrigger"
 
 [physics]
 

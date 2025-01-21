@@ -25,6 +25,8 @@ var moneySaved = 0
 @onready var deathMsg = $CanvasLayer/CenterContainer/Static/Label
 @onready var animTree = $SkipperNew/AnimationTree
 @onready var altimeter = $Altimiter
+@onready var Ambiance = $Ambiance
+@onready var EngineAudio = $Engines
 
 var world
 var padOn = false
@@ -39,7 +41,7 @@ var steerStrength = 0.02
 var ActualThrust 
 var TWR
 var alive = true
-var maxDist = 200000
+var maxDist = 800
 var maxHeight = 55
 var staticMargin = 50
 var manualThr = true
@@ -56,9 +58,16 @@ var lastVel = Vector3.ZERO
 var impactThreshold = 1.0
 var VHSBaseWiggle = 0.03
 var VHSBaseSmear
+var resetCamPRot
+var resetCamRot
+var volume
+var modulate
 #Called when the node enters the scene tree for the first time.
 func _ready():
+	resetCamPRot = camParent.rotation
+	resetCamRot = camera.rotation
 	world = get_parent()
+	updateSettings()
 	#VHSBaseWiggle = VHS.get_material().get_shader_parameter("wiggle")
 	VHSBaseSmear = VHS.get_material().get_shader_parameter("smear")
 	glitch.get_material().set_shader_parameter("shake_power", 0.0)
@@ -69,6 +78,15 @@ func _ready():
 	resetRot = global_rotation
 	ActualThrust = thrust*4*0.8135
 	print("hiiii")
+	Ambiance.play()
+	EngineAudio.volume_linear = 0
+	EngineAudio.play()
+
+func updateSettings():
+	VHS.visible=world.config_.vhs
+	Static.speed_scale = world.config_.staticAnimation
+	volume = world.config_.volume/100
+	Ambiance.volume_linear = world.config_.volume/100
 	
 
 func _unhandled_input(event):
@@ -204,7 +222,11 @@ func _physics_process(_delta):
 	
 	altimeter.global_rotation = Vector3.ZERO
 	
-	if (global_position*Vector3(1, 0, 1)).length() > maxDist:
+	if (global_position*Vector3(1, 0, 1)).length() > maxDist and global_position.y > maxHeight:
+		Static.modulate.a = ((global_position*Vector3(1, 0, 1)).length()-maxDist)/staticMargin + (global_position.y-maxHeight)/staticMargin
+		if enableStatic and !Static.is_playing():
+			Static.play()
+	elif (global_position*Vector3(1, 0, 1)).length() > maxDist:
 		Static.modulate.a = ((global_position*Vector3(1, 0, 1)).length()-maxDist)/staticMargin
 		if enableStatic and !Static.is_playing():
 			Static.play()
@@ -212,6 +234,7 @@ func _physics_process(_delta):
 		Static.modulate.a = (global_position.y-maxHeight)/staticMargin
 		if enableStatic and !Static.is_playing():
 			Static.play()
+		
 	else:
 		Static.modulate.a /=2
 	
@@ -227,6 +250,7 @@ func _physics_process(_delta):
 
 func apply_thrust():
 	apply_force(throttle*ActualThrust * transform.basis.y)
+	EngineAudio.volume_linear = throttle*volume
 
 func manualThrottle():
 	if world.menuOpen:
@@ -336,10 +360,13 @@ func rotationToVector(rot:Vector3):
 
 func reset():
 	throttle = 0
+	animTree.set("parameters/TimeSeek/seek_request", throttle*5)
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	global_position = resetPos 
 	global_rotation = resetRot
+	camParent.rotation = resetCamPRot 
+	camera.rotation = resetCamRot
 	camera.current = true
 	animPlayer.play("RESET")
 	desiredAlt = 0
@@ -360,6 +387,7 @@ func reset():
 	glitch.get_material().set_shader_parameter("shake_color_rate", 0.0)
 
 func die():
+	throttle = 0
 	linear_velocity = Vector3.ZERO
 	global_position = resetPos 
 	global_rotation = resetRot
@@ -369,6 +397,7 @@ func die():
 	animPlayer.play("DIE")
 	deathMsg.visible = true
 	camera.current = false
+	
 
 func addMoney(amount):
 	money+= amount
@@ -467,14 +496,16 @@ func impact(speedChange):
 	glitch.get_material().set_shader_parameter("shake_power", round(speedChange/2)/100)
 	glitch.get_material().set_shader_parameter("shake_color_rate", round(speedChange/2)/100)
 	
+	var index = 0
 	for item in cargo:
-		var index = 0
+		if !item: return
 		item.Damage(speedChange, index)
 		index+=1
 	
 
 
 func _on_body_entered(_body):
+	if !alive:return
 	if abs(lastVel-linear_velocity).length() > impactThreshold:
 		impact(abs(lastVel-linear_velocity).length())
 	
@@ -487,4 +518,6 @@ func save():
 	cargoSaved = cargo
 	resetPos = global_position + Vector3(0,0.2,0)
 	print("saved")
+	resetCamPRot = camParent.rotation
+	resetCamRot = camera.rotation
 	#resetRot = global_rotation

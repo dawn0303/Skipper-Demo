@@ -45,7 +45,7 @@ func Damage(damage, index):
 		return
 	condition -= damage
 	value = int(startValue*(condition/100))
-	print("oof "+str(Name)+" took "+str(damage)+"and is now worth "+str(value))
+	print("oof "+str(Name)+" took "+str(damage)+" damage and is now worth "+str(value))
 	if condition < 1:
 		get_parent().cargo.remove_at(index)
 		queue_free()

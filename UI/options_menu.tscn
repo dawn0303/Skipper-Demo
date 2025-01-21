@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg8uctvdpqx0h"]
+[gd_scene load_steps=5 format=3 uid="uid://cg8uctvdpqx0h"]
 
 [ext_resource type="Theme" uid="uid://b82xritf011af" path="res://UI/Remap Menu.tres" id="1_onhes"]
 [ext_resource type="PackedScene" uid="uid://yrdwr5lguyy7" path="res://UI/Remap Menu.tscn" id="1_xf62s"]
 [ext_resource type="Script" uid="uid://b4ujan4wh7uy" path="res://UI/options_menu.gd" id="2_hrc50"]
+[ext_resource type="PackedScene" uid="uid://565k83oati7o" path="res://UI/accesibility_menu.tscn" id="4_hrc50"]
 
 [node name="Options Menu" type="Control"]
 z_index = 2
@@ -52,25 +53,28 @@ offset_right = 384.0
 offset_bottom = 292.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_default_cursor_shape = 3
 theme_override_font_sizes/font_size = 70
 auto_width = true
 auto_height = true
 text_overrun_behavior = 0
-item_count = 1
+item_count = 2
 item_0/text = "KEY BINDINGS"
+item_1/text = "ACCESSIBILITY"
 
 [node name="Label" type="Label" parent="Main"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -272.0
+offset_left = -856.0
 offset_top = 64.0
-offset_right = 273.0
+offset_right = 856.0
 offset_bottom = 152.0
 grow_horizontal = 2
+mouse_default_cursor_shape = 3
 theme_override_font_sizes/font_size = 100
-text = "MAIN MENU"
+text = "--------- MAIN MENU ---------"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -84,18 +88,45 @@ anchor_bottom = 1.0
 offset_left = -128.0
 offset_top = -216.0
 offset_right = 128.0
-offset_bottom = -120.0
+offset_bottom = -112.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_default_cursor_shape = 3
 theme_override_font_sizes/font_size = 100
 text = "EXIT"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="Main"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -304.0
+offset_top = -336.0
+offset_right = 304.0
+offset_bottom = -232.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 3
+theme_override_font_sizes/font_size = 100
+text = "CLOSE MENU"
 icon_alignment = 1
 
 [node name="Remap" parent="." instance=ExtResource("1_xf62s")]
 visible = false
 layout_mode = 1
 
+[node name="AccesibilityMenu" parent="." instance=ExtResource("4_hrc50")]
+visible = false
+layout_mode = 1
+
 [connection signal="item_activated" from="Main/ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="item_clicked" from="Main/ItemList" to="." method="_on_item_list_item_clicked"]
 [connection signal="pressed" from="Main/Button" to="." method="_on_button_pressed"]
-[connection signal="Return" from="Remap" to="." method="_on_remap_return"]
-[connection signal="Save" from="Remap" to="." method="_on_remap_save"]
+[connection signal="pressed" from="Main/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="Return" from="Remap" to="." method="_on_return"]
+[connection signal="Save" from="Remap" to="." method="_on_save"]
+[connection signal="Return" from="AccesibilityMenu" to="." method="_on_return"]
+[connection signal="Save" from="AccesibilityMenu" to="." method="_on_save"]

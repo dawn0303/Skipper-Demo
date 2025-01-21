@@ -11,8 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 3
 theme = ExtResource("1_1sqsk")
 toggle_mode = true
 script = ExtResource("1_6yno4")
 
 [connection signal="toggled" from="." to="." method="_on_ActionButton_toggled"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
