@@ -306,6 +306,12 @@ size_flags_vertical = 2
 text = "RESET"
 label_settings = SubResource("LabelSettings_x05nb")
 
+[node name="Label15" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "HEADLAMP"
+label_settings = SubResource("LabelSettings_x05nb")
+
 [node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
@@ -378,6 +384,16 @@ size_flags_vertical = 2
 text = "R"
 alignment = 0
 action = "Reset"
+
+[node name="ActionButton15" parent="VBoxContainer/HBoxContainer/VBoxContainer5" instance=ExtResource("2_vjfro")]
+custom_minimum_size = Vector2(0.145, 0)
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 2
+text = "L"
+alignment = 0
+action = "Headlamp"
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2

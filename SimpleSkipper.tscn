@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=4 uid="uid://i8ugohko6lde"]
+[gd_scene load_steps=138 format=4 uid="uid://i8ugohko6lde"]
 
 [ext_resource type="Script" uid="uid://6v1f8carnqir" path="res://SimpleSkipper.gd" id="1_1th52"]
 [ext_resource type="Texture2D" uid="uid://hmnhg7xt6nr8" path="res://Vehicles/skipper/SkipperNew_BELL.png" id="2_bfq7v"]
@@ -1134,28 +1134,6 @@ node_connections = [&"Add2", 0, &"BlendSpace2D", &"Add2", 1, &"BlendSpace1D", &"
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lg1ow"]
 points = PackedVector3Array(1.32286, -0.541077, -1.096, 1.32286, -0.517838, -1.096, 1.52283, -0.541077, -0.928428, 1.31168, -0.561315, -1.03292, -1.33748, -0.541077, -0.260912, 0.737142, 0.107069, -0.61838, 0.815681, 0.0886108, -0.602502, 1.52283, -0.517838, -0.928428, -1.33748, -0.517838, -0.260912, -0.0292104, -0.0077939, -0.642411, 0.0496299, -0.0077939, -0.666013, 0.0496299, 0.107069, -0.61838, 1.52283, -0.541077, 0.928213, 1.46241, -0.561315, -0.906542, -1.33748, -0.561315, -0.196757, -1.50785, -0.561315, -0.0984859, -1.56312, -0.541077, -0.130456, 0.737142, 0.15466, -0.503587, 0.878512, 0.165223, -0.369698, -0.765356, 0.574637, -0.239241, 0.909323, 0.165223, -0.3388, 1.52283, -0.517838, 0.928213, 1.1546, 0.0886108, -0.158994, 1.17061, 0.107069, -0.071236, -1.56312, -0.517838, -0.130456, -0.642414, 0.352028, -0.395016, -0.591364, 0.453436, -0.335796, -0.791938, 0.574637, -0.239241, 1.32286, -0.541077, 1.096, 1.46241, -0.561315, 0.906327, -1.50785, -0.561315, 0.0982713, -1.56312, -0.541077, 0.130242, -0.765356, 0.574637, 0.239027, 1.05583, 0.15466, -0.071236, 1.32286, -0.517838, 1.096, 1.17061, 0.107069, 0.0710214, 1.1546, 0.0886108, 0.158779, 0.909323, 0.165223, 0.337727, 0.815681, 0.0886108, 0.602287, -1.56312, -0.517838, 0.130242, -0.791938, 0.574637, 0.239027, -1.33748, -0.541077, 0.260698, 1.31168, -0.561315, 1.03271, -1.33748, -0.561315, 0.196543, -0.482316, 0.415853, 0.391154, 0.737142, 0.107069, 0.618165, 0.737142, 0.15466, 0.503372, 0.878512, 0.165223, 0.368625, 1.05583, 0.15466, 0.0710214, 0.0496299, 0.107069, 0.618165, 0.0496299, -0.0077939, 0.665799, -0.0292104, -0.0077939, 0.642197, -1.33748, -0.517838, 0.260698, 0.815681, 0.128529, 0.505947, -0.630331, 0.356253, 0.397591)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_8eq7t"]
-material = ExtResource("6_8eq7t")
-top_radius = 0.06
-bottom_radius = 0.06
-height = 0.13
-cap_top = false
-cap_bottom = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_43fha"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_unse3"]
-material = SubResource("StandardMaterial3D_43fha")
-radius = 0.2
-height = 0.2
-is_hemisphere = true
-
-[sub_resource type="SphereMesh" id="SphereMesh_ivs26"]
-material = SubResource("StandardMaterial3D_43fha")
-radius = 0.18
-height = 0.18
-is_hemisphere = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkgkw"]
 resource_name = "!del acc.002"
@@ -3513,21 +3491,6 @@ current = true
 fov = 90.0
 near = 0.01
 far = 2000.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="cameraRoot/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, -4.27932e-09, -0.00154224)
-visible = false
-mesh = SubResource("CylinderMesh_8eq7t")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="cameraRoot/Camera3D"]
-transform = Transform3D(-1, -8.74228e-08, -3.82137e-15, 0, -4.37114e-08, 1, -8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
-visible = false
-mesh = SubResource("SphereMesh_unse3")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="cameraRoot/Camera3D"]
-transform = Transform3D(1, 2.4869e-14, -1.90582e-21, 0, -4.37114e-08, 1, 2.4869e-14, -1, -4.37114e-08, -1.59673e-10, 0, 0.00365289)
-visible = false
-mesh = SubResource("SphereMesh_ivs26")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="cameraRoot/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.227186, 0)

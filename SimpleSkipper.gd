@@ -28,6 +28,7 @@ var moneySaved = 0
 @onready var altimeter = $Altimiter
 @onready var Ambiance = $Ambiance
 @onready var EngineAudio = $Engines
+@onready var Headlamp = $cameraRoot/Camera3D/SpotLight3D
 
 var world
 var padOn = false
@@ -173,6 +174,11 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("Reset"):
 		reset()
 	
+	if Input.is_action_just_pressed("Headlamp") and !Headlamp.visible:
+		Headlamp.visible = true
+	elif Input.is_action_just_pressed("Headlamp") and Headlamp.visible:
+		Headlamp.visible = false
+		
 	if  VHS.get_material().get_shader_parameter("wiggle") > VHSBaseWiggle:
 		VHS.get_material().set_shader_parameter("wiggle", lerpf(VHS.get_material().get_shader_parameter("wiggle"), VHSBaseWiggle, 0.01))
 	
@@ -256,7 +262,7 @@ func apply_thrust():
 	EngineAudio.volume_linear = throttle*volume
 
 func manualThrottle():
-	if world.menuOpen:
+	if world.menuOpen or padOn:
 		return
 	throttleaxis = Input.get_axis("throttleAxisDown", "throttleAxisUp")
 	if throttleaxis>0:
