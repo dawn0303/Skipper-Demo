@@ -252,7 +252,7 @@ func _physics_process(_delta):
 		impact(abs(lastVel-linear_velocity).length())
 
 func apply_thrust():
-	apply_force(throttle*ActualThrust * transform.basis.y * !tutorial)
+	apply_force(throttle*ActualThrust * transform.basis.y)
 	EngineAudio.volume_linear = throttle*volume
 
 func manualThrottle():
