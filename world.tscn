@@ -158,6 +158,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(512, 512)
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false

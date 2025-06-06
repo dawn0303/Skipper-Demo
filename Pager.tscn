@@ -1,265 +1,168 @@
-[gd_scene load_steps=14 format=3 uid="uid://c26enbtugqvks"]
+[gd_scene load_steps=10 format=3 uid="uid://c26enbtugqvks"]
 
 [ext_resource type="Script" uid="uid://dexabprslf5d5" path="res://Pager.gd" id="1_24or6"]
-[ext_resource type="PackedScene" uid="uid://coyasi3xesgcy" path="res://List.tscn" id="2_hx76m"]
-[ext_resource type="Texture2D" uid="uid://o8nkp6ugiuw8" path="res://ui img.JPG" id="3_ij50k"]
-[ext_resource type="FontFile" uid="uid://6jx3qmn4w56b" path="res://posy-3x5-matrix.otf" id="4_hwm10"]
+[ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="3_kf0rh"]
+[ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="4_sbbln"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf0rh"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.921569, 0.72549, 0.0941176, 1)
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptrtn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kf0rh"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kf0rh"]
+color = Color(0.921569, 0.72549, 0.0941176, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xddpe"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_04v68"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ghv1k"]
-font = ExtResource("4_hwm10")
-font_size = 136
-font_color = Color(0, 0, 0, 0.678431)
-
-[sub_resource type="LabelSettings" id="LabelSettings_f3ujk"]
-font = ExtResource("4_hwm10")
-font_size = 136
-font_color = Color(0, 0, 0, 0.184314)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ol28e"]
-font = ExtResource("4_hwm10")
-font_size = 96
-font_color = Color(0, 0, 0, 0.678431)
-
-[sub_resource type="LabelSettings" id="LabelSettings_17yy4"]
-font = ExtResource("4_hwm10")
-font_size = 96
-font_color = Color(0, 0, 0, 0.184314)
-
-[sub_resource type="LabelSettings" id="LabelSettings_g0qge"]
-font = ExtResource("4_hwm10")
-font_size = 96
-font_color = Color(0, 0, 0, 0.184314)
-
-[sub_resource type="LabelSettings" id="LabelSettings_jfo6f"]
-line_spacing = 4.0
-font = ExtResource("4_hwm10")
-font_size = 96
-font_color = Color(0, 0, 0, 0.184314)
-shadow_size = 0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjvid"]
-bg_color = Color(0, 0, 0, 0.678431)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
 [node name="Pager UI" type="Control"]
+texture_filter = 1
+custom_minimum_size = Vector2(320, 240)
 layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 0.843
-offset_bottom = -0.440063
+anchor_right = 0.167
+anchor_bottom = 0.222
+offset_right = -0.640015
+offset_bottom = 0.239975
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_sbbln")
 script = ExtResource("1_24or6")
 
-[node name="ItemList" parent="." instance=ExtResource("2_hx76m")]
+[node name="Panel4" type="Panel" parent="."]
 layout_mode = 1
-anchor_left = 0.004
-anchor_top = 0.319
-anchor_right = 0.783
-anchor_bottom = 0.716
-offset_left = -3.68
-offset_top = 55.48
-offset_right = -7.36011
-offset_bottom = 87.72
-item_0/icon = SubResource("ViewportTexture_xddpe")
-
-[node name="DepotList" parent="." instance=ExtResource("2_hx76m")]
-layout_mode = 1
-anchor_left = 0.004
-anchor_top = 0.319
-anchor_right = 0.783
-anchor_bottom = 0.716
-offset_left = -3.68
-offset_top = 55.48
-offset_right = -7.36011
-offset_bottom = 87.72
-item_0/icon = SubResource("ViewportTexture_04v68")
-
-[node name="UiImg" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(957.751, 452.75)
-scale = Vector2(1.40669, 1.40669)
-texture = ExtResource("3_ij50k")
-
-[node name="Bottom" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.006
-anchor_top = 0.841
-anchor_right = 1.002
-anchor_bottom = 0.991
-offset_left = 1.48
-offset_top = 123.69
-offset_right = 0.15979
-offset_bottom = 123.19
-text = "BOTTOM"
-label_settings = SubResource("LabelSettings_ghv1k")
-
-[node name="Label2" type="Label" parent="Bottom"]
-layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
-text = "888888888888888888888"
-label_settings = SubResource("LabelSettings_f3ujk")
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kf0rh")
 
-[node name="Label3" type="Label" parent="Bottom"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
-text = ":::::::::::::::::::::"
-label_settings = SubResource("LabelSettings_f3ujk")
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 318.0
+offset_bottom = 238.0
 
-[node name="Top" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.007
-anchor_top = 0.236
-anchor_right = 0.765
-anchor_bottom = 0.386
-offset_left = -0.440001
-offset_top = 28.24
-offset_right = 0.199951
-offset_bottom = 27.74
-text = "TOP"
-label_settings = SubResource("LabelSettings_ghv1k")
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ptrtn")
 
-[node name="Label2" type="Label" parent="Top"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
-text = "8888888888888888"
-label_settings = SubResource("LabelSettings_f3ujk")
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 
-[node name="Label3" type="Label" parent="Top"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.007
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -0.952
-theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
-text = "::::::::::::::::"
-label_settings = SubResource("LabelSettings_f3ujk")
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kf0rh")
 
-[node name="Extra" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.796
-anchor_top = 0.237
-anchor_right = 0.997
-anchor_bottom = 0.386
-offset_left = -0.320068
-offset_top = 28.33
-offset_right = 0.759888
-offset_bottom = 28.74
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "11-JUN-85"
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 10
+text = "13:25 am "
+horizontal_alignment = 2
+
+[node name="Panel3" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_kf0rh")
+
+[node name="Extra" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_sbbln")
 text = "EXTRAS"
-label_settings = SubResource("LabelSettings_ol28e")
+horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Extra"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.992
-anchor_bottom = 1.007
-offset_right = -124.524
-offset_bottom = -0.952011
-theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
-text = "888888"
-label_settings = SubResource("LabelSettings_17yy4")
+[node name="Container" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 140)
+layout_mode = 2
+size_flags_horizontal = 4
 
-[node name="Label3" type="Label" parent="Extra"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.992
-anchor_bottom = 1.007
-offset_right = -125.454
-offset_bottom = -0.952011
-theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
-text = "::::::"
-label_settings = SubResource("LabelSettings_g0qge")
-
-[node name="Label" type="Label" parent="."]
-show_behind_parent = true
-visibility_layer = 2
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.004
-anchor_top = 0.379
-anchor_right = 0.771
-anchor_bottom = 0.814
-offset_left = 0.32
-offset_top = 91.11
-offset_right = -0.320068
-offset_bottom = 91.26
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
-text = "88888888888888888888888
-88888888888888888888888
-88888888888888888888888
-88888888888888888888888"
-label_settings = SubResource("LabelSettings_jfo6f")
-justification_flags = 0
-
-[node name="Label2" type="Label" parent="."]
-show_behind_parent = true
-visibility_layer = 2
+[node name="ItemList" type="ItemList" parent="VBoxContainer/Container"]
 z_as_relative = false
+texture_filter = 1
+clip_contents = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.004
-anchor_top = 0.379
-anchor_right = 0.771
-anchor_bottom = 0.814
-offset_left = 0.32
-offset_top = 91.11
-offset_right = -0.320068
-offset_bottom = 91.26
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0.592157)
-text = ":::::::::::::::::::::::
-:::::::::::::::::::::::
-:::::::::::::::::::::::
-:::::::::::::::::::::::"
-label_settings = SubResource("LabelSettings_jfo6f")
-justification_flags = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_sbbln")
+item_count = 5
+item_0/text = "AAAA"
+item_0/icon = SubResource("ViewportTexture_xddpe")
+item_1/text = "AAA"
+item_2/text = "a"
+item_3/text = "a"
+script = ExtResource("3_kf0rh")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.007
-anchor_top = 0.971066
-anchor_right = 0.99
-anchor_bottom = 0.99278
-offset_left = -0.440001
-offset_top = 0.329956
-offset_right = 0.199829
-offset_bottom = -0.430054
-theme_override_styles/panel = SubResource("StyleBoxFlat_qjvid")
-metadata/_edit_use_anchors_ = true
+[node name="DepotList" type="ItemList" parent="VBoxContainer/Container"]
+z_as_relative = false
+texture_filter = 1
+layout_mode = 2
+anchor_top = 0.0416667
+anchor_right = 1.0
+anchor_bottom = 1.04167
+offset_top = -16.0
+offset_right = -1600.0
+offset_bottom = -946.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_sbbln")
+item_count = 5
+item_0/text = "AAAA"
+item_0/icon = SubResource("ViewportTexture_04v68")
+item_1/text = "AAA"
+item_2/text = "a"
+item_3/text = "a"
+script = ExtResource("3_kf0rh")
 
-[node name="Panel2" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.007
-anchor_top = 0.239198
-anchor_right = 0.99
-anchor_bottom = 0.260912
-offset_left = -0.440001
-offset_top = 0.329956
-offset_right = 0.199829
-offset_bottom = -0.430054
-theme_override_styles/panel = SubResource("StyleBoxFlat_qjvid")
-metadata/_edit_use_anchors_ = true
+[node name="Top" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_sbbln")
+theme_override_font_sizes/font_size = 8
+text = "TOP"
+
+[node name="Panel5" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_kf0rh")
+
+[node name="Bottom" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_sbbln")
+text = "BOTTOM"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -500
+custom_minimum_size = Vector2(320, 240)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)

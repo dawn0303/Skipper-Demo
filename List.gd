@@ -14,10 +14,11 @@ func _ready():
 func selectNext():
 	if index == item_count-1:
 		return false
-	select(index+1)
-	index+=1
-	ensure_current_is_visible ( )
-	return true
+	if item_count>index:
+		select(index+1)
+		index+=1
+		ensure_current_is_visible ( )
+		return true
 
 func selectPrev():
 	if index == 0:

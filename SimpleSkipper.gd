@@ -24,6 +24,7 @@ var moneySaved = 0
 @onready var VHS = $CanvasLayer/vhs
 @onready var deathMsg = $CanvasLayer/CenterContainer/Static/Label
 @onready var animTree = $SkipperNew/AnimationTree
+@onready var animTree2 = $SkipperNew/AnimationTree2
 @onready var altimeter = $Altimiter
 @onready var Ambiance = $Ambiance
 @onready var EngineAudio = $Engines
@@ -62,6 +63,7 @@ var resetCamPRot
 var resetCamRot
 var volume
 var modulate
+var tutorial = true
 #Called when the node enters the scene tree for the first time.
 func _ready():
 	resetCamPRot = camParent.rotation
@@ -185,6 +187,15 @@ func _physics_process(_delta):
 		glitch.get_material().set_shader_parameter("shake_color_rate", lerpf(glitch.get_material().get_shader_parameter("shake_color_rate"), 0, 0.005))
 	
 	
+	if Input.is_action_pressed("Rclick") or Input.is_action_pressed("freelook") :
+		if world.menuOpen:
+			return
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		if world.menuOpen:
+			return
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	
 	if !alive:
 		return
 	if headCollide.has_overlapping_bodies():
@@ -201,14 +212,6 @@ func _physics_process(_delta):
 	
 	manualRotation()
 	
-	if Input.is_action_pressed("Rclick") or Input.is_action_pressed("freelook") :
-		if world.menuOpen:
-			return
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	else:
-		if world.menuOpen:
-			return
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	throttle = clampf(throttle, 0.0, 1.0)
 	TWR = (throttle*(ActualThrust/9.81))/(mass/6) 
 	#twrLabel.text = str(int(round(TWR*100)), "%")
@@ -249,7 +252,7 @@ func _physics_process(_delta):
 		impact(abs(lastVel-linear_velocity).length())
 
 func apply_thrust():
-	apply_force(throttle*ActualThrust * transform.basis.y)
+	apply_force(throttle*ActualThrust * transform.basis.y * !tutorial)
 	EngineAudio.volume_linear = throttle*volume
 
 func manualThrottle():
@@ -259,53 +262,65 @@ func manualThrottle():
 	if throttleaxis>0:
 		throttle = (throttleaxis)/8
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 	
 	if Input.is_action_pressed("throttle up") and throttle < 1:
 		throttle += 0.01
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 	if Input.is_action_pressed("throttle down") and throttle > 0:
 		throttle -= 0.01
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 	if Input.is_action_pressed("max throttle"):
 		throttle = 1
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 	if Input.is_action_pressed("cut engines"):
 		throttle = 0
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 
 func manualRotation():
 	
 	var yawAxis = Input.get_axis("yaw left", "yaw right")
 	apply_torque(-yawAxis*torque* transform.basis.y)
 	animTree.set("parameters/BlendSpace1D/blend_position", yawAxis)
+	animTree2.set("parameters/BlendSpace1D/blend_position", yawAxis)
 	var input_dir = Input.get_vector("left", "right", "forwards", "backwards")
 	apply_torque(-input_dir.x*torque*transform.basis.x)
 	apply_torque(-input_dir.y*torque*transform.basis.z)
 	animTree.set("parameters/BlendSpace2D/blend_position", input_dir*Vector2(1,-1))
+	animTree2.set("parameters/BlendSpace2D/blend_position", input_dir*Vector2(1,-1))
 	angular_velocity = angular_velocity.lerp(Vector3(0,0,0), steerStrength)
 
 func autoThrottle():
 	if Input.is_action_pressed("throttle up") and throttle < 1:
 		throttle += 0.01
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 		return
 	if Input.is_action_pressed("throttle down") and throttle > 0:
 		throttle -= 0.1
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 		return
 	if groundSensor.has_overlapping_bodies() or groundSensor.has_overlapping_areas():
 		throttle = 0 
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 		return
 	if linear_velocity.y <0.001 and linear_velocity.y > -0.001:
 		return
 	if linear_velocity.y > 0.0 and throttle > 0:
 		throttle = lerpf(throttle, 0, clampf((linear_velocity.y), -0.01, 0.01))
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 		return
 	if linear_velocity.y < -0.0:
 		throttle = lerpf(throttle, 1, clampf((0-linear_velocity.y), -0.01, 0.01))
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 
 func autoAltitude():
 	#if Input.is_action_pressed("throttle up"):
@@ -361,6 +376,7 @@ func rotationToVector(rot:Vector3):
 func reset():
 	throttle = 0
 	animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+	animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	global_position = resetPos 
@@ -387,6 +403,7 @@ func reset():
 	glitch.get_material().set_shader_parameter("shake_color_rate", 0.0)
 
 func die():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	throttle = 0
 	linear_velocity = Vector3.ZERO
 	global_position = resetPos 
@@ -420,6 +437,7 @@ func openPad():
 
 func openManifest():
 	list.clear()
+	list.index == 0
 	pagerUI.top.text = "NO CARGO"
 	pagerUI.bottom.text ="RETURN TO DEPOT"
 	pagerUI.extra.text = "SHIP"
@@ -434,6 +452,7 @@ func openManifest():
 
 func openDepotManifest():
 	list.clear()
+	list.index == 0
 	pagerUI.top.text = "DEPOT EMPTY"
 	pagerUI.bottom.text ="NEXT DELIVERY"
 	pagerUI.extra.text = "DEPOT"

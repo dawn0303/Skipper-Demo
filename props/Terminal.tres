@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d007sgq0psac3"]
+
+[ext_resource type="FontFile" uid="uid://clcxon7olr0bl" path="res://UI/beeb.otf" id="1_p25fs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p25fs"]
+bg_color = Color(0.921569, 0.72549, 0.0941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2ao3"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfbum"]
+bg_color = Color(0.921569, 0.72549, 0.0941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7c3rh"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_right = 3
+border_color = Color(0, 0, 0, 1)
+
+[resource]
+default_font = ExtResource("1_p25fs")
+ItemList/colors/font_color = Color(0.921569, 0.72549, 0.0941176, 1)
+ItemList/colors/font_hovered_color = Color(0.921569, 0.72549, 0.0941176, 1)
+ItemList/colors/font_hovered_selected_color = Color(0, 0, 0, 1)
+ItemList/colors/font_selected_color = Color(0, 0, 0, 1)
+ItemList/colors/guide_color = Color(0.921569, 0.72549, 0.0941176, 0)
+ItemList/font_sizes/font_size = 8
+ItemList/fonts/font = ExtResource("1_p25fs")
+ItemList/styles/cursor = SubResource("StyleBoxFlat_p25fs")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_p25fs")
+ItemList/styles/focus = SubResource("StyleBoxFlat_p25fs")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_p25fs")
+ItemList/styles/hovered_selected = SubResource("StyleBoxFlat_p25fs")
+ItemList/styles/hovered_selected_focus = SubResource("StyleBoxFlat_p25fs")
+ItemList/styles/panel = SubResource("StyleBoxFlat_w2ao3")
+ItemList/styles/selected = SubResource("StyleBoxFlat_p25fs")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_p25fs")
+Label/colors/font_color = Color(0.921569, 0.72549, 0.0941176, 1)
+Label/font_sizes/font_size = 8
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_pfbum")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_pfbum")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_pfbum")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_7c3rh")

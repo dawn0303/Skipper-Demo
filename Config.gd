@@ -4,3 +4,4 @@ class_name Config
 @export var input_map : Dictionary
 @export var vhs : bool
 @export var staticAnimation : bool
+@export var TutorialOnLaunch : bool

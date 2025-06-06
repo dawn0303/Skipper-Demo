@@ -1,9 +1,9 @@
 extends Control
-@onready var List = $ItemList
-@onready var DList = $DepotList
-@onready var top = $Top
-@onready var bottom = $Bottom
-@onready var extra = $Extra
+@onready var List = $VBoxContainer/Container/ItemList
+@onready var DList = $VBoxContainer/Container/DepotList
+@onready var top = $VBoxContainer/Top
+@onready var bottom = $VBoxContainer/Bottom
+@onready var extra = $VBoxContainer/Extra
 
 
 # Called when the node enters the scene tree for the first time.

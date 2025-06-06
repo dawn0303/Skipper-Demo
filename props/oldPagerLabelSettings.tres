@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bvinao8o5hpnt"]
+
+[ext_resource type="FontFile" uid="uid://6jx3qmn4w56b" path="res://posy-3x5-matrix.otf" id="1_3g8wt"]
+
+[resource]
+font = ExtResource("1_3g8wt")
+font_size = 136
+font_color = Color(0, 0, 0, 0.678431)

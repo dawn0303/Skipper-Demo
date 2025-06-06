@@ -1,0 +1,86 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://c7qg4idp64ah"]
+
+[ext_resource type="FontFile" uid="uid://6jx3qmn4w56b" path="res://posy-3x5-matrix.otf" id="1_x1wrg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iuw3u"]
+bg_color = Color(0, 0.564706, 0, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5f8l"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dpfus"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rg2xf"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 0)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcqca"]
+bg_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vga7"]
+bg_color = Color(0, 0, 0, 0.25098)
+
+[resource]
+default_font = ExtResource("1_x1wrg")
+default_font_size = 96
+/colors/a = Color(0, 0, 0, 0.678431)
+/styles/a = SubResource("StyleBoxFlat_iuw3u")
+ItemList/colors/font_color = Color(0, 0, 0, 0.678431)
+ItemList/colors/font_hovered_color = Color(0, 0, 0, 0.678431)
+ItemList/colors/font_outline_color = Color(1, 1, 1, 1)
+ItemList/colors/font_selected_color = Color(0, 0, 0, 0.678431)
+ItemList/colors/guide_color = Color(0, 0, 0, 0.592157)
+ItemList/constants/h_separation = 4
+ItemList/constants/icon_margin = 4
+ItemList/constants/line_separation = 2
+ItemList/constants/outline_size = 0
+ItemList/constants/v_separation = 2
+ItemList/styles/cursor = SubResource("StyleBoxFlat_h5f8l")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_h5f8l")
+ItemList/styles/focus = SubResource("StyleBoxFlat_h5f8l")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_dpfus")
+ItemList/styles/panel = SubResource("StyleBoxFlat_rg2xf")
+ItemList/styles/selected = SubResource("StyleBoxFlat_jcqca")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_3vga7")
+VScrollBar/styles/grabber = null
+VScrollBar/styles/grabber_highlight = null
+VScrollBar/styles/grabber_pressed = null
+VScrollBar/styles/scroll = null
+VScrollBar/styles/scroll_focus = null

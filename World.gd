@@ -3,6 +3,7 @@ extends Node3D
 @onready var Options = $CanvasLayer
 @onready var map = $SubViewportContainer
 @onready var Skipper = $Skipper
+@onready var vhs = $CanvasLayer/vhs
 
 var config_ 
 var menuOpen = false
@@ -20,7 +21,7 @@ func save_ ():
 		config_.input_map[action] = InputMap.action_get_events(action)
 	ResourceSaver.save(config_, "user://config.tres")
 	Skipper.updateSettings()
-	
+	vhs.visible = config_.vhs
 
 func load_():
 	config_ = load("user://config.tres")
@@ -40,6 +41,7 @@ func _input(event):
 		map.visible = !map.visible
 
 func MenuToggle():
+	vhs.visible = config_.vhs
 	Options.visible = !Options.visible
 	menuOpen = !menuOpen
 	get_tree().paused = !get_tree().paused
