@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c26enbtugqvks"]
+[gd_scene load_steps=11 format=3 uid="uid://c26enbtugqvks"]
 
 [ext_resource type="Script" uid="uid://dexabprslf5d5" path="res://Pager.gd" id="1_24or6"]
 [ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="3_kf0rh"]
@@ -26,6 +26,11 @@ thickness = 2
 [sub_resource type="ViewportTexture" id="ViewportTexture_xddpe"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_04v68"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptrtn"]
+bg_color = Color(0.921569, 0.72549, 0.0941176, 1)
+border_width_top = 1
+border_color = Color(0.921569, 0.72549, 0.0941176, 1)
 
 [node name="Pager UI" type="Control"]
 texture_filter = 1
@@ -157,6 +162,22 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_sbbln")
 text = "BOTTOM"
+
+[node name="Info" type="Label" parent="."]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+offset_left = 1.52588e-05
+offset_top = 216.0
+offset_right = 320.0
+offset_bottom = 240.0
+size_flags_horizontal = 4
+theme = ExtResource("4_sbbln")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ptrtn")
+text = "Select items with arrows
+press ␣ to confirm sale/pickup"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

@@ -9,5 +9,5 @@ metallic_specular = 0.0
 roughness = 0.0
 emission_enabled = true
 emission = Color(0.0174675, 0.01018, 0.000163761, 1)
-emission_energy_multiplier = 15.0
+emission_energy_multiplier = 10.0
 emission_texture = ExtResource("1_vnsny")
