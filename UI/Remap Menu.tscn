@@ -138,7 +138,6 @@ horizontal_alignment = 1
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
 
 [node name="ActionButton" parent="VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("2_vjfro")]
 custom_minimum_size = Vector2(0.145, 0)
