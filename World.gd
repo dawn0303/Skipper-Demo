@@ -11,6 +11,7 @@ var world
 
 func _enter_tree() -> void:
 	load_()
+	Globals.Tutorial = config_.TutorialOnLaunch
 func _ready() -> void:
 	return
 	#test_()
@@ -27,6 +28,7 @@ func load_():
 	config_ = load("user://config.tres")
 	if not config_:
 		config_ = Config.new()
+		config_.TutorialOnLaunch = true
 	for action in config_.input_map:
 		InputMap.action_erase_events(action)
 		for input_event in config_.input_map[action]:

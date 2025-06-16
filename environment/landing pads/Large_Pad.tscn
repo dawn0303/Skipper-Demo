@@ -149,7 +149,6 @@ neutral_lights = NodePath("Neutral lights")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30372, 0, 0.165923)
-visible = false
 shape = SubResource("ConcavePolygonShape3D_n5v87")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -192,20 +191,22 @@ texture = ExtResource("7_q42jn")
 [node name="OutgoingLights" type="Node3D" parent="."]
 
 [node name="Light1" type="OmniLight3D" parent="OutgoingLights"]
-transform = Transform3D(1, 0, 1.73205, 0, 2, 0, -1.73205, 0, 1, 0, 5.5, -28.5)
+transform = Transform3D(1, 0, 1.73205, 0, 2, 0, -1.73205, 0, 1, 0, 5.265, -28.5)
 light_color = Color(0.910927, 0.569531, 0, 1)
 light_energy = 50.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 1.0
 light_bake_mode = 1
 omni_range = 3471.35
 
 [node name="Light2" type="OmniLight3D" parent="OutgoingLights"]
-transform = Transform3D(1, 0, 1.73205, 0, 2, 0, -1.73205, 0, 1, 0, 5.5, 28.5)
+transform = Transform3D(1, 0, 1.73205, 0, 2, 0, -1.73205, 0, 1, 0, 5.265, 28.5)
 light_color = Color(0.910927, 0.569531, 0, 1)
 light_energy = 50.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 1.0
 light_bake_mode = 1
 omni_range = 3471.35
 

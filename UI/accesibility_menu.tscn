@@ -90,6 +90,26 @@ text = " "
 layout_mode = 2
 size_flags_horizontal = 10
 
+[node name="TUTORIAL ON LAUNCH" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/TUTORIAL ON LAUNCH"]
+layout_mode = 2
+size_flags_vertical = 1
+mouse_default_cursor_shape = 3
+text = "TUTORIAL ON LAUNCH"
+
+[node name="Spacer" type="Label" parent="VBoxContainer/TUTORIAL ON LAUNCH"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 3
+text = " "
+
+[node name="Tutorial" parent="VBoxContainer/TUTORIAL ON LAUNCH" instance=ExtResource("3_hy0vl")]
+layout_mode = 2
+size_flags_horizontal = 10
+
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 mouse_default_cursor_shape = 3
@@ -124,5 +144,6 @@ vertical_alignment = 1
 [connection signal="value_changed" from="VBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="state" from="VBoxContainer/VHS EFFECTS/VHS" to="." method="_on_vhs_state"]
 [connection signal="state" from="VBoxContainer/STATIC ANIMATON/Satic" to="." method="_on_satic_state"]
+[connection signal="state" from="VBoxContainer/TUTORIAL ON LAUNCH/Tutorial" to="." method="_on_tutorial_state"]
 [connection signal="pressed" from="VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="VBoxContainer/Return" to="." method="_on_return_pressed"]

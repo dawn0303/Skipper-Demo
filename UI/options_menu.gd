@@ -37,7 +37,7 @@ func _on_button_2_pressed() -> void:
 	world.MenuToggle()
 
 
-func _on_item_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+func _on_item_list_item_clicked(index: int, _at_position: Vector2, _mouse_button_index: int) -> void:
 	navigate(index)
 	List.deselect(index)
 

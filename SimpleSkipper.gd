@@ -29,7 +29,12 @@ var moneySaved = 0
 @onready var Ambiance = $Ambiance
 @onready var EngineAudio = $Engines
 @onready var Headlamp = $cameraRoot/Camera3D/SpotLight3D
+@onready var tutorialDialogue = load("res://Dialogue/tutorial.dialogue")
+@onready var RoxDialogue = load("res://Dialogue/Roxy.dialogue")
+@onready var tooltip = $CanvasLayer/Tooltip
+@onready var DTMF: AudioStreamPlayer = $pager2/Cube/AudioStreamPlayer
 
+var roxchat = false
 var world
 var padOn = false
 var padMode = "manifest"
@@ -64,9 +69,11 @@ var resetCamPRot
 var resetCamRot
 var volume
 var modulate
-var tutorial = true
+var firstInput = false
+
 #Called when the node enters the scene tree for the first time.
 func _ready():
+	camera.current = true
 	resetCamPRot = camParent.rotation
 	resetCamRot = camera.rotation
 	world = get_parent()
@@ -84,6 +91,9 @@ func _ready():
 	Ambiance.play()
 	EngineAudio.volume_linear = 0
 	EngineAudio.play()
+	#Globals.throttleTest = false
+	#if Globals.Tutorial:
+	#	DialogueManager.show_dialogue_balloon(tutorialDialogue, "start")
 
 func updateSettings():
 	VHS.visible=world.config_.vhs
@@ -110,6 +120,10 @@ func _init():
 
 
 func _input(event):
+	if Globals.Tutorial and !firstInput and event.is_pressed():
+		firstInput = true
+		DialogueManager.show_dialogue_balloon(tutorialDialogue, "start")
+		
 	if world.menuOpen:
 		return
 	if debug and event is InputEventKey and Input.is_key_pressed(KEY_P):
@@ -129,6 +143,7 @@ func _input(event):
 					padMode="depot"
 		
 	if list.visible and event is InputEventKey and Input.is_action_just_pressed("ui_down") :
+		DTMF.dialTone("D")
 		if list.selectNext():
 			match padMode:
 				"manifest":
@@ -141,6 +156,7 @@ func _input(event):
 						pagerUI.bottom.text = "DELIVER TO: "+ str(lastPad.outgoing[list.index].Destination.Name)
 	
 	if list.visible and event is InputEventKey and Input.is_action_just_pressed("ui_up"):
+		DTMF.dialTone("A")
 		if list.selectPrev():
 			match padMode:
 				"manifest":
@@ -154,6 +170,7 @@ func _input(event):
 	
 	
 	if list.visible and event is InputEventKey and Input.is_action_just_pressed("ui_right"):
+		DTMF.dialTone("B")
 		match padMode:
 			"manifest":
 				openDepotManifest()
@@ -161,8 +178,12 @@ func _input(event):
 			"depot":
 				openManifest()
 				padMode="manifest"
-		
+	
+	if list.visible and event is InputEventKey and Input.is_action_just_pressed("ui_left"):
+		DTMF.dialTone("C")
+	
 	if list.visible and Input.is_action_just_pressed("LeftButton") and padSensor.has_overlapping_areas():
+		DTMF.dialTone("#")
 		match padMode:
 			"manifest":
 				sellCargo(list.index)
@@ -256,8 +277,185 @@ func _physics_process(_delta):
 	
 	if abs(lastVel-linear_velocity).length() > impactThreshold:
 		impact(abs(lastVel-linear_velocity).length())
+	
+	match  Globals.tutorialMode:
+		"Throttle":
+			if !Globals.throttledUp:
+				tooltip.text = "%s" % InputMap.action_get_events("throttle up")[0].as_text().to_upper() + " TO THROTTLE UP \n" + "%s" % InputMap.action_get_events("max throttle")[0].as_text().to_upper() + " FOR MAX THROTTLE"
+			if throttle > 0.5:
+				Globals.throttledUp = true
+				tooltip.text = "%s" % InputMap.action_get_events("throttle down")[0].as_text().to_upper() + " TO THROTTLE DOWN \n" + "%s" % InputMap.action_get_events("cut engines")[0].as_text().to_upper() + " TO CUT ENGINES"
+			
+			if throttle == 0 and Globals.throttledUp:
+				Globals.throttledDown = true
+			if Globals.throttledDown and Globals.throttledUp:
+				tooltip.text = ""
+				DialogueManager.show_dialogue_balloon(tutorialDialogue, "throttle")
+				Globals.tutorialMode = ""
+				throttle = 0
+				
+		"Stick":
+			if !Globals.pitchedDown:
+				tooltip.text = "%s" % InputMap.action_get_events("forwards")[0].as_text().to_upper().to_upper() + " TO PITCH DOWN"
+				if Input.is_action_pressed("forwards"):
+					Globals.pitchedDown = true
+			elif !Globals.pitchedUp:
+				tooltip.text = "%s" % InputMap.action_get_events("backwards")[0].as_text().to_upper() + " TO PITCH UP"
+				if Input.is_action_pressed("backwards"):
+					Globals.pitchedUp = true
+			elif !Globals.rolledRight:
+				tooltip.text = "%s" % InputMap.action_get_events("right")[0].as_text().to_upper() + " TO ROLL RIGHT"
+				if Input.is_action_pressed("right"):
+					Globals.rolledRight = true
+			elif !Globals.rolledLeft:
+				tooltip.text = "%s" % InputMap.action_get_events("left")[0].as_text().to_upper() + " TO ROLL LEFT"
+				if Input.is_action_pressed("left"):
+					Globals.rolledLeft = true
+			else:
+				tooltip.text = ""
+				DialogueManager.show_dialogue_balloon(tutorialDialogue, "stick")
+				Globals.tutorialMode = ""
+		
+		"Pedal":
+			if !Globals.yawedRight:
+				tooltip.text = "%s" % InputMap.action_get_events("yaw right")[0].as_text().to_upper() + " TO YAW RIGHT"
+				if Input.is_action_pressed("yaw right"):
+					Globals.yawedRight = true
+			elif !Globals.yawedLeft:
+				tooltip.text = "%s" % InputMap.action_get_events("yaw left")[0].as_text().to_upper() + " TO YAW LEFT"
+				if Input.is_action_pressed("yaw left"):
+					Globals.yawedLeft = true
+			else:
+				tooltip.text = ""
+				DialogueManager.show_dialogue_balloon(tutorialDialogue, "pedals")
+				Globals.tutorialMode = ""
+		
+		"TerminalUp":
+			tooltip.text = "%s" % InputMap.action_get_events("open_manifest")[0].as_text().to_upper() + " TO VIEW TERMINAL"
+			if Input.is_action_pressed("open_manifest"):
+				Globals.tutorialMode = ""
+				DialogueManager.show_dialogue_balloon(tutorialDialogue, "terminal")
+				tooltip.text = ""
+		
+		"Tab":
+			tooltip.text = "%s" % InputMap.action_get_events("ui_right")[0].as_text().to_upper() + " TO CHANGE TO DEPOT INVENTORY"
+			if Input.is_action_pressed("ui_right"):
+				Globals.tutorialMode = ""
+				DialogueManager.show_dialogue_balloon(tutorialDialogue, "tab")
+				tooltip.text = ""
+		
+		"Pickup":
+			tooltip.text = "%s" % InputMap.action_get_events("LeftButton")[0].as_text().to_upper() + " TO PICK UP OR/SELL CARGO"
+			if cargo.size() > 0:
+				Globals.tutorialMode = ""
+				DialogueManager.show_dialogue_balloon(tutorialDialogue, "pickup")
+				tooltip.text = ""
+		
+		"TerminalDown":
+			tooltip.text = "%s" % InputMap.action_get_events("open_manifest")[0].as_text().to_upper() + " TO STOW TERMINAL"
+			if Input.is_action_pressed("open_manifest"):
+				Globals.tutorialMode = ""
+				DialogueManager.show_dialogue_balloon(tutorialDialogue, "terminalDown")
+				tooltip.text = ""
+		
+		"Map":
+			tooltip.text = "%s" % InputMap.action_get_events("map")[0].as_text().to_upper() + " TO VIEW MAP"
+			if Input.is_action_pressed("map"):
+				Globals.tutorialMode = ""
+				DialogueManager.show_dialogue_balloon(tutorialDialogue, "map")
+				tooltip.text = ""
+	
+	#if Globals.Tutorial: old
+		#return
+		#if Globals.throttleTest:
+			#if !Globals.throttledUp:
+				#tooltip.text = "%s" % InputMap.action_get_events("throttle up")[0].as_text().to_upper() + " TO THROTTLE UP \n" + "%s" % InputMap.action_get_events("max throttle")[0].as_text().to_upper() + " FOR MAX THROTTLE"
+			#if throttle > 0.5:
+				#Globals.throttledUp = true
+				#tooltip.text = "%s" % InputMap.action_get_events("throttle down")[0].as_text().to_upper() + " TO THROTTLE DOWN \n" + "%s" % InputMap.action_get_events("cut engines")[0].as_text().to_upper() + " TO CUT ENGINES"
+			#
+			#if throttle == 0 and Globals.throttledUp:
+				#Globals.throttledDown = true
+			#if Globals.throttledDown and Globals.throttledUp:
+				#tooltip.text = ""
+				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "throttle")
+				#Globals.throttleTest = false
+				#throttle = 0
+				#
+		#elif Globals.stickTest:
+			#if !Globals.pitchedDown:
+				#tooltip.text = "%s" % InputMap.action_get_events("forwards")[0].as_text().to_upper().to_upper() + " TO PITCH DOWN"
+				#if Input.is_action_pressed("forwards"):
+					#Globals.pitchedDown = true
+			#elif !Globals.pitchedUp:
+				#tooltip.text = "%s" % InputMap.action_get_events("backwards")[0].as_text().to_upper() + " TO PITCH UP"
+				#if Input.is_action_pressed("backwards"):
+					#Globals.pitchedUp = true
+			#elif !Globals.rolledRight:
+				#tooltip.text = "%s" % InputMap.action_get_events("right")[0].as_text().to_upper() + " TO ROLL RIGHT"
+				#if Input.is_action_pressed("right"):
+					#Globals.rolledRight = true
+			#elif !Globals.rolledLeft:
+				#tooltip.text = "%s" % InputMap.action_get_events("left")[0].as_text().to_upper() + " TO ROLL LEFT"
+				#if Input.is_action_pressed("left"):
+					#Globals.rolledLeft = true
+			#else:
+				#tooltip.text = ""
+				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "stick")
+				#Globals.stickTest = false
+		#
+		#elif Globals.pedalTest:
+			#if !Globals.yawedRight:
+				#tooltip.text = "%s" % InputMap.action_get_events("yaw right")[0].as_text().to_upper() + " TO YAW RIGHT"
+				#if Input.is_action_pressed("yaw right"):
+					#Globals.yawedRight = true
+			#elif !Globals.yawedLeft:
+				#tooltip.text = "%s" % InputMap.action_get_events("yaw left")[0].as_text().to_upper() + " TO YAW LEFT"
+				#if Input.is_action_pressed("yaw left"):
+					#Globals.yawedLeft = true
+			#else:
+				#tooltip.text = ""
+				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "pedals")
+				#Globals.pedalTest = false
+		#
+		#elif Globals.terminalUp:
+			#tooltip.text = "%s" % InputMap.action_get_events("open_manifest")[0].as_text().to_upper() + " TO VIEW TERMINAL"
+			#if Input.is_action_pressed("open_manifest"):
+				#Globals.terminalUp = false
+				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "terminal")
+				#tooltip.text = ""
+		#
+		#elif Globals.tabChange:
+			#tooltip.text = "%s" % InputMap.action_get_events("ui_right")[0].as_text().to_upper() + " TO CHANGE TO DEPOT INVENTORY"
+			#if Input.is_action_pressed("ui_right"):
+				#Globals.tabChange = false
+				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "tab")
+				#tooltip.text = ""
+		#
+		#elif Globals.pickUp:
+			#tooltip.text = "%s" % InputMap.action_get_events("LeftButton")[0].as_text().to_upper() + " TO PICK UP OR/SELL CARGO"
+			#if cargo.size() > 0:
+				#Globals.pickUp = false
+				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "pickup")
+				#tooltip.text = ""
+		#
+		#elif Globals.terminalDown:
+			#tooltip.text = "%s" % InputMap.action_get_events("open_manifest")[0].as_text().to_upper() + " TO STOW TERMINAL"
+			#if Input.is_action_pressed("open_manifest"):
+				#Globals.terminalDown = false
+				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "terminalDown")
+				#tooltip.text = ""
+		#
+		#elif Globals.mapUp:
+			#tooltip.text = "%s" % InputMap.action_get_events("map")[0].as_text().to_upper() + " TO VIEW MAP"
+			#if Input.is_action_pressed("map"):
+				#Globals.mapUp = false
+				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "map")
+				#tooltip.text = ""
 
 func apply_thrust():
+	if Globals.Tutorial:
+		return
 	apply_force(throttle*ActualThrust * transform.basis.y)
 	EngineAudio.volume_linear = throttle*volume
 
@@ -266,26 +464,17 @@ func manualThrottle():
 		return
 	throttleaxis = Input.get_axis("throttleAxisDown", "throttleAxisUp")
 	if throttleaxis>0:
-		throttle = (throttleaxis)/8
-		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
-	
+		throttle = (throttleaxis)
 	if Input.is_action_pressed("throttle up") and throttle < 1:
 		throttle += 0.01
-		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 	if Input.is_action_pressed("throttle down") and throttle > 0:
 		throttle -= 0.01
-		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 	if Input.is_action_pressed("max throttle"):
 		throttle = 1
-		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
 	if Input.is_action_pressed("cut engines"):
 		throttle = 0
-		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
+	animTree.set("parameters/TimeSeek/seek_request", throttle*5)
+	animTree2.set("parameters/TimeSeek/seek_request", throttle*3.3333)
 
 func manualRotation():
 	
@@ -304,29 +493,29 @@ func autoThrottle():
 	if Input.is_action_pressed("throttle up") and throttle < 1:
 		throttle += 0.01
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*3.3333)
 		return
 	if Input.is_action_pressed("throttle down") and throttle > 0:
 		throttle -= 0.1
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*3.3333)
 		return
 	if groundSensor.has_overlapping_bodies() or groundSensor.has_overlapping_areas():
 		throttle = 0 
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*3.3333)
 		return
 	if linear_velocity.y <0.001 and linear_velocity.y > -0.001:
 		return
 	if linear_velocity.y > 0.0 and throttle > 0:
 		throttle = lerpf(throttle, 0, clampf((linear_velocity.y), -0.01, 0.01))
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*3.3333)
 		return
 	if linear_velocity.y < -0.0:
 		throttle = lerpf(throttle, 1, clampf((0-linear_velocity.y), -0.01, 0.01))
 		animTree.set("parameters/TimeSeek/seek_request", throttle*5)
-		animTree2.set("parameters/TimeSeek/seek_request", throttle*4.1667)
+		animTree2.set("parameters/TimeSeek/seek_request", throttle*3.3333)
 
 func autoAltitude():
 	#if Input.is_action_pressed("throttle up"):
@@ -436,6 +625,12 @@ func _on_pad_sensor_area_entered(area):
 func closePad():
 	pager.hide()
 	padOn = false
+	if !roxchat and !Globals.Tutorial:
+		var i = randf()
+		print(i)
+		if i > 0.6 and throttle == 0:
+			roxchat = true
+			DialogueManager.show_dialogue_balloon(RoxDialogue, "start")
 
 func openPad():
 	pager.show()
@@ -443,7 +638,7 @@ func openPad():
 
 func openManifest():
 	list.clear()
-	list.index == 0
+	list.index = 0
 	pagerUI.top.text = "NO CARGO"
 	pagerUI.bottom.text ="RETURN TO DEPOT"
 	pagerUI.extra.text = "SHIP"
@@ -458,7 +653,7 @@ func openManifest():
 
 func openDepotManifest():
 	list.clear()
-	list.index == 0
+	list.index = 0
 	pagerUI.top.text = "DEPOT EMPTY"
 	pagerUI.bottom.text ="NEXT DELIVERY"
 	pagerUI.extra.text = "DEPOT"

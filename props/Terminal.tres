@@ -1,6 +1,20 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://d007sgq0psac3"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://d007sgq0psac3"]
 
 [ext_resource type="FontFile" uid="uid://clcxon7olr0bl" path="res://UI/beeb.otf" id="1_p25fs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p25fs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxy4g"]
+bg_color = Color(0.921569, 0.72549, 0.0941176, 1)
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62x11"]
+bg_color = Color(0, 0, 0, 1)
+corner_detail = 1
+expand_margin_top = 2.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="Gradient" id="Gradient_p25fs"]
 offsets = PackedFloat32Array(1)
@@ -39,6 +53,14 @@ bg_color = Color(0.921569, 0.72549, 0.0941176, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w2ao3"]
 bg_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbyt1"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.921569, 0.72549, 0.0941176, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pfbum"]
 bg_color = Color(0.921569, 0.72549, 0.0941176, 1)
 expand_margin_left = 2.0
@@ -55,6 +77,16 @@ expand_margin_left = 2.0
 [resource]
 default_font = ExtResource("1_p25fs")
 default_font_size = 8
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0.92549, 0.745098, 0.156863, 1)
+Button/colors/font_pressed_color = Color(0.92549, 0.745098, 0.156863, 1)
+Button/styles/focus = SubResource("StyleBoxEmpty_p25fs")
+Button/styles/hover = SubResource("StyleBoxFlat_yxy4g")
+Button/styles/normal = SubResource("StyleBoxFlat_yxy4g")
+Button/styles/pressed = SubResource("StyleBoxFlat_62x11")
 HSlider/icons/grabber = SubResource("GradientTexture2D_pfbum")
 HSlider/icons/grabber_disabled = SubResource("GradientTexture2D_pfbum")
 HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_pfbum")
@@ -80,6 +112,15 @@ ItemList/styles/selected = SubResource("StyleBoxFlat_p25fs")
 ItemList/styles/selected_focus = SubResource("StyleBoxFlat_p25fs")
 Label/colors/font_color = Color(0.921569, 0.72549, 0.0941176, 1)
 Label/font_sizes/font_size = 8
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_hbyt1")
+RichTextLabel/colors/default_color = Color(0.921569, 0.72549, 0.0941176, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_pfbum")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_pfbum")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_pfbum")

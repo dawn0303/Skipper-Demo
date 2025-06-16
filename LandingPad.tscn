@@ -1,17 +1,9 @@
-[gd_scene load_steps=16 format=4 uid="uid://cc6vnignsnuel"]
+[gd_scene load_steps=13 format=4 uid="uid://cc6vnignsnuel"]
 
 [ext_resource type="Script" uid="uid://bb3lqxgvvrlus" path="res://Pad.gd" id="1_1xurs"]
-[ext_resource type="Texture2D" uid="uid://qiotduid424n" path="res://Moon_Diffuse.jpg" id="1_y0hn0"]
-[ext_resource type="Texture2D" uid="uid://co2ndvbap5670" path="res://Moon_Normal.jpg" id="2_bvdvy"]
+[ext_resource type="Material" uid="uid://fjljrggdhase" path="res://environment/Bases/HabSoil.tres" id="2_hoowq"]
+[ext_resource type="Material" uid="uid://j4xfqjqo4i8r" path="res://environment/Bases/RedTruss.tres" id="4_hoowq"]
 [ext_resource type="Texture2D" uid="uid://b71ajg8g1uubl" path="res://UI/dawncircl.png" id="4_vm3fr"]
-[ext_resource type="Texture2D" uid="uid://bhawgnwcgacgl" path="res://environment/landing pads/Radio Tower_radio tower truss.png" id="4_yf6mh"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esipj"]
-resource_name = "Material.003"
-albedo_texture = ExtResource("1_y0hn0")
-metallic = 0.5
-normal_enabled = true
-normal_texture = ExtResource("2_bvdvy")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nee7d"]
 _surfaces = [{
@@ -20,7 +12,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 318,
 "index_data": PackedByteArray("AAABAAIAAgABAAMAAwABAAQABAABAAUABQABAAYABgABAAcABwABAAgACAABAAkACQABAAoACgABAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcAGAAZABoAGgAZABsAEgATABwAHAATAB0AFgAXAB4AHgAXAB8AIAAhACIAIgAhACMAGgAbACQAJAAbACUAHAAdACYAJgAdACcAKAApAA0ADQApACoAIgAjABAAEAAjABEAJAAlABQAFAAlABUAKwAsAC0ALQAsAC4ALwAwADEAMQAwADIAMwA0ADUANQA0ACsANgAoAAwADAAoAA0ADgAPADcANwAPADgAMQAyADkAOQAyADoANQArADsAOwArAC0ANwA4ADwAPAA4AD0AOQA6AD4APgA6AD8AOwAtAC8ALwAtADAAPAA9ADMAMwA9ADQAPgA/ADYANgA/ACgAQAAjACoAKgAjACEAQQARAEAAQAARACMAQgATAEEAQQATABEAQwAdAEIAQgAdABMALAAnAEMAQwAnAB0ARAAbAC4ALgAbABkARQAlAEQARAAlABsARgAVAEUARQAVACUARwAXAEYARgAXABUAKQAfAEcARwAfABcADQAgAA8ADwAgACIADwAiADgAOAAiABAAOAAQAD0APQAQABIAPQASADQANAASABwANAAcACsAKwAcACYALQAYADAAMAAYABoAMAAaADIAMgAaACQAMgAkADoAOgAkABQAOgAUAD8APwAUABYAPwAWACgAKAAWAB4ALgAZAC0ALQAZABgAKAAeACkAKQAeAB8AKgAhAA0ADQAhACAAKwAmACwALAAmACcA"),
-"material": SubResource("StandardMaterial3D_esipj"),
+"material": ExtResource("2_hoowq"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -34,13 +26,6 @@ data = PackedVector3Array(-1.9319, 0, -0.5178, -1.4143, 0, -1.4143, -1.9319, 0, 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wtopj"]
 height = 0.215901
 radius = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1yo7"]
-resource_name = "Material.001"
-transparency = 4
-cull_mode = 2
-shading_mode = 0
-albedo_texture = ExtResource("4_yf6mh")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ivocm"]
 _surfaces = [{
@@ -64,8 +49,8 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 600,
 "index_data": PackedByteArray("NAEDAP0ANAHJAAMA9wAHADkA9wDFAAcALwETALMALwEBARMA4AAMAIkA4ADIAAwAGAEEAGMAGAH+AAQA/AA/AAEA/AACAT8ABAFCAD4ABAEFAUIABwFHAEMABwEIAUcACQFKAEYACQEKAUoACwFOAEsACwEMAU4ADQFSAE8ADQEOAVIAMwFXALsAMwESAVcAEQFaAFYAEQETAVoAFAFfAFsAFAEVAV8AFgFiAF4AFgEXAWIAxwBkAAoAxwDKAGQAywBoAGUAywDNAGgAzgBsAGkAzgDQAGwA0QBwAG0A0QDSAHAA0wB0AHEA0wDUAHQA1QB4AHUA1QDWAHgA+wB9AL0A+wDaAH0A2QCAAHwA2QDbAIAA3ACEAIEA3ADdAIQA3gCIAIUA3gDfAIgA/wCOABAA/wAZAY4AGgGSAI8AGgEcAZIAHQGWAJMAHQEfAZYAIAGaAJcAIAEhAZoAIgGeAJsAIgEjAZ4AJAGiAJ8AJAElAaIAMQGnAMMAMQEpAacAKAGqAKYAKAEqAaoAKwGuAKsAKwEsAa4ALQGyAK8ALQEuAbIAxAAVAAUAxADhABUA4wAYABQA4wDkABgA5gAdABkA5gDnAB0A6AAgABwA6ADpACAA6gAkACEA6gDrACQA7AAoACUA7ADtACgA+QAtALUA+QDxAC0A8AAwACwA8ADyADAA8wA1ADEA8wD0ADUA9QA4ADQA9QD2ADgA7gC0ACkA7gD4ALQAJwHCAKMAJwEwAcIA2AC8AHkA2AD6ALwADwG6AFMADwEyAboAUQD6ANcAUQC4APoAoQD4AO8AoQDAAPgArQD2APUArQCwAPYAqQD0APMAqQCsAPQApADyAPAApACoAPIAwQDxAPkAwQClAPEAnQDtAOwAnQCgAO0AmQDrAOoAmQCcAOsAlQDpAOgAlQCYAOkAkQDnAOUAkQCUAOcAjQDkAOIAjQCQAOQADwDhAMQADwCMAOEAXADfAN4AXABgAN8AWQDdANwAWQBdAN0AVADbANkAVABYANsAuQDaAPsAuQBVANoATQDWANUATQBQANYASQDUANMASQBMANQARADSANEARABIANIAQQDQAM8AQQBFANAAPADNAMwAPABAAM0AAADKAMcAAAA9AMoAYQDIAOAAYQACAMgAsQDFAPcAsQARAMUAAAHJADQBAAENAMkAEgA0AcYAEgAAATQBKwAyARABKwC2ADIBewAwASYBewC+ADABhgAuAS0BhgCKAC4BgwAsASsBgwCHACwBfgAqASgBfgCCACoBvwApATEBvwB/ACkBdwAlASQBdwB6ACUBcwAjASIBcwB2ACMBbgAhASABbgByACEBawAfAR4BawBvAB8BZgAcARsBZgBqABwBCwAZAf8ACwBnABkBNwAXARYBNwA6ABcBMwAVARQBMwA2ABUBLgATAREBLgAyABMBtwASATMBtwAvABIBJwAOAQ0BJwAqAA4BIwAMAQsBIwAmAAwBHwAKAQkBHwAiAAoBGwAIAQYBGwAeAAgBFwAFAQMBFwAaAAUBBgACAfwABgAWAAIBOwD+ABgBOwAJAP4AiwABAS8BiwAOAAEBxgD9AAgAxgA0Af0A"),
-"material": SubResource("StandardMaterial3D_h1yo7"),
-"name": "Material.001",
+"material": ExtResource("4_hoowq"),
+"name": "RedTruss",
 "primitive": 3,
 "uv_scale": Vector4(1.99586, 2, 0, 0),
 "vertex_count": 309,
@@ -185,18 +170,20 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.1
 [node name="Light1" type="OmniLight3D" parent="OutgoingLights"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, -0.381, 2.5)
 light_color = Color(0.910927, 0.569531, 0, 1)
-light_energy = 10.0
+light_energy = 30.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 1.0
 light_bake_mode = 1
 omni_range = 3471.35
 
 [node name="Light2" type="OmniLight3D" parent="OutgoingLights"]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, -0.381, -2.5)
 light_color = Color(0.910927, 0.569531, 0, 1)
-light_energy = 10.0
+light_energy = 30.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 1.0
 light_bake_mode = 1
 omni_range = 3471.35
 
@@ -208,6 +195,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21183, -0.381022, -2.28219)
 light_energy = 2.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 0.3
 light_bake_mode = 1
 omni_range = 3471.35
 
@@ -216,6 +204,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.212, -0.381216, 2.282)
 light_energy = 2.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 0.3
 light_bake_mode = 1
 omni_range = 3471.35
 
@@ -224,6 +213,7 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, -1.37048, 
 light_energy = 2.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 0.3
 light_bake_mode = 1
 omni_range = 3471.35
 
@@ -232,6 +222,7 @@ transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 1.37031, -
 light_energy = 2.5
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
+light_size = 0.3
 light_bake_mode = 1
 omni_range = 3471.35
 

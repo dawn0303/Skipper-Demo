@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=4 uid="uid://i8ugohko6lde"]
+[gd_scene load_steps=141 format=4 uid="uid://i8ugohko6lde"]
 
 [ext_resource type="Script" uid="uid://6v1f8carnqir" path="res://SimpleSkipper.gd" id="1_1th52"]
 [ext_resource type="Texture2D" uid="uid://hmnhg7xt6nr8" path="res://Vehicles/skipper/SkipperNew_BELL.png" id="2_bfq7v"]
@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://dndglfd2r7vau" path="res://TerminalMat.tres" id="8_6q1ox"]
 [ext_resource type="Texture2D" uid="uid://dg1ysffi1iu3f" path="res://textures/static/frame_05_delay-0.07s.png" id="8_a5t1l"]
 [ext_resource type="Texture2D" uid="uid://c6vnibnwwgf8g" path="res://textures/static/frame_06_delay-0.07s.png" id="9_sl05i"]
+[ext_resource type="Script" uid="uid://nrwqjwkfb87h" path="res://DTMF.gd" id="10_0ceri"]
 [ext_resource type="Texture2D" uid="uid://mbmk2j3c6sn4" path="res://textures/static/frame_07_delay-0.07s.png" id="10_xjc73"]
 [ext_resource type="Texture2D" uid="uid://rxbiqgsom1lx" path="res://textures/static/frame_08_delay-0.07s.png" id="11_tuixh"]
 [ext_resource type="Texture2D" uid="uid://j87b15fsi23c" path="res://textures/static/frame_09_delay-0.07s.png" id="12_42o1t"]
@@ -30,11 +31,12 @@
 [ext_resource type="PackedScene" uid="uid://c26enbtugqvks" path="res://Pager.tscn" id="24_dh12q"]
 [ext_resource type="FontFile" uid="uid://eok1x4ui2b5a" path="res://VCR_OSD_MONO.ttf" id="24_i7qdr"]
 [ext_resource type="Shader" uid="uid://bm4t43spvc7kj" path="res://vhs.gdshader" id="24_qxgg2"]
-[ext_resource type="Shader" path="res://VHS_Distortion.gdshader" id="25_cm13s"]
-[ext_resource type="Shader" path="res://Glitch.gdshader" id="25_mn3oi"]
+[ext_resource type="Shader" uid="uid://dj75t140y8dyq" path="res://VHS_Distortion.gdshader" id="25_cm13s"]
+[ext_resource type="Shader" uid="uid://bkx2i31bxheky" path="res://Glitch.gdshader" id="25_mn3oi"]
 [ext_resource type="Texture2D" uid="uid://o8nkp6ugiuw8" path="res://ui img.JPG" id="28_f1du6"]
 [ext_resource type="Script" uid="uid://b51meolm0x57i" path="res://flickerLight.gd" id="31_bfq7v"]
 [ext_resource type="AudioStream" uid="uid://rvdr7awci51e" path="res://Audio/ambiance.mp3" id="32_yfxf7"]
+[ext_resource type="Theme" uid="uid://b82xritf011af" path="res://UI/Remap Menu.tres" id="33_5p57f"]
 [ext_resource type="AudioStream" uid="uid://d0m4a58m87gdr" path="res://Audio/EngineSound.mp3" id="33_ohcqp"]
 [ext_resource type="Texture2D" uid="uid://sros61w5eww4" path="res://Vehicles/skipper/HorizonIndicator_Untitled.png" id="35_lg1ow"]
 [ext_resource type="Texture2D" uid="uid://cpd4y5w3p3hh0" path="res://Vehicles/skipper/Ruby Pilot_AccesoriesDelivery.png" id="38_fkgkw"]
@@ -1110,7 +1112,6 @@ blend_point_3/pos = Vector2(1, 0)
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_0ceri"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_jcu6j"]
-graph_offset = Vector2(-636.103, 136.567)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_xnp4b")
 nodes/Add2/position = Vector2(-60, 240)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_tr7mi")
@@ -1137,7 +1138,6 @@ points = PackedVector3Array(1.32286, -0.541077, -1.096, 1.32286, -0.517838, -1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fkgkw"]
 resource_name = "!del acc.002"
-cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 emission_enabled = true
@@ -1304,6 +1304,8 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qgt10")
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_0ceri"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rfm6a"]
 animations = [{
@@ -3523,6 +3525,12 @@ transform = Transform3D(-2.25988e-07, -2.84217e-14, -5.17, -2.38419e-07, 5.17, -
 mesh = SubResource("ArrayMesh_6q1ox")
 skeleton = NodePath("")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="pager2/Cube"]
+stream = SubResource("AudioStreamGenerator_0ceri")
+volume_db = -35.0
+max_polyphony = 2
+script = ExtResource("10_0ceri")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 0
 follow_viewport_enabled = true
@@ -3612,9 +3620,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Tooltip" type="Label" parent="CanvasLayer"]
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 192.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme = ExtResource("33_5p57f")
+
 [node name="GroundSensor" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GroundSensor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.554897, 0)

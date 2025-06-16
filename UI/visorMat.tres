@@ -3,8 +3,7 @@
 [resource]
 transparency = 1
 cull_mode = 2
-albedo_color = Color(0.529412, 0.403922, 0.196078, 0.870588)
+albedo_color = Color(0, 0, 0, 0.870588)
 metallic = 1.0
-metallic_specular = 1.0
-roughness = 0.0
-refraction_scale = 0.01
+metallic_specular = 0.0
+refraction_scale = 1.0

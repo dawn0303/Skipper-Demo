@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://c01dhlow0m8x8"
+path="res://.godot/imported/Roxy.dialogue-5f3ce294116fb08c075d3d74b1336bc8.tres"
+
+[deps]
+
+source_file="res://Dialogue/Roxy.dialogue"
+dest_files=["res://.godot/imported/Roxy.dialogue-5f3ce294116fb08c075d3d74b1336bc8.tres"]
+
+[params]
+
+defaults=true

@@ -6,6 +6,8 @@ signal Return
 @onready var VHSbutton = $"VBoxContainer/VHS EFFECTS/VHS"
 @onready var STATICbutton = $"VBoxContainer/STATIC ANIMATON/Satic"
 @onready var VolumeSlider = $VBoxContainer/HSlider
+@onready var TutorialToggle: ItemList = $"VBoxContainer/TUTORIAL ON LAUNCH/Tutorial"
+
 var volume
 
 
@@ -14,6 +16,7 @@ func _ready() -> void:
 	VHSbutton.setState(config_.vhs)
 	STATICbutton.setState(config_.staticAnimation)
 	VolumeSlider.value = config_.volume
+	TutorialToggle.setState(config_.TutorialOnLaunch)
 
 
 
@@ -40,3 +43,7 @@ func _on_save_pressed() -> void:
 
 func _on_h_slider_value_changed(value: float) -> void:
 	volume = value
+
+
+func _on_tutorial_state(state: bool) -> void:
+	config_.TutorialOnLaunch = state

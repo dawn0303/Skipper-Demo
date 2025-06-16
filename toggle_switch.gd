@@ -2,8 +2,8 @@ extends ItemList
 var ON : bool
 signal state(state : bool)
 
-func setState(state : bool):
-	ON = state
+func setState(State : bool):
+	ON = State
 	select(!ON)
 
 

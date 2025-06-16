@@ -1,6 +1,6 @@
 shader_type spatial;
 
-uniform sampler2D mask_texture : hint_default_white ;
+uniform sampler2D mask_texture : hint_default_white, repeat_disable ;
 uniform vec4 albedo_a:source_color  = vec4(1.0f);
 uniform sampler2D texture_a:hint_default_white ;
 uniform vec4 albedo_b:source_color  = vec4(1.0f);

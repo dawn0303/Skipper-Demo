@@ -1,0 +1,96 @@
+~ start
+
+
+[SYSTEM]: -INCOMING PRIORITY TRANSMISSION-
+
+[SYSTEM]: .....
+
+[UNKNOWN]: ooookayyy lets see here...
+
+[UNKNOWN]: Ruby Shashi!
+
+[UNKNOWN]: welcome ruby, to the skipper delivery company! let me tell you theres no job like it
+
+[UNKNOWN]: my name is Rosie and I'll be your instructor
+
+[SYSTEM]: -CONTACT ADDED-
+
+Rosie: right now you should be sitting on the mark 3 lunar flying vehicle, affectionately known as the "skipper"
+
+Rosie: this thing wont get you to a station, but in just a few short hops it can get you about anywhere youd need to be
+
+Rosie: controlls are as simple as it gets, when it comes to flying that is
+
+Rosie: to your left is the throttle, it controls how hard the engines kick ya, be careful doing that without any cargo.
+
+
+do Globals.tutorialMode = "Throttle"
+
+=> END
+
+~ throttle
+
+Rosie: haha dont worry kid, we've got this vehicle locked until you know what youre dealin with
+
+Rosie: on the right is your control stick, your pitch and roll, used to tilt the craft forward and back, side to side
+
+do Globals.tutorialMode = "Stick"
+=> END
+#(wait for all inputs)
+~ stick
+Rosie: and by your feet are the pedals, these'll be your Yaw left and right, or how you turn horizontally
+
+do Globals.tutorialMode = "Pedal"
+=> END
+#(wait for yaw inputs)
+~ pedals
+Rosie: in front of your controlls are your readouts, fancy, i know
+
+Rosie: these will tell you your current thrust percent, your estimated Thrust to Weight Ratio, your altitude, and your velocity
+
+Rosie: you also have a small horizon indicator, keep ya from losing track of where youre pointing
+
+Rosie: now these beauties dont have much in the way of flight assistance, she'll do what you tell 'er, but not a whole lot more, so be careful while youre just startin out
+
+Rosie: bofore you get flyin, check your terminal
+
+do Globals.tutorialMode = "TerminalUp"
+=> END
+#(PDA prompt)
+~ terminal
+Rosie: now when youre landed, you can use this portable terminal to see what youre carrying, as well as what the base youre at wants delivered.
+
+Rosie: right now youre not carryin anythin, so lets load you up for your first delivery
+do Globals.tutorialMode = "Tab"
+=> END
+#(change tab prompt)
+~ tab
+Rosie: go ahead and grab the laptop at the depot
+do Globals.tutorialMode = "Pickup"
+=> END
+#(wait until pickup laptop)
+~ pickup
+Rosie: some poor spark probably needs that real soon
+
+Rosie: once youve delivered your cargo and loaded back up, its reccomended you put the pda away before takeoff
+
+do Globals.tutorialMode = "TerminalDown"
+=> END
+#(wait until pda away)
+~ terminalDown
+Rosie: finally, you got yourself a map
+
+do Globals.tutorialMode = "Map"
+=> END
+#(map prompt)
+~ map
+Rosie: here you can see all the local areas of interest, use this to mark what needs done and where
+
+Rosie: see that circle youre inside of? thats the range of the depot comms towers, leave it and we'll lose comms and lose track of you, so best stick close, ya hear?
+
+Rosie: for the same reason i'd reccomend you not to fly too high above the antenna on your depot
+
+Rosie: well that should be you all ready to go!
+
+do Globals.Tutorial = false
+=> END

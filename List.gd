@@ -21,6 +21,8 @@ func selectNext():
 		return true
 
 func selectPrev():
+	if item_count == 0:
+		return
 	if index == 0:
 		select(0)
 		return false

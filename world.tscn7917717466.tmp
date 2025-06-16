@@ -1,0 +1,181 @@
+[gd_scene load_steps=18 format=3 uid="uid://ds41b7wt10v2d"]
+
+[ext_resource type="Script" uid="uid://bqkr3shsv642x" path="res://World.gd" id="1_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://c7wpjddnut8gt" path="res://Surface1.tscn" id="1_mwfjw"]
+[ext_resource type="PackedScene" uid="uid://i8ugohko6lde" path="res://Skipper.glb" id="2_ynj1n"]
+[ext_resource type="PackedScene" uid="uid://cc6vnignsnuel" path="res://LandingPad.tscn" id="3_pyp5m"]
+[ext_resource type="PackedScene" uid="uid://dm0jqbbfl6klw" path="res://environment/landing pads/Large_Pad.tscn" id="4_qkf5i"]
+[ext_resource type="PackedScene" uid="uid://b1xxojwh4t1cf" path="res://props/laptop.tscn" id="5_t2cc6"]
+[ext_resource type="PackedScene" uid="uid://dy004c473ecdr" path="res://environment/Bases/Player Home Base/Home Base.tscn" id="6_dwbse"]
+[ext_resource type="PackedScene" uid="uid://c1o66q46x53mi" path="res://environment/Bases/___/what is that.tscn" id="7_pkg7o"]
+[ext_resource type="Shader" uid="uid://bm4t43spvc7kj" path="res://vhs.gdshader" id="9_wse8f"]
+[ext_resource type="PackedScene" uid="uid://cg8uctvdpqx0h" path="res://UI/options_menu.tscn" id="10_wse8f"]
+[ext_resource type="PackedScene" uid="uid://dmgnsbvtpa8ur" path="res://environment/Bases/MountainEntrance/mountain_vehicle_entrance.tscn" id="11_ic0uy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7wxth"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.55, 0.54225, 0.53325, 1)
+sky_energy_multiplier = 0.0
+ground_horizon_color = Color(0.55, 0.54225, 0.53325, 1)
+
+[sub_resource type="Sky" id="Sky_gisse"]
+sky_material = SubResource("ProceduralSkyMaterial_7wxth")
+
+[sub_resource type="Environment" id="Environment_j54p3"]
+background_mode = 2
+sky = SubResource("Sky_gisse")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 8.0
+glow_strength = 1.2
+glow_map_strength = 0.85
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic0uy"]
+shader = ExtResource("9_wse8f")
+shader_parameter/wiggle = 0.03
+shader_parameter/wiggle_speed = 10.0
+shader_parameter/smear = 0.5
+shader_parameter/shake_power = 0.0
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 0.0
+shader_parameter/blur_samples = 15
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wse8f"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.65098)
+
+[sub_resource type="TorusMesh" id="TorusMesh_ic0uy"]
+material = SubResource("StandardMaterial3D_wse8f")
+inner_radius = 800.0
+outer_radius = 1685.78
+rings = 24
+ring_segments = 3
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_gbfbk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.25, -0.175227, 0.731127, 0.659355, -0.468293, 0.52721, -0.70905, 0, 0, 0)
+light_energy = 10.0
+light_volumetric_fog_energy = 0.0
+shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+directional_shadow_max_distance = 200.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j54p3")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.699, 66.989, -64.164)
+
+[node name="Node3D" parent="Node3D" instance=ExtResource("1_mwfjw")]
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Node3D/Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.699, 433.035, 64.164)
+layers = 16
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+light_bake_mode = 1
+
+[node name="Skipper" parent="." instance=ExtResource("2_ynj1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28293, 0)
+
+[node name="laptop" parent="Skipper" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.533223, 0.181903, 0.0333753)
+sleeping = true
+freeze = true
+value = 100
+Name = "Laptop"
+Destination = NodePath("../../Large Pad 1")
+Resistance = 3
+
+[node name="laptop2" parent="Skipper" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165544, 0.18022, 0.0333753)
+sleeping = true
+freeze = true
+value = 105
+Name = "Laptop"
+Destination = NodePath("../../pad1")
+Resistance = 2
+
+[node name="pad1" parent="." instance=ExtResource("3_pyp5m")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.7031, 0)
+Name = "Depot"
+
+[node name="Large Pad 1" parent="." instance=ExtResource("4_qkf5i")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -324.245, -17.1931, 41.9342)
+Name = "Comms Bunker"
+
+[node name="laptop" parent="Large Pad 1" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.47663, 0)
+value = 250
+Name = "Laptop"
+Destination = NodePath("../../pad1")
+Resistance = 1
+
+[node name="Home Base" parent="." instance=ExtResource("6_dwbse")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 8.56184, -0.0480273, 15.9489)
+
+[node name="Wtf is that?" parent="." instance=ExtResource("7_pkg7o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 688.164, 175.166, -759.295)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+visible = false
+
+[node name="Options Menu" parent="CanvasLayer" instance=ExtResource("10_wse8f")]
+z_index = 0
+
+[node name="vhs" type="ColorRect" parent="CanvasLayer"]
+z_index = 1
+z_as_relative = false
+material = SubResource("ShaderMaterial_ic0uy")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_default_cursor_shape = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -540.0
+offset_right = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(512, 512)
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 3
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1080, 1080)
+render_target_update_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.37114e-08, -1, -1.91069e-15, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 0, 338.05, 0)
+cull_mask = 16
+projection = 1
+current = true
+size = 1620.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 117.235, 0)
+layers = 16
+mesh = SubResource("TorusMesh_ic0uy")
+
+[node name="MountainVehicleEntrance" parent="." instance=ExtResource("11_ic0uy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 467.165, 0.532555, 336.571)

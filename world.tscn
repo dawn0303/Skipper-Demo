@@ -1,9 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://ds41b7wt10v2d"]
+[gd_scene load_steps=22 format=3 uid="uid://ds41b7wt10v2d"]
 
 [ext_resource type="Script" uid="uid://bqkr3shsv642x" path="res://World.gd" id="1_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://c7wpjddnut8gt" path="res://Surface1.tscn" id="1_mwfjw"]
 [ext_resource type="PackedScene" uid="uid://i8ugohko6lde" path="res://Skipper.glb" id="2_ynj1n"]
+[ext_resource type="PackedScene" uid="uid://bm5uyj8lmjo0g" path="res://environment/Bases/Long Range Depot/long_range_depot.tscn" id="3_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://cc6vnignsnuel" path="res://LandingPad.tscn" id="3_pyp5m"]
+[ext_resource type="PackedScene" uid="uid://6cbcpf3xglh1" path="res://environment/Bases/General/Container.tscn" id="4_2o6r5"]
 [ext_resource type="PackedScene" uid="uid://dm0jqbbfl6klw" path="res://environment/landing pads/Large_Pad.tscn" id="4_qkf5i"]
 [ext_resource type="PackedScene" uid="uid://b1xxojwh4t1cf" path="res://props/laptop.tscn" id="5_t2cc6"]
 [ext_resource type="PackedScene" uid="uid://dy004c473ecdr" path="res://environment/Bases/Player Home Base/Home Base.tscn" id="6_dwbse"]
@@ -11,6 +13,7 @@
 [ext_resource type="Shader" uid="uid://bm4t43spvc7kj" path="res://vhs.gdshader" id="9_wse8f"]
 [ext_resource type="PackedScene" uid="uid://cg8uctvdpqx0h" path="res://UI/options_menu.tscn" id="10_wse8f"]
 [ext_resource type="PackedScene" uid="uid://dmgnsbvtpa8ur" path="res://environment/Bases/MountainEntrance/mountain_vehicle_entrance.tscn" id="11_ic0uy"]
+[ext_resource type="Material" uid="uid://dg0o60sol1jpu" path="res://UI/visorMat.tres" id="13_70uel"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7wxth"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -43,6 +46,9 @@ shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 10.0
 shader_parameter/shake_color_rate = 0.0
 shader_parameter/blur_samples = 15
+
+[sub_resource type="BoxMesh" id="BoxMesh_hiqwa"]
+material = ExtResource("13_70uel")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wse8f"]
 transparency = 1
@@ -83,40 +89,39 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 light_bake_mode = 1
 
+[node name="Container" parent="Node3D/Node3D" instance=ExtResource("4_2o6r5")]
+transform = Transform3D(0.880668, -0.0457758, -0.471518, -3.72529e-09, 0.995321, -0.0966275, 0.473735, 0.0850967, 0.876547, 13.4325, 183.091, 70.709)
+
 [node name="Skipper" parent="." instance=ExtResource("2_ynj1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28293, 0)
 
-[node name="laptop" parent="Skipper" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.533223, 0.181903, 0.0333753)
-sleeping = true
-freeze = true
-value = 100
-Name = "Laptop"
-Destination = NodePath("../../Large Pad 1")
-Resistance = 3
-
-[node name="laptop2" parent="Skipper" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165544, 0.18022, 0.0333753)
-sleeping = true
-freeze = true
-value = 105
-Name = "Laptop"
-Destination = NodePath("../../pad1")
-Resistance = 2
+[node name="Long Range Depot" parent="." instance=ExtResource("3_k3n1d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -274.085, 58.185, -275.781)
 
 [node name="pad1" parent="." instance=ExtResource("3_pyp5m")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0.7031, 0)
 Name = "Depot"
 
+[node name="laptop" parent="pad1" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.355482, -0.331052, 0.0222502)
+sleeping = true
+freeze = true
+value = 250
+Description = "The latest of Conway Computings technological wonders, this is a fully fuctional computer that is small enough to be carried around with you day to day"
+Destination = NodePath("../../Large Pad 1")
+Resistance = 3
+
 [node name="Large Pad 1" parent="." instance=ExtResource("4_qkf5i")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -324.245, -17.1931, 41.9342)
 Name = "Comms Bunker"
 
-[node name="laptop" parent="Large Pad 1" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
+[node name="Flight Data Drive" parent="Large Pad 1" node_paths=PackedStringArray("Destination") instance=ExtResource("5_t2cc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.47663, 0)
+mass = 3.2
 value = 250
-Name = "Laptop"
-Destination = NodePath("../../pad1")
+Name = "Flight Data Drive"
+Description = "Updated guidance software for the long range hopper"
+Destination = NodePath("../../Long Range Depot")
 Resistance = 1
 
 [node name="Home Base" parent="." instance=ExtResource("6_dwbse")]
@@ -158,7 +163,6 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(512, 512)
 size_flags_horizontal = 4
-mouse_default_cursor_shape = 3
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
@@ -171,6 +175,15 @@ cull_mask = 16
 projection = 1
 current = true
 size = 1620.0
+
+[node name="Location Camera" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.767288, -0.11898, -0.630168, -3.72529e-08, 0.982639, -0.185529, 0.641302, 0.142355, 0.753967, -297.607, 72.6835, -224.842)
+visible = false
+cull_mask = 1
+size = 1620.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Location Camera"]
+mesh = SubResource("BoxMesh_hiqwa")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 117.235, 0)

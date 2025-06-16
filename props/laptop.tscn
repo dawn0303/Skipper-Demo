@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://b1xxojwh4t1cf"]
 
-[ext_resource type="Script" path="res://props/Delivertable.gd" id="1_247bv"]
+[ext_resource type="Script" uid="uid://ck7w7ah8aujra" path="res://props/Delivertable.gd" id="1_247bv"]
 [ext_resource type="Texture2D" uid="uid://cy62hcsptgiwb" path="res://props/laptop_Laptop.png" id="1_r3cct"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3y001"]
@@ -51,6 +51,7 @@ size = Vector3(0.298, 0.057, 0.381)
 collision_mask = 7
 mass = 4.5
 script = ExtResource("1_247bv")
+Name = "Laptop"
 
 [node name="Laptop Bevel" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
