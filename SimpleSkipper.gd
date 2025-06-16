@@ -628,7 +628,7 @@ func closePad():
 	if !roxchat and !Globals.Tutorial:
 		var i = randf()
 		print(i)
-		if i > 0.6 and throttle == 0:
+		if i > 0.8 and throttle == 0:
 			roxchat = true
 			DialogueManager.show_dialogue_balloon(RoxDialogue, "start")
 
