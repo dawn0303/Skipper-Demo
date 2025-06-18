@@ -30,6 +30,8 @@ sky = SubResource("Sky_gisse")
 ambient_light_source = 3
 reflected_light_source = 2
 tonemap_mode = 2
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
 glow_enabled = true
 glow_intensity = 8.0
 glow_strength = 1.2
@@ -58,7 +60,6 @@ albedo_color = Color(0, 0, 0, 0.65098)
 material = SubResource("StandardMaterial3D_wse8f")
 inner_radius = 800.0
 outer_radius = 1685.78
-rings = 24
 ring_segments = 3
 
 [node name="World" type="Node3D"]
@@ -68,10 +69,11 @@ script = ExtResource("1_gbfbk")
 transform = Transform3D(-0.866024, -0.433016, 0.25, -0.175227, 0.731127, 0.659355, -0.468293, 0.52721, -0.70905, 0, 0, 0)
 light_energy = 10.0
 light_volumetric_fog_energy = 0.0
+light_bake_mode = 1
 shadow_enabled = true
 shadow_bias = 0.0
 shadow_normal_bias = 10.0
-directional_shadow_max_distance = 200.0
+directional_shadow_max_distance = 2000.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j54p3")

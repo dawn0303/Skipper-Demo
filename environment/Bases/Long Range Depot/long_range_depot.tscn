@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://bm5uyj8lmjo0g"]
+[gd_scene load_steps=40 format=4 uid="uid://bm5uyj8lmjo0g"]
 
 [ext_resource type="Script" uid="uid://bb3lqxgvvrlus" path="res://Pad.gd" id="1_tafua"]
 [ext_resource type="Material" uid="uid://liiasikre3t0" path="res://environment/Bases/conk krete.tres" id="2_8kp2f"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://do56lr08g7pwm" path="res://environment/Bases/General/shelter.tscn" id="10_6s5wo"]
 [ext_resource type="Texture2D" uid="uid://b71ajg8g1uubl" path="res://UI/dawncircl.png" id="11_6s5wo"]
 [ext_resource type="PackedScene" uid="uid://d4gorwa10ufb3" path="res://environment/Bases/General/cargo_skipper.tscn" id="12_c3nkg"]
+[ext_resource type="PackedScene" uid="uid://0gyk0sp8vl67" path="res://environment/Bases/General/conex_hopper.tscn" id="12_uc6mq"]
 [ext_resource type="Texture2D" uid="uid://cb3lswejplsqm" path="res://environment/Bases/General/CargoSkipper_BELL.png" id="13_uc6mq"]
 [ext_resource type="Texture2D" uid="uid://7otf0j8a181v" path="res://environment/Bases/General/CrateSkipperBody.png" id="14_6acjg"]
 
@@ -719,6 +720,8 @@ transform = Transform3D(2.38419e-07, -5.96046e-08, -1, 1, 0, 2.98023e-07, 5.9604
 
 [node name="CargoHopper" type="Node3D" parent="Pad_001/simpleStructure"]
 transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 23.5003, -1.69988, 7.36746)
+
+[node name="Conex Hopper" parent="Pad_001/simpleStructure/CargoHopper" instance=ExtResource("12_uc6mq")]
 
 [node name="Cargo Crane_002" type="MeshInstance3D" parent="Pad_001/simpleStructure"]
 transform = Transform3D(0.999951, 0, -0.00985453, 0.00985453, -1.17347e-07, 0.999952, 0, -1, -1.19209e-07, -8.68369, 5.34481, 9.11949)

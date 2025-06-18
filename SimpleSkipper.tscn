@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=4 uid="uid://i8ugohko6lde"]
+[gd_scene load_steps=143 format=4 uid="uid://i8ugohko6lde"]
 
 [ext_resource type="Script" uid="uid://6v1f8carnqir" path="res://SimpleSkipper.gd" id="1_1th52"]
 [ext_resource type="Texture2D" uid="uid://hmnhg7xt6nr8" path="res://Vehicles/skipper/SkipperNew_BELL.png" id="2_bfq7v"]
@@ -1509,6 +1509,21 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0s2kr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ceri"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.26
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jcu6j"]
+material = SubResource("StandardMaterial3D_0ceri")
+top_radius = 1.01
+bottom_radius = 1.01
+height = 0.072
+radial_segments = 8
+rings = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcu6j"]
 resource_name = "!del acc.002"
@@ -3721,6 +3736,11 @@ update_scale = false
 transform = Transform3D(-2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09, -0.755, 0.486, 0.036)
 top_level = true
 mesh = SubResource("ArrayMesh_phwtp")
+skeleton = NodePath("")
+
+[node name="Sphere2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.18557e-09, 0, -0.05, 0, 0.05, 0, 0.05, 0, -2.18557e-09, -0.755, 0.486, 0.036)
+mesh = SubResource("CylinderMesh_jcu6j")
 skeleton = NodePath("")
 
 [node name="Ruby Pilot" type="Node3D" parent="."]

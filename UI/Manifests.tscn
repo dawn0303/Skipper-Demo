@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4pmlqp8xm5tt"]
+
+[ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="1_3u125"]
+[ext_resource type="Script" uid="uid://frq8jpkenale" path="res://UI/manifests.gd" id="1_mp3sb"]
+[ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="2_mp3sb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xddpe"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kf0rh"]
+color = Color(0.921569, 0.72549, 0.0941176, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_aum2s"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptrtn"]
+bg_color = Color(0.921569, 0.72549, 0.0941176, 1)
+border_width_top = 2
+border_color = Color(0.921569, 0.72549, 0.0941176, 1)
+
+[node name="VBoxContainer" type="VBoxContainer"]
+size_flags_vertical = 3
+script = ExtResource("1_mp3sb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Home" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme = ExtResource("1_3u125")
+text = "<HOME"
+horizontal_alignment = 1
+
+[node name="Extra" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_3u125")
+text = "EXTRAS"
+horizontal_alignment = 1
+
+[node name="Extra2" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("1_3u125")
+text = "SWITCH VIEW>"
+horizontal_alignment = 2
+
+[node name="Container" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 140)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ItemList" type="ItemList" parent="Container"]
+z_as_relative = false
+texture_filter = 1
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.053
+anchor_bottom = 1.0
+offset_right = 0.0999756
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_3u125")
+item_count = 5
+item_0/text = "AAAA"
+item_0/icon = SubResource("ViewportTexture_xddpe")
+item_1/text = "AAA"
+item_2/text = "a"
+item_3/text = "a"
+script = ExtResource("2_mp3sb")
+
+[node name="Top" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_3u125")
+theme_override_font_sizes/font_size = 8
+text = "TOP"
+
+[node name="Panel5" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_kf0rh")
+
+[node name="Bottom" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_3u125")
+text = "BOTTOM"
+
+[node name="Panel6" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_aum2s")
+
+[node name="Info" type="Label" parent="."]
+custom_minimum_size = Vector2(316, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_3u125")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_ptrtn")
+text = "Select items with arrows
+press ␣ to confirm sale/pickup"
+horizontal_alignment = 1
+vertical_alignment = 2

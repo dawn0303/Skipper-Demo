@@ -1,0 +1,117 @@
+[gd_scene load_steps=7 format=3 uid="uid://ep2lcddv7hsr"]
+
+[ext_resource type="Script" uid="uid://bev15g8hnptpa" path="res://contacts.gd" id="1_b5iw3"]
+[ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="2_gpywx"]
+[ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="3_c2g4h"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_b5iw3"]
+color = Color(0.921569, 0.72549, 0.0941176, 1)
+grow_begin = 0.0
+thickness = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_to4dx"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gpywx"]
+color = Color(0.921569, 0.72549, 0.0941176, 1)
+thickness = 2
+vertical = true
+
+[node name="Contacts" type="VBoxContainer"]
+offset_right = 315.0
+offset_bottom = 215.0
+size_flags_vertical = 3
+theme = ExtResource("2_gpywx")
+theme_override_constants/separation = 1
+script = ExtResource("1_b5iw3")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("2_gpywx")
+text = "CONTACTS"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Label"]
+layout_mode = 1
+offset_right = 57.0
+offset_bottom = 8.0
+size_flags_vertical = 10
+theme = ExtResource("2_gpywx")
+text = "< HOME"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_b5iw3")
+
+[node name="Container" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 140)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ItemList" type="ItemList" parent="Container"]
+z_as_relative = false
+texture_filter = 1
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_right = 1.043
+anchor_bottom = 1.029
+offset_left = -0.0999999
+offset_top = 8.0
+offset_right = -101.9
+offset_bottom = 55.94
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("2_gpywx")
+item_count = 30
+item_0/text = "AAAA"
+item_0/icon = SubResource("ViewportTexture_to4dx")
+item_1/text = "AAA"
+item_2/text = "a"
+item_3/text = "a"
+item_4/text = "a"
+item_5/text = "a"
+item_6/text = "a"
+item_7/text = "a"
+item_8/text = "a"
+item_9/text = "a"
+item_10/text = "a"
+item_11/text = "a"
+item_12/text = "a"
+item_13/text = "a"
+item_14/text = "a"
+item_15/text = "a"
+item_16/text = "a"
+item_17/text = "a"
+item_18/text = "a"
+item_19/text = "a"
+item_20/text = "a"
+item_21/text = "a"
+item_22/text = "a"
+item_23/text = "a"
+item_24/text = "a"
+item_25/text = "a"
+item_26/text = "a"
+item_27/text = "a"
+item_28/text = "a"
+item_29/text = "a"
+script = ExtResource("3_c2g4h")
+
+[node name="Panel" type="Panel" parent="Container"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 2.0
+offset_right = 215.0
+offset_bottom = 207.0
+theme_override_styles/panel = SubResource("StyleBoxLine_gpywx")
+
+[node name="portrait" type="TextureRect" parent="Container"]
+custom_minimum_size = Vector2(97, 97)
+layout_mode = 0
+offset_left = 217.0
+offset_top = 3.0
+offset_right = 314.0
+offset_bottom = 100.0
+stretch_mode = 3

@@ -17,7 +17,7 @@ var moneySaved = 0
 @onready var padSensor = $PadSensor
 @onready var sellButton = "res://buttonRow1.tscn"
 @onready var canvas = $CanvasLayer
-@onready var list = $"Control/SubViewport/Pager UI".List
+@onready var list = $"Control/SubViewport/Pager UI".manifests.List
 @onready var pager = $pager2
 @onready var pagerUI = $"Control/SubViewport/Pager UI"
 @onready var glitch = $CanvasLayer/vhs
@@ -37,7 +37,7 @@ var moneySaved = 0
 var roxchat = false
 var world
 var padOn = false
-var padMode = "manifest"
+#var padMode = "manifest"
 var enableStatic = true
 var torque = 100
 var resetPos
@@ -59,7 +59,7 @@ var autoRot = false
 var desiredAlt = 0.0
 var desiredSpeed = Vector2(0, 0)
 var lastPad
-var cargo = []
+#var cargo = []
 var cargoSaved = []
 var lastVel = Vector3.ZERO
 var impactThreshold = 1.0
@@ -73,6 +73,7 @@ var firstInput = false
 
 #Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.skipper = self
 	camera.current = true
 	resetCamPRot = camParent.rotation
 	resetCamRot = camera.rotation
@@ -134,61 +135,33 @@ func _input(event):
 			closePad()
 		elif  padSensor.has_overlapping_areas() or linear_velocity.length() <0.1:
 			openPad()
-			match padMode:
-				"manifest":
-					openManifest()
-					padMode="manifest"
-				"depot":
-					openDepotManifest()
-					padMode="depot"
+			pagerUI.goTo("MANIFESTS")
+			#pagerUI.Active = pagerUI.manifests
+			#pagerUI.Active.open()
 		
-	if list.visible and event is InputEventKey and Input.is_action_just_pressed("ui_down") :
+	if pagerUI.visible and event is InputEventKey and Input.is_action_just_pressed("ui_down") :
 		DTMF.dialTone("D")
-		if list.selectNext():
-			match padMode:
-				"manifest":
-					if cargo.size() > 0:
-						pagerUI.top.text = "VALUE: "+ str(cargo[list.index].value)
-						pagerUI.bottom.text = "DELIVER TO: "+ str(cargo[list.index].Destination.Name)
-				"depot":
-					if lastPad.outgoing.size() > 0:
-						pagerUI.top.text = "VALUE: "+ str(lastPad.outgoing[list.index].value)
-						pagerUI.bottom.text = "DELIVER TO: "+ str(lastPad.outgoing[list.index].Destination.Name)
+		pagerUI.Active.down();
+
 	
-	if list.visible and event is InputEventKey and Input.is_action_just_pressed("ui_up"):
+	if pagerUI.visible and event is InputEventKey and Input.is_action_just_pressed("ui_up"):
 		DTMF.dialTone("A")
-		if list.selectPrev():
-			match padMode:
-				"manifest":
-					if cargo.size() > 0:
-						pagerUI.top.text = "VALUE: "+ str(cargo[list.index].value)
-						pagerUI.bottom.text = "DELIVER TO: "+ str(cargo[list.index].Destination.Name)
-				"depot":
-					if lastPad.outgoing.size() > 0:
-						pagerUI.top.text = "VALUE: "+ str(lastPad.outgoing[list.index].value)
-						pagerUI.bottom.text = "DELIVER TO: "+ str(lastPad.outgoing[list.index].Destination.Name)
+		pagerUI.Active.up();
+
 	
 	
-	if list.visible and event is InputEventKey and Input.is_action_just_pressed("ui_right"):
+	if pagerUI.visible and event is InputEventKey and Input.is_action_just_pressed("ui_right"):
 		DTMF.dialTone("B")
-		match padMode:
-			"manifest":
-				openDepotManifest()
-				padMode="depot"
-			"depot":
-				openManifest()
-				padMode="manifest"
+		pagerUI.Active.right();
 	
-	if list.visible and event is InputEventKey and Input.is_action_just_pressed("ui_left"):
+	if pagerUI.visible and event is InputEventKey and Input.is_action_just_pressed("ui_left"):
 		DTMF.dialTone("C")
+		pagerUI.Active.left();
 	
-	if list.visible and Input.is_action_just_pressed("LeftButton") and padSensor.has_overlapping_areas():
+	if pagerUI.visible and Input.is_action_just_pressed("LeftButton") and padSensor.has_overlapping_areas():
 		DTMF.dialTone("#")
-		match padMode:
-			"manifest":
-				sellCargo(list.index)
-			"depot":
-				getCargo(list.index)
+		pagerUI.Active.Hash();
+		
 
 
 func _physics_process(_delta):
@@ -346,7 +319,7 @@ func _physics_process(_delta):
 		
 		"Pickup":
 			tooltip.text = "%s" % InputMap.action_get_events("LeftButton")[0].as_text().to_upper() + " TO PICK UP OR/SELL CARGO"
-			if cargo.size() > 0:
+			if Globals.cargo.size() > 0:
 				Globals.tutorialMode = ""
 				DialogueManager.show_dialogue_balloon(tutorialDialogue, "pickup")
 				tooltip.text = ""
@@ -365,94 +338,6 @@ func _physics_process(_delta):
 				DialogueManager.show_dialogue_balloon(tutorialDialogue, "map")
 				tooltip.text = ""
 	
-	#if Globals.Tutorial: old
-		#return
-		#if Globals.throttleTest:
-			#if !Globals.throttledUp:
-				#tooltip.text = "%s" % InputMap.action_get_events("throttle up")[0].as_text().to_upper() + " TO THROTTLE UP \n" + "%s" % InputMap.action_get_events("max throttle")[0].as_text().to_upper() + " FOR MAX THROTTLE"
-			#if throttle > 0.5:
-				#Globals.throttledUp = true
-				#tooltip.text = "%s" % InputMap.action_get_events("throttle down")[0].as_text().to_upper() + " TO THROTTLE DOWN \n" + "%s" % InputMap.action_get_events("cut engines")[0].as_text().to_upper() + " TO CUT ENGINES"
-			#
-			#if throttle == 0 and Globals.throttledUp:
-				#Globals.throttledDown = true
-			#if Globals.throttledDown and Globals.throttledUp:
-				#tooltip.text = ""
-				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "throttle")
-				#Globals.throttleTest = false
-				#throttle = 0
-				#
-		#elif Globals.stickTest:
-			#if !Globals.pitchedDown:
-				#tooltip.text = "%s" % InputMap.action_get_events("forwards")[0].as_text().to_upper().to_upper() + " TO PITCH DOWN"
-				#if Input.is_action_pressed("forwards"):
-					#Globals.pitchedDown = true
-			#elif !Globals.pitchedUp:
-				#tooltip.text = "%s" % InputMap.action_get_events("backwards")[0].as_text().to_upper() + " TO PITCH UP"
-				#if Input.is_action_pressed("backwards"):
-					#Globals.pitchedUp = true
-			#elif !Globals.rolledRight:
-				#tooltip.text = "%s" % InputMap.action_get_events("right")[0].as_text().to_upper() + " TO ROLL RIGHT"
-				#if Input.is_action_pressed("right"):
-					#Globals.rolledRight = true
-			#elif !Globals.rolledLeft:
-				#tooltip.text = "%s" % InputMap.action_get_events("left")[0].as_text().to_upper() + " TO ROLL LEFT"
-				#if Input.is_action_pressed("left"):
-					#Globals.rolledLeft = true
-			#else:
-				#tooltip.text = ""
-				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "stick")
-				#Globals.stickTest = false
-		#
-		#elif Globals.pedalTest:
-			#if !Globals.yawedRight:
-				#tooltip.text = "%s" % InputMap.action_get_events("yaw right")[0].as_text().to_upper() + " TO YAW RIGHT"
-				#if Input.is_action_pressed("yaw right"):
-					#Globals.yawedRight = true
-			#elif !Globals.yawedLeft:
-				#tooltip.text = "%s" % InputMap.action_get_events("yaw left")[0].as_text().to_upper() + " TO YAW LEFT"
-				#if Input.is_action_pressed("yaw left"):
-					#Globals.yawedLeft = true
-			#else:
-				#tooltip.text = ""
-				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "pedals")
-				#Globals.pedalTest = false
-		#
-		#elif Globals.terminalUp:
-			#tooltip.text = "%s" % InputMap.action_get_events("open_manifest")[0].as_text().to_upper() + " TO VIEW TERMINAL"
-			#if Input.is_action_pressed("open_manifest"):
-				#Globals.terminalUp = false
-				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "terminal")
-				#tooltip.text = ""
-		#
-		#elif Globals.tabChange:
-			#tooltip.text = "%s" % InputMap.action_get_events("ui_right")[0].as_text().to_upper() + " TO CHANGE TO DEPOT INVENTORY"
-			#if Input.is_action_pressed("ui_right"):
-				#Globals.tabChange = false
-				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "tab")
-				#tooltip.text = ""
-		#
-		#elif Globals.pickUp:
-			#tooltip.text = "%s" % InputMap.action_get_events("LeftButton")[0].as_text().to_upper() + " TO PICK UP OR/SELL CARGO"
-			#if cargo.size() > 0:
-				#Globals.pickUp = false
-				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "pickup")
-				#tooltip.text = ""
-		#
-		#elif Globals.terminalDown:
-			#tooltip.text = "%s" % InputMap.action_get_events("open_manifest")[0].as_text().to_upper() + " TO STOW TERMINAL"
-			#if Input.is_action_pressed("open_manifest"):
-				#Globals.terminalDown = false
-				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "terminalDown")
-				#tooltip.text = ""
-		#
-		#elif Globals.mapUp:
-			#tooltip.text = "%s" % InputMap.action_get_events("map")[0].as_text().to_upper() + " TO VIEW MAP"
-			#if Input.is_action_pressed("map"):
-				#Globals.mapUp = false
-				#DialogueManager.show_dialogue_balloon(tutorialDialogue, "map")
-				#tooltip.text = ""
-
 func apply_thrust():
 	if Globals.Tutorial:
 		return
@@ -584,7 +469,7 @@ func reset():
 	if enableStatic:
 		Static.stop()
 		
-	for item in cargo:
+	for item in Globals.cargo:
 		item.value = item.savedValue
 		
 	
@@ -636,61 +521,30 @@ func openPad():
 	pager.show()
 	padOn = true
 
-func openManifest():
-	list.clear()
-	list.index = 0
-	pagerUI.top.text = "NO CARGO"
-	pagerUI.bottom.text ="RETURN TO DEPOT"
-	pagerUI.extra.text = "SHIP"
-	if cargo.size() > 0:
-		pagerUI.top.text = "VALUE: "+ str(cargo[list.index].value)
-		pagerUI.bottom.text = "DELIVER TO: "+ str(cargo[list.index].Destination.Name)
-	if cargo.size() == 0:
-		return
-	for item in cargo:
-		list.add_item(item.name)
-	list.select(list.index)
 
-func openDepotManifest():
-	list.clear()
-	list.index = 0
-	pagerUI.top.text = "DEPOT EMPTY"
-	pagerUI.bottom.text ="NEXT DELIVERY"
-	pagerUI.extra.text = "DEPOT"
-	if lastPad.outgoing.size() > 0:
-		pagerUI.top.text = "VALUE: "+ str(lastPad.outgoing[list.index].value)
-		pagerUI.bottom.text = "DELIVER TO: "+ str(lastPad.outgoing[list.index].Destination.Name)
-	if lastPad.outgoing.size() == 0:
-		return
-	for item in lastPad.outgoing:
-		list.add_item(item.name)
-	list.select(list.index)
 
 func sellCargo(index):
-	if !linear_velocity.length() <0.1 or cargo.size() == 0:
+	if !linear_velocity.length() <0.1 or Globals.cargo.size() == 0:
 		return
-	if cargo[index].Destination == lastPad:
+	if Globals.cargo[index].Destination == lastPad:
 		list.remove_item(index)
 		if list.index==0:
 			list.selectPrev()
 		else:
 			list.selectPrev()
-		cargo[index].Check(lastPad, index,self)
-		#addMoney(cargo[index].value)
-		#cargo[index].queue_free()
-		#cargo.remove_at(index)
-		if cargo.size() == 0:
-			pagerUI.top.text = "NO CARGO"
-			pagerUI.bottom.text = "RETURN TO DEPOT"
+		Globals.cargo[index].Check(lastPad, index,self)
+		if Globals.cargo.size() == 0:
+			pagerUI.Active.top.text = "NO CARGO"
+			pagerUI.Active.bottom.text = "RETURN TO DEPOT"
 		else:
-			pagerUI.top.text = "VALUE: "+ str(cargo[list.index].value)
-			pagerUI.bottom.text = "DELIVER TO: "+ str(cargo[list.index].Destination.Name)
+			pagerUI.Active.top.text = "VALUE: "+ str(Globals.cargo[list.index].value)
+			pagerUI.Active.bottom.text = "DELIVER TO: "+ str(Globals.cargo[list.index].Destination.Name)
 		save()
 
 func getCargo(index):
 	if !linear_velocity.length() <0.1 or lastPad.outgoing.size() == 0:
 		return
-		
+	
 	list.remove_item(index)
 	if list.index==0:
 		list.selectPrev()
@@ -698,11 +552,11 @@ func getCargo(index):
 		list.selectPrev()
 	lastPad.outgoing[index].Check(lastPad, index, self)
 	if lastPad.outgoing.size() == 0:
-		pagerUI.top.text = "DEPOT EMPTY"
-		pagerUI.bottom.text = "NEXT DELIVERY"
+		pagerUI.Active.top.text = "DEPOT EMPTY"
+		pagerUI.Active.bottom.text = "NEXT DELIVERY"
 	else:
-		pagerUI.top.text = "VALUE: "+ str(lastPad.outgoing[list.index].value)
-		pagerUI.bottom.text = "DELIVER TO: "+ str(lastPad.outgoing[list.index].Destination.Name)
+		pagerUI.Active.top.text = "VALUE: "+ str(lastPad.outgoing[list.index].value)
+		pagerUI.Active.bottom.text = "DELIVER TO: "+ str(lastPad.outgoing[list.index].Destination.Name)
 	save()
 
 func impact(speedChange):
@@ -717,7 +571,7 @@ func impact(speedChange):
 	glitch.get_material().set_shader_parameter("shake_color_rate", round(speedChange/2)/100)
 	
 	var index = 0
-	for item in cargo:
+	for item in Globals.cargo:
 		if !item: return
 		item.Damage(speedChange, index)
 		index+=1
@@ -732,10 +586,10 @@ func _on_body_entered(_body):
 
 
 func save():
-	for item in cargo:
+	for item in Globals.cargo:
 		item.savedValue = item.value
 	moneySaved = money
-	cargoSaved = cargo
+	cargoSaved = Globals.cargo
 	resetPos = global_position + Vector3(0,0.2,0)
 	print("saved")
 	resetCamPRot = camParent.rotation

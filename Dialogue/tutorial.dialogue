@@ -14,7 +14,7 @@
 [UNKNOWN]: my name is Rosie and I'll be your instructor
 
 [SYSTEM]: -CONTACT ADDED-
-
+do Globals.contacts.push_back("Rosie")
 Rosie: right now you should be sitting on the mark 3 lunar flying vehicle, affectionately known as the "skipper"
 
 Rosie: this thing wont get you to a station, but in just a few short hops it can get you about anywhere youd need to be

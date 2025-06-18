@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cuyt8d21wtxnk"]
+
+[ext_resource type="Texture2D" uid="uid://ck3yq6og7eoib" path="res://UI/LUNAR MAP.png" id="1_c7s6e"]
+[ext_resource type="Script" uid="uid://fpycvad7bw1l" path="res://map.gd" id="1_wijl4"]
+
+[node name="Map" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wijl4")
+
+[node name="LunarMap" type="Sprite2D" parent="."]
+position = Vector2(158, 107)
+scale = Vector2(0.9875, 0.908333)
+texture = ExtResource("1_c7s6e")

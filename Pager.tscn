@@ -1,8 +1,43 @@
-[gd_scene load_steps=11 format=3 uid="uid://c26enbtugqvks"]
+[gd_scene load_steps=44 format=3 uid="uid://c26enbtugqvks"]
 
 [ext_resource type="Script" uid="uid://dexabprslf5d5" path="res://Pager.gd" id="1_24or6"]
-[ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="3_kf0rh"]
+[ext_resource type="PackedScene" uid="uid://b4pmlqp8xm5tt" path="res://UI/Manifests.tscn" id="3_kf0rh"]
+[ext_resource type="PackedScene" uid="uid://chlppmk8fbls5" path="res://Comms Page.tscn" id="4_e50u8"]
+[ext_resource type="PackedScene" uid="uid://dohgs55cxylc" path="res://UI/home.tscn" id="4_ptrtn"]
 [ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="4_sbbln"]
+[ext_resource type="PackedScene" uid="uid://ep2lcddv7hsr" path="res://UI/contacts.tscn" id="7_04jh0"]
+[ext_resource type="PackedScene" uid="uid://cuyt8d21wtxnk" path="res://map.tscn" id="7_yjcxj"]
+[ext_resource type="Texture2D" uid="uid://jv12m78drhey" path="res://UI/UI loading anim/Loading_0000_Layer-1-copy-29.png" id="8_yjcxj"]
+[ext_resource type="Texture2D" uid="uid://syrbh6ger64n" path="res://UI/UI loading anim/Loading_0000_Layer-1-copy-28.png" id="9_rf1lt"]
+[ext_resource type="Texture2D" uid="uid://5rlc4nassmp8" path="res://UI/UI loading anim/Loading_0001_Layer-1-copy-27.png" id="10_l0eev"]
+[ext_resource type="Texture2D" uid="uid://py664jt42jsc" path="res://UI/UI loading anim/Loading_0002_Layer-1-copy-26.png" id="11_sy181"]
+[ext_resource type="Texture2D" uid="uid://dnqh5tostwfs8" path="res://UI/UI loading anim/Loading_0003_Layer-1-copy-25.png" id="12_iikab"]
+[ext_resource type="Texture2D" uid="uid://dh3x53iurik6c" path="res://UI/UI loading anim/Loading_0004_Layer-1-copy-24.png" id="13_ema78"]
+[ext_resource type="Texture2D" uid="uid://cj5nit4yjihs7" path="res://UI/UI loading anim/Loading_0005_Layer-1-copy-23.png" id="14_rgpei"]
+[ext_resource type="Texture2D" uid="uid://cptggeew3edwc" path="res://UI/UI loading anim/Loading_0006_Layer-1-copy-22.png" id="15_5h3y2"]
+[ext_resource type="Texture2D" uid="uid://dmhqjy1q7sx52" path="res://UI/UI loading anim/Loading_0007_Layer-1-copy-21.png" id="16_pjbu4"]
+[ext_resource type="Texture2D" uid="uid://bnhbnqkff6ncl" path="res://UI/UI loading anim/Loading_0008_Layer-1-copy-20.png" id="17_onyqs"]
+[ext_resource type="Texture2D" uid="uid://bjtbvnt8jxa14" path="res://UI/UI loading anim/Loading_0009_Layer-1-copy-19.png" id="18_5xcev"]
+[ext_resource type="Texture2D" uid="uid://xo2n26ga6fm0" path="res://UI/UI loading anim/Loading_0010_Layer-1-copy-18.png" id="19_nd5dl"]
+[ext_resource type="Texture2D" uid="uid://dk5ws1aps3ou4" path="res://UI/UI loading anim/Loading_0011_Layer-1-copy-17.png" id="20_rp014"]
+[ext_resource type="Texture2D" uid="uid://duv50mnlxvoig" path="res://UI/UI loading anim/Loading_0012_Layer-1-copy-16.png" id="21_vjpu3"]
+[ext_resource type="Texture2D" uid="uid://b1psab5xb7m1m" path="res://UI/UI loading anim/Loading_0013_Layer-1-copy-15.png" id="22_1dynh"]
+[ext_resource type="Texture2D" uid="uid://cdmvwncvkw5iy" path="res://UI/UI loading anim/Loading_0014_Layer-1-copy-14.png" id="23_an7p1"]
+[ext_resource type="Texture2D" uid="uid://cwi73o4lqrc3q" path="res://UI/UI loading anim/Loading_0015_Layer-1-copy-13.png" id="24_umo4f"]
+[ext_resource type="Texture2D" uid="uid://toausj6jpky8" path="res://UI/UI loading anim/Loading_0016_Layer-1-copy-12.png" id="25_bwkf6"]
+[ext_resource type="Texture2D" uid="uid://blyl1icwe8k1t" path="res://UI/UI loading anim/Loading_0017_Layer-1-copy-11.png" id="26_e1eox"]
+[ext_resource type="Texture2D" uid="uid://dddtpm42ftta" path="res://UI/UI loading anim/Loading_0018_Layer-1-copy-10.png" id="27_fgdfp"]
+[ext_resource type="Texture2D" uid="uid://chjbesahv7nrq" path="res://UI/UI loading anim/Loading_0019_Layer-1-copy-9.png" id="28_u5cep"]
+[ext_resource type="Texture2D" uid="uid://brflfyv5m0h4k" path="res://UI/UI loading anim/Loading_0020_Layer-1-copy-8.png" id="29_j1vdy"]
+[ext_resource type="Texture2D" uid="uid://ddps7xpjw56rq" path="res://UI/UI loading anim/Loading_0021_Layer-1-copy-7.png" id="30_05dlu"]
+[ext_resource type="Texture2D" uid="uid://c2ocp85b2s0s" path="res://UI/UI loading anim/Loading_0022_Layer-1-copy-6.png" id="31_kx24t"]
+[ext_resource type="Texture2D" uid="uid://bwsdyqbyuwwvw" path="res://UI/UI loading anim/Loading_0023_Layer-1-copy-5.png" id="32_i0vaj"]
+[ext_resource type="Texture2D" uid="uid://egalx48pokvq" path="res://UI/UI loading anim/Loading_0024_Layer-1-copy-4.png" id="33_tt0su"]
+[ext_resource type="Texture2D" uid="uid://dab4ysp4agnti" path="res://UI/UI loading anim/Loading_0025_Layer-1-copy-3.png" id="34_jleak"]
+[ext_resource type="Texture2D" uid="uid://c4kx60r7umh54" path="res://UI/UI loading anim/Loading_0026_Layer-1-copy-2.png" id="35_vvmb0"]
+[ext_resource type="Texture2D" uid="uid://cisso1eo2uwlr" path="res://UI/UI loading anim/Loading_0027_Layer-1-copy.png" id="36_8fh65"]
+[ext_resource type="Texture2D" uid="uid://crtetrd3gp6an" path="res://UI/UI loading anim/Loading_0028_Layer-1.png" id="37_yo8g7"]
+[ext_resource type="Texture2D" uid="uid://d1xn158m1ne3w" path="res://UI/UI loading anim/Loading_0029_Layer-0.png" id="38_uupgc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kf0rh"]
 bg_color = Color(0, 0, 0, 1)
@@ -20,17 +55,108 @@ corner_detail = 1
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_kf0rh"]
 color = Color(0.921569, 0.72549, 0.0941176, 1)
 grow_begin = 0.0
-grow_end = 0.0
 thickness = 2
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_xddpe"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_04v68"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ptrtn"]
-bg_color = Color(0.921569, 0.72549, 0.0941176, 1)
-border_width_top = 2
-border_color = Color(0.921569, 0.72549, 0.0941176, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_gmiig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_yjcxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rf1lt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l0eev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sy181")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_iikab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ema78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rgpei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5h3y2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_pjbu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_onyqs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_5xcev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_nd5dl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_rp014")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_vjpu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1dynh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_an7p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_umo4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_bwkf6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_e1eox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_fgdfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_u5cep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_j1vdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_05dlu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_kx24t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_i0vaj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_tt0su")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_jleak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_vvmb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_8fh65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_yo8g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_uupgc")
+}],
+"loop": false,
+"name": &"Load",
+"speed": 30.0
+}]
 
 [node name="Pager UI" type="Control"]
 texture_filter = 1
@@ -38,8 +164,8 @@ custom_minimum_size = Vector2(320, 240)
 layout_mode = 3
 anchor_right = 0.167
 anchor_bottom = 0.222
-offset_right = -0.640015
-offset_bottom = 0.239975
+offset_right = -0.639984
+offset_bottom = 0.23999
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
@@ -90,92 +216,27 @@ horizontal_alignment = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_kf0rh")
 
-[node name="Extra" type="Label" parent="VBoxContainer"]
+[node name="Comms page" parent="VBoxContainer" instance=ExtResource("4_e50u8")]
+visible = false
 layout_mode = 2
-theme = ExtResource("4_sbbln")
-text = "EXTRAS"
-horizontal_alignment = 1
 
-[node name="Container" type="Control" parent="VBoxContainer"]
-custom_minimum_size = Vector2(300, 140)
+[node name="manifests" parent="VBoxContainer" instance=ExtResource("3_kf0rh")]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="ItemList" type="ItemList" parent="VBoxContainer/Container"]
-z_as_relative = false
-texture_filter = 1
-clip_contents = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("4_sbbln")
-item_count = 5
-item_0/text = "AAAA"
-item_0/icon = SubResource("ViewportTexture_xddpe")
-item_1/text = "AAA"
-item_2/text = "a"
-item_3/text = "a"
-script = ExtResource("3_kf0rh")
-
-[node name="DepotList" type="ItemList" parent="VBoxContainer/Container"]
-z_as_relative = false
-texture_filter = 1
+[node name="home" parent="VBoxContainer" instance=ExtResource("4_ptrtn")]
+visible = false
 layout_mode = 2
-anchor_top = 0.0416667
-anchor_right = 1.0
-anchor_bottom = 1.04167
-offset_top = -16.0
-offset_right = -1600.0
-offset_bottom = -946.0
-grow_horizontal = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("4_sbbln")
-item_count = 5
-item_0/text = "AAAA"
-item_0/icon = SubResource("ViewportTexture_04v68")
-item_1/text = "AAA"
-item_2/text = "a"
-item_3/text = "a"
-script = ExtResource("3_kf0rh")
 
-[node name="Top" type="Label" parent="VBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+[node name="Contacts" parent="VBoxContainer" instance=ExtResource("7_04jh0")]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_sbbln")
-theme_override_font_sizes/font_size = 8
-text = "TOP"
 
-[node name="Panel5" type="Panel" parent="VBoxContainer"]
+[node name="Map" parent="VBoxContainer" instance=ExtResource("7_yjcxj")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxLine_kf0rh")
 
-[node name="Bottom" type="Label" parent="VBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_sbbln")
-text = "BOTTOM
-"
-
-[node name="Info" type="Label" parent="."]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-offset_left = 1.52588e-05
-offset_top = 214.0
-offset_right = 320.0
-offset_bottom = 239.0
-size_flags_horizontal = 4
-theme = ExtResource("4_sbbln")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_ptrtn")
-text = "Select items with arrows
-press ␣ to confirm sale/pickup"
-horizontal_alignment = 1
-vertical_alignment = 2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, 130)
+scale = Vector2(1, 0.916666)
+sprite_frames = SubResource("SpriteFrames_gmiig")
+animation = &"Load"
