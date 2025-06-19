@@ -89,7 +89,7 @@ void fragment() {
 
     float s = 0.0001 * -d + 0.0001 * wiggle *(sin(TIME * wiggle_speed));
     float e = min(.30,pow(max(0.0,cos(uv.y*4.0+.3)-.75)*(s+0.5)*1.0,3.0))*25.0;
-    float r = (TIME*(2.0*s));
+    float r = (10.0*(2.0*s));
     uv.x += abs(r*pow(min(.003,(-uv.y+(.01*mod(TIME, 5.0))))*3.0,2.0)) * wiggle;
 
     d = 0.051+abs(sin(s/4.0));

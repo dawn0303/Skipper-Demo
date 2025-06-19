@@ -1431,7 +1431,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pragu"]
 shader = ExtResource("24_qxgg2")
-shader_parameter/wiggle = 0.03
+shader_parameter/wiggle = 1.5
 shader_parameter/wiggle_speed = 10.0
 shader_parameter/smear = 0.5
 shader_parameter/shake_power = -0.04

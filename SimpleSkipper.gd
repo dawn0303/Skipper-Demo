@@ -135,7 +135,7 @@ func _input(event):
 			closePad()
 		elif  padSensor.has_overlapping_areas() or linear_velocity.length() <0.1:
 			openPad()
-			pagerUI.goTo("MANIFESTS")
+			pagerUI.goTo("MANIFESTS", false)
 			#pagerUI.Active = pagerUI.manifests
 			#pagerUI.Active.open()
 		
@@ -564,7 +564,7 @@ func impact(speedChange):
 	if speedChange > 20:
 		die()
 	
-	VHS.get_material().set_shader_parameter("wiggle",clampf((VHSBaseWiggle+round(speedChange/5)/10), VHSBaseWiggle, 1.5))
+	VHS.get_material().set_shader_parameter("wiggle",clampf((VHSBaseWiggle+round(speedChange)/10), VHSBaseWiggle, 1.5))
 	VHS.get_material().set_shader_parameter("smear",clampf((VHSBaseSmear+round(speedChange*2)/10), VHSBaseSmear, 2.0))
 	
 	glitch.get_material().set_shader_parameter("shake_power", round(speedChange/2)/100)

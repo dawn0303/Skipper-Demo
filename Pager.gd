@@ -29,9 +29,10 @@ func goHome():
 	LoadAnim.play_backwards("Load")
 	Active.visible = true
 
-func goTo(desiredPage:String):
+func goTo(desiredPage:String, load = true):
 	Active.visible = false
 	Active=page[desiredPage]
 	Active.open()
-	LoadAnim.play_backwards("Load")
+	if load:
+		LoadAnim.play_backwards("Load")
 	Active.visible = true

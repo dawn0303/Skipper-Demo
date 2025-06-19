@@ -233,6 +233,7 @@ visible = false
 layout_mode = 2
 
 [node name="Map" parent="VBoxContainer" instance=ExtResource("7_yjcxj")]
+visible = false
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

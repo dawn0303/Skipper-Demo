@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cc6vnignsnuel"]
+[gd_scene load_steps=14 format=4 uid="uid://cc6vnignsnuel"]
 
 [ext_resource type="Script" uid="uid://bb3lqxgvvrlus" path="res://Pad.gd" id="1_1xurs"]
 [ext_resource type="Material" uid="uid://fjljrggdhase" path="res://environment/Bases/HabSoil.tres" id="2_hoowq"]
@@ -96,6 +96,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ju7tv")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hoowq"]
+points = PackedVector3Array(39.2422, 0, 39.2423, 20.5968, 52.2489, 20.5968, -39.2423, 0, 39.2423, 39.2422, 0, -39.2423, 19.6134, 55, 19.6135, -20.6045, 52.2489, 20.5968, 20.5968, 52.2489, -20.6045, -35.5316, 10.4175, 35.524, -39.2423, 0, -39.2423, 35.5239, 10.4175, -35.5316, -19.6289, 55, 19.6135, 19.6134, 55, -19.6288, -28.5482, 29.998, 28.5329, -35.5316, 10.4175, -35.5316, 28.5328, 29.998, -28.5482, -19.6289, 55, -19.6288, -28.5482, 29.998, -28.5482)
 
 [node name="Node3D" type="StaticBody3D" node_paths=PackedStringArray("padArea", "Recieving_lights", "outgoing_lights", "neutral_lights") groups=["Pad"]]
 collision_mask = 5
@@ -261,3 +264,8 @@ transform = Transform3D(-10.0904, 10.0904, 3.16101e-07, 2.97694e-06, -3.40221e-0
 layers = 17
 mesh = SubResource("ArrayMesh_ngn56")
 skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Radio Tower/Cube_002"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Radio Tower/Cube_002/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hoowq")
