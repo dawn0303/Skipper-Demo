@@ -34,6 +34,7 @@ var moneySaved = 0
 @onready var tooltip = $CanvasLayer/Tooltip
 @onready var DTMF: AudioStreamPlayer = $pager2/Cube/AudioStreamPlayer
 
+var landedBody
 var roxchat = false
 var world
 var padOn = false
@@ -63,7 +64,8 @@ var lastPad
 var cargoSaved = []
 var lastVel = Vector3.ZERO
 var impactThreshold = 1.0
-var VHSBaseWiggle = 0.03
+var VHSBaseWiggle = 0.08
+
 var VHSBaseSmear
 var resetCamPRot
 var resetCamRot
@@ -111,7 +113,10 @@ func _unhandled_input(event):
 			mouse_input = event.relative
 			camera.rotate_z(event.relative.y * .005)
 			camParent.rotate_y(-event.relative.x * .005)
-			camParent.rotation.x = clamp(camParent.rotation.x, (-PI/2 +0.42), (PI/2 - 0.4))
+			camParent.rotation.y = clamp(camParent.rotation.y, (-PI/2), (PI/2))
+			camera.rotation.y = PI/2#clampf(camera.rotation.y, (PI/2), (PI/2))
+			#camera.rotation_degrees.x = clampf(camera.rotation_degrees.y, (-90), (90))
+			camera.rotation.z = 0#clampf(camera.rotation.z, 0, 0)
 
 
 func _init():
@@ -136,29 +141,30 @@ func _input(event):
 		elif  padSensor.has_overlapping_areas() or linear_velocity.length() <0.1:
 			openPad()
 			pagerUI.goTo("MANIFESTS", false)
-			#pagerUI.Active = pagerUI.manifests
+			pagerUI.home.index = 0
+			pagerUI.home.list.index = 0
 			#pagerUI.Active.open()
 		
-	if pagerUI.visible and event is InputEventKey and Input.is_action_just_pressed("ui_down") :
+	if pager.visible and event is InputEventKey and Input.is_action_just_pressed("ui_down") :
 		DTMF.dialTone("D")
 		pagerUI.Active.down();
 
 	
-	if pagerUI.visible and event is InputEventKey and Input.is_action_just_pressed("ui_up"):
+	if pager.visible and event is InputEventKey and Input.is_action_just_pressed("ui_up"):
 		DTMF.dialTone("A")
 		pagerUI.Active.up();
 
 	
 	
-	if pagerUI.visible and event is InputEventKey and Input.is_action_just_pressed("ui_right"):
+	if pager.visible and event is InputEventKey and Input.is_action_just_pressed("ui_right"):
 		DTMF.dialTone("B")
 		pagerUI.Active.right();
 	
-	if pagerUI.visible and event is InputEventKey and Input.is_action_just_pressed("ui_left"):
+	if pager.visible and event is InputEventKey and Input.is_action_just_pressed("ui_left"):
 		DTMF.dialTone("C")
 		pagerUI.Active.left();
 	
-	if pagerUI.visible and Input.is_action_just_pressed("LeftButton") and padSensor.has_overlapping_areas():
+	if pager.visible and Input.is_action_just_pressed("LeftButton") and padSensor.has_overlapping_areas():
 		DTMF.dialTone("#")
 		pagerUI.Active.Hash();
 		
@@ -167,6 +173,9 @@ func _input(event):
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("Reset"):
 		reset()
+	
+	#if groundSensor.has_overlapping_bodies() and landedBody.is_in_group("Moving"):
+	#	linear_velocity+=PhysicsServer3D.body_get_state(landedBody.get_rid(), PhysicsServer3D.BODY_STATE_LINEAR_VELOCITY)
 	
 	if Input.is_action_just_pressed("Headlamp") and !Headlamp.visible:
 		Headlamp.visible = true
@@ -595,3 +604,9 @@ func save():
 	resetCamPRot = camParent.rotation
 	resetCamRot = camera.rotation
 	#resetRot = global_rotation
+
+
+
+
+func _on_ground_sensor_body_entered(body: Node3D) -> void:
+	landedBody = body

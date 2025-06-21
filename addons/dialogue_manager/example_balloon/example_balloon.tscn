@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="2_nlsx6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="Texture2D" uid="uid://cad5ew6httspu" path="res://UI/character portraits/unknown.png" id="3_1337t"]
+[ext_resource type="Texture2D" uid="uid://cad5ew6httspu" path="res://UI/characterPortraits/unknown.png" id="3_1337t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1337t"]
 bg_color = Color(0, 0, 0, 1)
@@ -84,15 +84,16 @@ stretch_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 2
 
 [node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 18)
+custom_minimum_size = Vector2(0, 21)
 layout_mode = 2
 mouse_filter = 1
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 bbcode_enabled = true
-text = "Character"
+text = "Character "
 fit_content = true
 scroll_active = false
 vertical_alignment = 2
@@ -104,9 +105,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_nlsx6")
 
 [node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
 layout_mode = 2
 theme_override_constants/line_separation = 0
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 18
 text = "Dialogue...
 "
 seconds_per_step = 0.05

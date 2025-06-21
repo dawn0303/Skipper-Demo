@@ -15,31 +15,31 @@ func open():
 	for item in Globals.contacts:
 			list.add_item(item)
 	list.select(index)
-	var portrait_path: String = "res://UI/character portraits/%s.png" %Globals.contacts[index]
-	if FileAccess.file_exists(portrait_path):
+	var portrait_path: String = "res://UI/characterPortraits/%s.png" %Globals.contacts[index]
+	if ResourceLoader.exists(portrait_path):
 		portrait.texture = load(portrait_path)
 	else:
-		portrait.texture = load("res://UI/character portraits/unknown.png")
+		portrait.texture = load("res://UI/characterPortraits/unknown.png")
 	#if list.get_selected_items() == null:
 	#	list.select(0)
 
 func up():
 	if list.selectPrev():
 		index -=1
-		var portrait_path: String = "res://UI/character portraits/%s.png" %Globals.contacts[index]
-		if FileAccess.file_exists(portrait_path):
+		var portrait_path: String = "res://UI/characterPortraits/%s.png" %Globals.contacts[index]
+		if ResourceLoader.exists(portrait_path):
 			portrait.texture = load(portrait_path)
 		else:
-			portrait.texture = load("res://UI/character portraits/unknown.png")
+			portrait.texture = load("res://UI/characterPortraits/unknown.png")
 
 func down():
 	if list.selectNext():
 		index +=1
-		var portrait_path: String = "res://UI/character portraits/%s.png" %Globals.contacts[index]
-		if FileAccess.file_exists(portrait_path):
+		var portrait_path: String = "res://UI/characterPortraits/%s.png" %Globals.contacts[index]
+		if ResourceLoader.exists(portrait_path):
 			portrait.texture = load(portrait_path)
 		else:
-			portrait.texture = load("res://UI/character portraits/unknown.png")
+			portrait.texture = load("res://UI/characterPortraits/unknown.png")
 
 func left():
 	get_parent().get_parent().goHome()

@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://6w1d12fx4kx6"]
+
+[ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="1_tttpk"]
+[ext_resource type="Script" uid="uid://cjyvowbi6x5t4" path="res://UI/usenet.gd" id="2_k81h4"]
+[ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="2_yc7yf"]
+[ext_resource type="PackedScene" uid="uid://pdou5k5u46k2" path="res://UI/usenet_group.tscn" id="3_k81h4"]
+
+[node name="UseNet" type="VBoxContainer"]
+size_flags_vertical = 3
+theme = ExtResource("1_tttpk")
+theme_override_constants/separation = 1
+script = ExtResource("2_k81h4")
+
+[node name="title" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_tttpk")
+text = "GROUP SELECTION (SOFEnews.su)
+---------------------------------------------"
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 171)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="groupList" type="ItemList" parent="Container"]
+z_as_relative = false
+texture_filter = 1
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_right = 1.043
+anchor_bottom = 1.029
+offset_left = -2.1
+offset_top = -2.0
+offset_right = 0.100006
+offset_bottom = -3.04601
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_tttpk")
+item_count = 1
+item_0/text = "alt.Space.Moon.Civilian"
+script = ExtResource("2_yc7yf")
+
+[node name="allGroups" type="Control" parent="Container"]
+anchors_preset = 0
+offset_right = 313.0
+offset_bottom = 177.0
+
+[node name="Group" parent="Container/allGroups" instance=ExtResource("3_k81h4")]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 300.0
+offset_bottom = 179.0
+
+[node name="navigation" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_tttpk")
+text = "---------------------------------------------
+<BACK                                   OPEN>"
+horizontal_alignment = 1

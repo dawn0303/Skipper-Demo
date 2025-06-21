@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://p1jj5hqf2vef"
+path="res://.godot/imported/system Messages.dialogue-3df321129de5dbe4cf9a710e0c0eb161.tres"
+
+[deps]
+
+source_file="res://Dialogue/system Messages.dialogue"
+dest_files=["res://.godot/imported/system Messages.dialogue-3df321129de5dbe4cf9a710e0c0eb161.tres"]
+
+[params]
+
+defaults=true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxtdfxp4l8jpe"
-path="res://.godot/imported/Ruby1.png-896ba7e2a55ee88101670d741af81de6.ctex"
+uid="uid://cseb071g0hjjm"
+path="res://.godot/imported/Rosie.png-0b1c5c7d47079bbeb564e5ac2ec25ca2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/character portraits/Ruby1.png"
-dest_files=["res://.godot/imported/Ruby1.png-896ba7e2a55ee88101670d741af81de6.ctex"]
+source_file="res://UI/characterPortraits/Rosie.png"
+dest_files=["res://.godot/imported/Rosie.png-0b1c5c7d47079bbeb564e5ac2ec25ca2.ctex"]
 
 [params]
 

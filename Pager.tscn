@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c26enbtugqvks"]
+[gd_scene load_steps=46 format=3 uid="uid://c26enbtugqvks"]
 
 [ext_resource type="Script" uid="uid://dexabprslf5d5" path="res://Pager.gd" id="1_24or6"]
 [ext_resource type="PackedScene" uid="uid://b4pmlqp8xm5tt" path="res://UI/Manifests.tscn" id="3_kf0rh"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dohgs55cxylc" path="res://UI/home.tscn" id="4_ptrtn"]
 [ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="4_sbbln"]
 [ext_resource type="PackedScene" uid="uid://ep2lcddv7hsr" path="res://UI/contacts.tscn" id="7_04jh0"]
+[ext_resource type="PackedScene" uid="uid://6w1d12fx4kx6" path="res://UI/usenet.tscn" id="7_rf1lt"]
 [ext_resource type="PackedScene" uid="uid://cuyt8d21wtxnk" path="res://map.tscn" id="7_yjcxj"]
+[ext_resource type="PackedScene" uid="uid://dqprqcr8c2a7o" path="res://UI/mail.tscn" id="8_l0eev"]
 [ext_resource type="Texture2D" uid="uid://jv12m78drhey" path="res://UI/UI loading anim/Loading_0000_Layer-1-copy-29.png" id="8_yjcxj"]
 [ext_resource type="Texture2D" uid="uid://syrbh6ger64n" path="res://UI/UI loading anim/Loading_0000_Layer-1-copy-28.png" id="9_rf1lt"]
 [ext_resource type="Texture2D" uid="uid://5rlc4nassmp8" path="res://UI/UI loading anim/Loading_0001_Layer-1-copy-27.png" id="10_l0eev"]
@@ -232,6 +234,14 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="UseNet" parent="VBoxContainer" instance=ExtResource("7_rf1lt")]
+visible = false
+layout_mode = 2
+
+[node name="Mail" parent="VBoxContainer" instance=ExtResource("8_l0eev")]
+visible = false
+layout_mode = 2
+
 [node name="Map" parent="VBoxContainer" instance=ExtResource("7_yjcxj")]
 visible = false
 layout_mode = 2
@@ -241,3 +251,4 @@ position = Vector2(160, 130)
 scale = Vector2(1, 0.916666)
 sprite_frames = SubResource("SpriteFrames_gmiig")
 animation = &"Load"
+speed_scale = 2.0

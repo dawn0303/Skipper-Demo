@@ -1,0 +1,167 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqprqcr8c2a7o"]
+
+[ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="1_b5sv8"]
+[ext_resource type="Script" uid="uid://cpvlu244eqqop" path="res://UI/mail.gd" id="2_b5sv8"]
+[ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="3_vnhx8"]
+[ext_resource type="Script" uid="uid://boiwj3yoak31m" path="res://UI/MailMessage.gd" id="4_d2e5m"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dmo3r"]
+color = Color(0.921569, 0.72549, 0.0941176, 1)
+grow_begin = 0.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3vdvo"]
+color = Color(0.921569, 0.72549, 0.0941176, 1)
+grow_begin = 0.0
+
+[node name="Mail" type="VBoxContainer"]
+size_flags_vertical = 3
+theme = ExtResource("1_b5sv8")
+theme_override_constants/separation = 1
+script = ExtResource("2_b5sv8")
+
+[node name="title" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 23)
+layout_mode = 2
+theme = ExtResource("1_b5sv8")
+text = "
+                Network Mail"
+
+[node name="Panel" type="Panel" parent="title"]
+layout_mode = 2
+offset_top = 22.0
+offset_right = 315.0
+offset_bottom = 22.0
+theme_override_styles/panel = SubResource("StyleBoxLine_dmo3r")
+
+[node name="Container" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 180)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="MailList" type="ItemList" parent="Container"]
+z_as_relative = false
+texture_filter = 1
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_right = 1.043
+anchor_bottom = 1.029
+offset_left = -2.1
+offset_top = -2.0
+offset_right = 0.100006
+offset_bottom = -3.04601
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_b5sv8")
+item_count = 1
+script = ExtResource("3_vnhx8")
+
+[node name="allMail" type="Control" parent="Container"]
+anchors_preset = 0
+offset_right = 313.0
+offset_bottom = 177.0
+
+[node name="Mail" type="RichTextLabel" parent="Container/allMail"]
+visible = false
+layout_mode = 0
+offset_top = -1.0
+offset_right = 315.0
+offset_bottom = 182.0
+size_flags_vertical = 3
+theme = ExtResource("1_b5sv8")
+text = " ___  ___  ___ ___    //___  ___  _||_  ___ 
+/ __|/ _ \\| __| __|  /// __|/ _ \\/ || \\/__ \\
+\\__ \\ (_) | _|| _|  //  |__  (_)  (||)  |_ |
+|___/\\___/|_| |___|//  \\___|\\___/\\_||_/\\___/
+est.1966          //               ||       
+_____________________________________________
+System for the Optimal Functioning of the Soviet Economy
+---------------------------------------------
+Privet SKipper
+
+The SOFE communications array has failed to make contact with earth for [29] hours.
+
+No errors or error indicators were noted with earth based communications prior.
+
+No notable solar activity has been noted.
+
+No signs of earth conflict have been noted.
+
+N  m nume  t ac ivit  po s  le.
+
+No errors noted in local communication network.
+
+error must be in SOFE communication equipment
+_____________________________________________
+delivery request:
+[5] R3 component pack
+
+[2] Multimeter
+
+[1] ARPAnet civillian access disc
+---------------------------------------------
+Please deliver to SOFE tertiary complex maintenence acceess pad A
+
+Spasiba.
+
+"
+autowrap_mode = 2
+horizontal_alignment = 1
+script = ExtResource("4_d2e5m")
+from = "SkipperRequesitions@SOFE.su"
+fromShort = "SOFE Requesition"
+to = "RubyS621@SkipperDeliveries.org"
+Title = "DELIVERY REQUEST"
+
+[node name="Mail2" type="RichTextLabel" parent="Container/allMail"]
+visible = false
+layout_mode = 0
+offset_top = -1.0
+offset_right = 315.0
+offset_bottom = 182.0
+size_flags_vertical = 3
+theme = ExtResource("1_b5sv8")
+text = "
+Welcome to your first day! Once you're all set up I'll give ya a call and run through the basics!"
+autowrap_mode = 2
+script = ExtResource("4_d2e5m")
+from = "RosieT419@SkipperDeliveries.org"
+fromShort = "Rosie"
+to = "RubyS621@SkipperDeliveries.org"
+Title = "Welcome!"
+
+[node name="Mail3" type="RichTextLabel" parent="Container/allMail"]
+visible = false
+layout_mode = 0
+offset_top = -1.0
+offset_right = 315.0
+offset_bottom = 182.0
+size_flags_vertical = 3
+theme = ExtResource("1_b5sv8")
+text = "
+Network mail account successfully created. 
+
+Please message 
+SysAdmin@SkipperDeliveries.org
+regarding any errors with your account.
+"
+autowrap_mode = 2
+script = ExtResource("4_d2e5m")
+from = "SysAdmin@SkipperDeliveries.org"
+fromShort = "Admin"
+to = "RubyS621@SkipperDeliveries.org"
+Title = "Company Account Created"
+
+[node name="Panel2" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_3vdvo")
+
+[node name="navigation" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_b5sv8")
+text = "<BACK                                        "
+horizontal_alignment = 1

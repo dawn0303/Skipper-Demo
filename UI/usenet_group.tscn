@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://pdou5k5u46k2"]
+
+[ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="1_oqmll"]
+[ext_resource type="Script" uid="uid://wfw3cqpk7kux" path="res://UI/newsGroup.gd" id="2_le5sr"]
+[ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="3_lfype"]
+
+[node name="Group" type="VBoxContainer"]
+size_flags_vertical = 3
+theme = ExtResource("1_oqmll")
+theme_override_constants/separation = 1
+script = ExtResource("2_le5sr")
+groupName = "alt.Space.Moon.Civilian"
+unread = 548
+total = 681
+
+[node name="Container" type="Control" parent="."]
+custom_minimum_size = Vector2(300, 174)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ERROR" type="Label" parent="Container"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MESSAGE NOT FOUND
+NO ARPANET CONNECTION"
+horizontal_alignment = 1
+
+[node name="posts" type="ItemList" parent="Container"]
+z_as_relative = false
+texture_filter = 1
+clip_contents = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_right = 1.043
+anchor_bottom = 1.029
+offset_left = -2.1
+offset_top = -3.0
+offset_right = -0.899994
+offset_bottom = -13.046
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_oqmll")
+item_count = 20
+item_0/text = " 1-[0056]  top 10 bone suplements"
+item_1/text = " 2-[0015]  DO NOT USE MCP SUITS!!! "
+item_2/text = " 3-[0025]  RE:DO NOT USE MCP SUITS!!!  "
+item_3/text = " 4-[0012]  issue with comms"
+item_4/text = " 5-[0062]  homemade hydrolox tips"
+item_5/text = " 6-[0022]  best ARPANET terminal??"
+item_6/text = " 7-[0011]  saw big pyramid thing..."
+item_7/text = " 8-[0035]  superglue suit holes?"
+item_8/text = " 9-[0773]  Quick Question..."
+item_9/text = "10-[0012]  Any news from earth???"
+item_10/text = "11-[0010]  !!!FREE .MOD DOWNLOAD"
+item_11/text = "12-[0108]  how to repair sunbrella"
+item_12/text = "13-[0016]  any good tourist spots?"
+item_13/text = "14-[0026]  RE:any good tourist spots?"
+item_14/text = "15-[0093]  'pit sucks ass i miss earth"
+item_15/text = "16-[0004]  HOW ARE THERE ANTS??????????"
+item_16/text = "17-[0050]  mining vs skipping benefits?"
+item_17/text = "18-[0030]  solar panels humming??"
+item_18/text = "19-[0009]  skipper service reliable?"
+item_19/text = "-------CONNECTION INTERRUPTED--------"
+script = ExtResource("3_lfype")

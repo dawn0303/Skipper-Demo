@@ -34,7 +34,6 @@ scrap/repairz!
 
 (dont tell my
 boss)
-
 >:3"""}
 var padMode = "manifest"
 var skipper

@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=4 uid="uid://bllc2hgxoiopn"]
+
+[ext_resource type="Script" uid="uid://ck7w7ah8aujra" path="res://props/Delivertable.gd" id="1_bn1w7"]
+[ext_resource type="Texture2D" uid="uid://blvk0mqo2f33p" path="res://props/Disk.png" id="2_bn1w7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4uke"]
+resource_name = "Disk"
+cull_mode = 2
+albedo_texture = ExtResource("2_bn1w7")
+metallic = 0.55
+roughness = 0.1
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1kkgk"]
+_surfaces = [{
+"aabb": AABB(-0.045, -0.0033, -0.045, 0.09, 0.00660001, 0.09),
+"format": 34359742465,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Disk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("7FE4veBEWLvsUTg97FE4veBEWDvsUTi97FE4veBEWDvsUTg97FE4veBEWLvsUTi97FE4PeBEWDvsUTi97FE4PeBEWLvsUTg97FE4PeBEWDvsUTg97FE4PeBEWLvsUTi9")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vkpoc"]
+resource_name = "Disk_Cube"
+_surfaces = [{
+"aabb": AABB(-0.045, -0.0033, -0.045, 0.09, 0.00660001, 0.09),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAAAAA8D4AAAAAAAAAAAAAAAAAAPA+AAAAAAAA8D4AAAAAAADwPgAAgD8AAPA+AAAAAAAA8D4AAIA/AADwPgAAgD8AAAAAAACAPwAA8D4AAIA/AAAAAAAAgD8AAIA/AAAAAAAABj8AAIA/AAAGPwAAAAAAAIA/AACAPwAA8D4AAAAAAAAAAAAAgD8AAAAAAAAAAAAA8D4AAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_q4uke"),
+"name": "Disk",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("7FE4veBEWLvsUTg97FE4veBEWDvsUTi97FE4veBEWDvsUTg97FE4veBEWLvsUTi97FE4veBEWLvsUTi97FE4PeBEWDvsUTi97FE4veBEWDvsUTi97FE4PeBEWLvsUTi97FE4PeBEWLvsUTi97FE4PeBEWDvsUTg97FE4PeBEWDvsUTi97FE4PeBEWLvsUTg97FE4PeBEWLvsUTg97FE4veBEWDvsUTg97FE4PeBEWDvsUTg97FE4veBEWLvsUTg97FE4veBEWLvsUTi97FE4PeBEWLvsUTg97FE4PeBEWLvsUTi97FE4veBEWLvsUTg97FE4PeBEWDvsUTi97FE4veBEWDvsUTg97FE4veBEWDvsUTi97FE4PeBEWDvsUTg9AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//////////v/////////+//////////7//////////v////3////+/////f////7////9/////v////3////+//3//f////z//f/9/////P/9//3////8//3//f////z//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9///////+//3///////7//f///////v/9///////+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1kkgk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0j8jq"]
+size = Vector3(0.09, 0.007, 0.09)
+
+[node name="Disk" type="RigidBody3D" groups=["Deliverable"]]
+collision_mask = 7
+mass = 0.204
+script = ExtResource("1_bn1w7")
+value = 20
+Resistance = 10
+
+[node name="Disk" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_vkpoc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0j8jq")

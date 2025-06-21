@@ -18,7 +18,14 @@ func _ready():
 			outgoing.push_back(item)
 	update()
 
-
+func newItems():
+	outgoing.clear()
+	for item in get_children():
+		if item.is_in_group("Deliverable"):
+			print("pad storage ")
+			print(item)
+			outgoing.push_back(item)
+	update()
 
 func update():
 	outgoing_lights.visible = false

@@ -4,10 +4,13 @@ extends Node3D
 @onready var map = $SubViewportContainer
 @onready var Skipper = $Skipper
 @onready var vhs = $CanvasLayer/vhs
-
+@export var pad_1: StaticBody3D 
+@export var hidden :Array[RigidBody3D]
 var config_ 
 var menuOpen = false
 var world 
+
+
 
 func _enter_tree() -> void:
 	load_()
@@ -52,3 +55,9 @@ func test_():
 	config_.volume = 0.5
 	save_()
 	OS.shell_open(ProjectSettings.globalize_path("user://"))
+
+func unHide():
+	for item in hidden:
+		item.reparent(pad_1)
+		item.reReady()
+		pad_1.newItems()

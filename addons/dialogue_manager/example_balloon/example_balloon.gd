@@ -53,7 +53,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 @onready var portrait: TextureRect = %Portrait
 
-@onready var unknownTex = load("res://UI/character portraits/unknown.png")
+@onready var unknownTex = load("res://UI/characterPortraits/unknown.png")
 
 @onready var talk_sound: AudioStreamPlayer = $TalkSound
 
@@ -103,8 +103,8 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
-	var portrait_path: String = "res://UI/character portraits/%s.png" %dialogue_line.character.to_lower()
-	if FileAccess.file_exists(portrait_path):
+	var portrait_path: String = "res://UI/characterPortraits/%s.png" %dialogue_line.character
+	if ResourceLoader.exists(portrait_path):
 		portrait.texture = load(portrait_path)
 	else:
 		portrait.texture = unknownTex
@@ -188,8 +188,8 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
-	var sound_path: String = "res://Dialogue/Sounds/%s.wav" %dialogue_line.character.to_lower()
-	if FileAccess.file_exists(sound_path):
+	var sound_path: String = "res://Dialogue/Sounds/%s.wav" %dialogue_line.character
+	if ResourceLoader.exists(sound_path):
 		talk_sound.stream = load(sound_path)
 	else:
 		talk_sound.stream = load("res://Dialogue/Sounds/Beep.wav")

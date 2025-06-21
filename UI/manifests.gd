@@ -77,7 +77,7 @@ func openManifest():
 	if Globals.cargo.size() == 0:
 		return
 	for item in Globals.cargo:
-		List.add_item(item.name)
+		List.add_item(item.Name)
 	List.select(List.index)
 
 func openDepotManifest():
@@ -93,5 +93,5 @@ func openDepotManifest():
 	if Globals.skipper.lastPad.outgoing.size() == 0:
 		return
 	for item in Globals.skipper.lastPad.outgoing:
-		List.add_item(item.name)
+		List.add_item(item.Name)
 	List.select(List.index)

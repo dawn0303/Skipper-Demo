@@ -20,10 +20,24 @@ func _ready():
 	if get_parent().is_in_group("Pad"):
 		carried = false
 		collider.disabled = true
-		Destination.update()
+		if visible:
+			Destination.update()
 		
 
-
+func reReady():
+	if get_parent().is_in_group("Skipper"):
+		carried = true
+		collider.disabled = true
+		Globals.cargo.push_back(self)
+		Destination.expected += 1
+		Destination.update()
+	if get_parent().is_in_group("Pad"):
+		carried = false
+		collider.disabled = true
+		if visible:
+			Destination.update()
+		
+	
 
 func Check(pad : Node, index:int, skipper:Node):
 	if pad == Destination:

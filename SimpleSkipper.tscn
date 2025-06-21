@@ -1431,7 +1431,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pragu"]
 shader = ExtResource("24_qxgg2")
-shader_parameter/wiggle = 1.5
+shader_parameter/wiggle = 0.08
 shader_parameter/wiggle_speed = 10.0
 shader_parameter/smear = 0.5
 shader_parameter/shake_power = -0.04
@@ -3094,7 +3094,7 @@ bones/3/parent = 0
 bones/3/rest = Transform3D(1, -2.61646e-07, 2.61645e-07, 2.61645e-07, 1, 2.61646e-07, -2.61646e-07, -2.61646e-07, 1, -0.362229, 0.215386, -0.32942)
 bones/3/enabled = true
 bones/3/position = Vector3(-0.362229, 0.215386, -0.32942)
-bones/3/rotation = Quaternion(-1.30822e-07, 1.30823e-07, -5.94382e-15, 1)
+bones/3/rotation = Quaternion(-1.30823e-07, 1.30823e-07, 1.45286e-07, 1)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Lscreen"
 bones/4/parent = 0
@@ -3536,13 +3536,13 @@ shape = SubResource("SphereShape3D_fkp3v")
 transform = Transform3D(-4.37114e-10, -0.005, 0.00866025, 0, 0.00866025, 0.005, -0.01, 2.18557e-10, -3.78552e-10, -0.448151, 0.867646, 9.81505e-09)
 
 [node name="Cube" type="MeshInstance3D" parent="pager2"]
-transform = Transform3D(-2.25988e-07, -2.84217e-14, -5.17, -2.38419e-07, 5.17, -7.10543e-15, 5.17, 2.38419e-07, -2.25988e-07, -5.80385, 5.45295, 8.10902)
+transform = Transform3D(-2.25988e-07, -2.84217e-14, -5.17, -2.38419e-07, 5.17, -7.10543e-15, 5.17, 2.38419e-07, -2.25988e-07, -5.80385, 5.45295, 10.7836)
 mesh = SubResource("ArrayMesh_6q1ox")
 skeleton = NodePath("")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="pager2/Cube"]
 stream = SubResource("AudioStreamGenerator_0ceri")
-volume_db = -35.0
+volume_db = -50.0
 max_polyphony = 2
 script = ExtResource("10_0ceri")
 
@@ -3825,21 +3825,21 @@ bones/10/parent = 9
 bones/10/rest = Transform3D(0.961201, 0.266241, -0.0721652, -0.273478, 0.953977, -0.123038, 0.0360861, 0.138, 0.989775, 1.58325e-08, 0.192853, 4.28408e-08)
 bones/10/enabled = true
 bones/10/position = Vector3(1.58325e-08, 0.192853, 4.28408e-08)
-bones/10/rotation = Quaternion(0.209142, -0.0436727, 0.369617, 0.904287)
+bones/10/rotation = Quaternion(0.198762, -0.0438858, 0.373099, 0.905188)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/name = "LowerArm.R"
 bones/11/parent = 10
 bones/11/rest = Transform3D(0.986602, 0.0724455, 0.146181, -0.0583809, 0.993441, -0.098314, -0.152345, 0.0884626, 0.98436, 5.78584e-07, 0.369817, -5.09899e-08)
 bones/11/enabled = true
 bones/11/position = Vector3(5.78584e-07, 0.369817, -5.09899e-08)
-bones/11/rotation = Quaternion(0.574528, 0.0529055, -0.0883459, 0.811981)
+bones/11/rotation = Quaternion(0.590411, 0.049541, -0.0927331, 0.800225)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "Hand.R"
 bones/12/parent = 11
 bones/12/rest = Transform3D(0.999089, -0.000612034, 0.0426633, -0.00310422, 0.996205, 0.0869858, -0.0425547, -0.087039, 0.995296, 7.36909e-08, 0.278052, 0)
 bones/12/enabled = true
 bones/12/position = Vector3(7.36909e-08, 0.278052, 0)
-bones/12/rotation = Quaternion(0.0823839, 0.27163, 0.00520808, 0.958855)
+bones/12/rotation = Quaternion(0.0735856, 0.269667, 0.0188352, 0.959953)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/name = "LTarget"
 bones/13/parent = 1
@@ -3923,5 +3923,5 @@ libraries = {
 }
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="area_entered" from="GroundSensor" to="." method="_on_ground_sensor_area_entered"]
+[connection signal="body_entered" from="GroundSensor" to="." method="_on_ground_sensor_body_entered"]
 [connection signal="area_entered" from="PadSensor" to="." method="_on_pad_sensor_area_entered"]

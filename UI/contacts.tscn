@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ep2lcddv7hsr"]
+[gd_scene load_steps=6 format=3 uid="uid://ep2lcddv7hsr"]
 
 [ext_resource type="Script" uid="uid://bev15g8hnptpa" path="res://contacts.gd" id="1_b5iw3"]
 [ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="2_gpywx"]
@@ -8,8 +8,6 @@
 color = Color(0.921569, 0.72549, 0.0941176, 1)
 grow_begin = 0.0
 thickness = 2
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_to4dx"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_gpywx"]
 color = Color(0.921569, 0.72549, 0.0941176, 1)
@@ -65,38 +63,6 @@ grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("2_gpywx")
-item_count = 30
-item_0/text = "AAAA"
-item_0/icon = SubResource("ViewportTexture_to4dx")
-item_1/text = "AAA"
-item_2/text = "a"
-item_3/text = "a"
-item_4/text = "a"
-item_5/text = "a"
-item_6/text = "a"
-item_7/text = "a"
-item_8/text = "a"
-item_9/text = "a"
-item_10/text = "a"
-item_11/text = "a"
-item_12/text = "a"
-item_13/text = "a"
-item_14/text = "a"
-item_15/text = "a"
-item_16/text = "a"
-item_17/text = "a"
-item_18/text = "a"
-item_19/text = "a"
-item_20/text = "a"
-item_21/text = "a"
-item_22/text = "a"
-item_23/text = "a"
-item_24/text = "a"
-item_25/text = "a"
-item_26/text = "a"
-item_27/text = "a"
-item_28/text = "a"
-item_29/text = "a"
 script = ExtResource("3_c2g4h")
 
 [node name="Panel" type="Panel" parent="Container"]

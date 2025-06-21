@@ -16,11 +16,11 @@ func open():
 	else:
 		description.text = "No Description"
 	
-	var portrait_path: String = "res://UI/character portraits/%s.png" %contact
-	if FileAccess.file_exists(portrait_path):
+	var portrait_path: String = "res://UI/characterPortraits/%s.png" %contact
+	if ResourceLoader.exists(portrait_path):
 		portrait.texture = load(portrait_path)
 	else:
-		portrait.texture = load("res://UI/character portraits/unknown.png")
+		portrait.texture = load("res://UI/characterPortraits/unknown.png")
 	
 	
 

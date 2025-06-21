@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cad5ew6httspu"
-path="res://.godot/imported/unknown.png-1cfb073e252f8023d66163ea16aa542e.ctex"
+uid="uid://dmr42y0dkvmn0"
+path="res://.godot/imported/Roxy.png-0df6bcf0b3e6e9a8055a9ce3d8039909.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/character portraits/unknown.png"
-dest_files=["res://.godot/imported/unknown.png-1cfb073e252f8023d66163ea16aa542e.ctex"]
+source_file="res://UI/characterPortraits/Roxy.png"
+dest_files=["res://.godot/imported/Roxy.png-0df6bcf0b3e6e9a8055a9ce3d8039909.ctex"]
 
 [params]
 

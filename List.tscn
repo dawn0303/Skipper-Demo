@@ -1,9 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://coyasi3xesgcy"]
+[gd_scene load_steps=3 format=3 uid="uid://coyasi3xesgcy"]
 
 [ext_resource type="Theme" uid="uid://d007sgq0psac3" path="res://props/Terminal.tres" id="1_pdg4h"]
 [ext_resource type="Script" uid="uid://0k58rdmil27x" path="res://List.gd" id="2_cd635"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_u4e4f"]
 
 [node name="ItemList" type="ItemList"]
 top_level = true
@@ -20,25 +18,4 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 4
 theme = ExtResource("1_pdg4h")
-item_count = 18
-item_0/text = "AAAA"
-item_0/icon = SubResource("ViewportTexture_u4e4f")
-item_1/text = "AAA"
-item_2/text = "a"
-item_3/text = "a"
-item_4/text = "a"
-item_5/text = "a"
-item_6/text = "a"
-item_7/text = "a"
-item_8/text = "a"
-item_9/text = "a"
-item_10/text = "a"
-item_11/text = "a"
-item_12/text = "a"
-item_13/text = "a"
-item_14/text = "a"
-item_15/text = "a"
-item_16/text = "a"
-item_16/disabled = true
-item_17/text = "a"
 script = ExtResource("2_cd635")

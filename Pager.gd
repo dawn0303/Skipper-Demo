@@ -5,6 +5,8 @@ extends Control
 @onready var comms_page: Control = $"VBoxContainer/Comms page"
 @onready var LoadAnim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var map: Control = $VBoxContainer/Map
+@onready var usenet: VBoxContainer = $VBoxContainer/UseNet
+@onready var mail: VBoxContainer = $VBoxContainer/Mail
 
 var Active
 var page={}
@@ -15,6 +17,8 @@ func _ready():
 	page["MANIFESTS"] = manifests
 	page["CONTACTS"] = contacts
 	page["MAP"] = map
+	page["USENET"] = usenet
+	page["MAIL"] = mail
 	for item in page:
 		if item != "HOME" or item != "COMMS":
 			home.list.add_item(item)
@@ -29,10 +33,10 @@ func goHome():
 	LoadAnim.play_backwards("Load")
 	Active.visible = true
 
-func goTo(desiredPage:String, load = true):
+func goTo(desiredPage:String, loadScreen = true):
 	Active.visible = false
 	Active=page[desiredPage]
 	Active.open()
-	if load:
+	if loadScreen:
 		LoadAnim.play_backwards("Load")
 	Active.visible = true
