@@ -110,14 +110,18 @@ func _unhandled_input(event):
 		return
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED: 
 		if event is InputEventMouseMotion:
-			mouse_input = event.relative
-			camera.rotate_z(event.relative.y * .005)
-			camParent.rotate_y(-event.relative.x * .005)
-			camParent.rotation.y = clamp(camParent.rotation.y, (-PI/2), (PI/2))
-			camera.rotation.y = PI/2#clampf(camera.rotation.y, (PI/2), (PI/2))
-			#camera.rotation_degrees.x = clampf(camera.rotation_degrees.y, (-90), (90))
-			camera.rotation.z = 0#clampf(camera.rotation.z, 0, 0)
-
+			#mouse_input = event.relative
+			#camera.rotate_z(event.relative.y * .005)
+			#camParent.rotate_y(-event.relative.x * .005)
+			#camParent.rotation.y = clamp(camParent.rotation.y, (-PI/2), (PI/2))
+			#camera.rotation.y = PI/2
+			#camera.rotation.z = 0
+			var rotx = event.relative.y * 0.005
+			var roty = event.relative.x * 0.005
+			camParent.rotate_object_local(Vector3(0,1,0),-roty)
+			camera.rotate_object_local(Vector3(1,0,0),-rotx)
+			camParent.rotation_degrees.y = clamp(camParent.rotation_degrees.y, -90, 90)
+			camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -50, 60)
 
 func _init():
 	if debug:
